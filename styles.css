@@ -1634,6 +1634,84 @@ a:hover {
   line-height: 1.55;
 }
 
+.footer__link[aria-current="page"] {
+  color: var(--text);
+}
+
+.page-contractors .site-header {
+  background: rgba(var(--bg-rgb), 0.88);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+
+.contractors-hero {
+  padding: calc(var(--header-h) + 4rem) 0 clamp(4rem, 10vw, 6rem);
+}
+
+.contractors-hero__inner {
+  max-width: 36rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.contractors-hero__label {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.contractors-hero__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5.5vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.contractors-hero__accent {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.contractors-hero__dek {
+  margin: 1rem 0 0;
+  font-size: 1.02rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+.contractors-signup {
+  margin-top: 2rem;
+  padding: 1.35rem 1.25rem;
+  border-radius: var(--radius-sm);
+  border: 1px dashed rgba(207, 85, 37, 0.35);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.contractors-signup__status {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.contractors-signup__note {
+  margin: 0.55rem 0 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--text-dim);
+}
+
 /* ——— Footer ——— */
 .site-footer {
   position: relative;
