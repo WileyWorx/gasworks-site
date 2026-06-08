@@ -14,4 +14,4 @@ Revoke only when the user explicitly says to stop auto commit/push.
 ## Conventions
 - Brand fonts: Space Grotesk (display), DM Sans (body).
 - Do not re-add the footer slogan "Built different. Built to last."
-- Capability lanes: Spotlights, Narratives, Solutions → link to `portfolio.html?cat=…`
+- Capability lanes: Spotlights, Narratives, Immersions → link to `portfolio.html?cat=…`

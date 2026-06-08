@@ -4,7 +4,7 @@ Drop cover photos and hover preview videos for each portfolio tile.
 
 ## File naming
 
-For each category folder (`spotlights`, `narratives`, `solutions`), use matching numbered pairs:
+For each category folder (`spotlights`, `narratives`, `immersions`), use matching numbered pairs:
 
 | Cover (default) | Video (plays on hover) |
 |-----------------|------------------------|

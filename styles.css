@@ -916,7 +916,7 @@ a:hover {
     );
 }
 
-.lanes__placeholder--solutions {
+.lanes__placeholder--immersions {
   background-color: transparent;
   background-image:
     radial-gradient(ellipse 70% 50% at 70% 42%, rgba(74, 107, 90, 0.12), transparent 55%),
@@ -3272,7 +3272,7 @@ body.is-route-pulse .page-stage {
     );
 }
 
-.portfolio-card__media--solutions {
+.portfolio-card__media--immersions {
   background-image:
     radial-gradient(ellipse 70% 55% at 50% 40%, rgba(74, 107, 90, 0.1), transparent 60%),
     repeating-linear-gradient(

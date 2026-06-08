@@ -714,7 +714,7 @@
     const panels = Array.from(document.querySelectorAll("[data-portfolio-panel]"));
     const track = document.querySelector("[data-portfolio-track]");
     const indicator = document.querySelector("[data-portfolio-indicator]");
-    const cats = ["spotlights", "narratives", "solutions"];
+    const cats = ["spotlights", "narratives", "immersions"];
     let activeCat = "spotlights";
 
     function readCatFromUrl() {
