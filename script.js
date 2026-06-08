@@ -730,7 +730,81 @@
       indicator.style.left = btn.offsetLeft + "px";
     }
 
+    const hoverMediaBlocks = Array.from(portfolioRoot.querySelectorAll("[data-portfolio-hover]"));
+    let activePreviewBlock = null;
+
+    function stopPortfolioPreview(block) {
+      if (!block) return;
+      const video = block.querySelector(".portfolio-card__video");
+      block.classList.remove("is-previewing");
+      if (video) {
+        video.pause();
+        try {
+          video.currentTime = 0;
+        } catch (err) {
+          /* ignore seek errors while metadata loads */
+        }
+      }
+      if (activePreviewBlock === block) activePreviewBlock = null;
+    }
+
+    function stopAllPortfolioPreviews() {
+      hoverMediaBlocks.forEach(stopPortfolioPreview);
+    }
+
+    hoverMediaBlocks.forEach(function (block) {
+      const posterSrc = block.getAttribute("data-poster");
+      const videoSrc = block.getAttribute("data-video");
+      if (!posterSrc && !videoSrc) return;
+
+      const poster = document.createElement("img");
+      poster.className = "portfolio-card__poster";
+      poster.alt = "";
+      poster.decoding = "async";
+      poster.loading = "lazy";
+      if (posterSrc) poster.src = posterSrc;
+      poster.addEventListener("error", function () {
+        poster.classList.add("is-missing");
+      });
+      block.appendChild(poster);
+
+      const video = document.createElement("video");
+      video.className = "portfolio-card__video";
+      video.muted = true;
+      video.loop = true;
+      video.playsInline = true;
+      video.preload = "none";
+      video.setAttribute("aria-hidden", "true");
+      if (videoSrc) video.src = videoSrc;
+      block.appendChild(video);
+
+      function startPreview() {
+        if (reduceMotion || !videoSrc) return;
+        if (activePreviewBlock && activePreviewBlock !== block) {
+          stopPortfolioPreview(activePreviewBlock);
+        }
+        activePreviewBlock = block;
+        block.classList.add("is-previewing");
+        const playPromise = video.play();
+        if (playPromise && typeof playPromise.catch === "function") {
+          playPromise.catch(function () {
+            stopPortfolioPreview(block);
+          });
+        }
+      }
+
+      block.addEventListener("pointerenter", startPreview);
+      block.addEventListener("pointerleave", function () {
+        stopPortfolioPreview(block);
+      });
+    });
+
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) stopAllPortfolioPreviews();
+    });
+
     function setPortfolioCat(cat, updateUrl) {
+      stopAllPortfolioPreviews();
       if (!cats.includes(cat)) cat = "spotlights";
       activeCat = cat;
       const idx = cats.indexOf(cat);
