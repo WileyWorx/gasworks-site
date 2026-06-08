@@ -1,5 +1,5 @@
 /**
- * Gasworks — immersive interactions (intro, cursor, parallax, scroll reveals)
+ * Gasworks — immersive interactions (intro, parallax, scroll reveals)
  */
 (function () {
   const header = document.querySelector("[data-header]");
@@ -8,9 +8,6 @@
   const yearEl = document.querySelector("[data-year]");
   const intro = document.querySelector("[data-intro]");
   const introBarFill = intro?.querySelector(".intro__bar-fill");
-  const cursorEl = document.querySelector("[data-cursor]");
-  const cursorDot = cursorEl?.querySelector(".cursor__dot");
-  const cursorRing = cursorEl?.querySelector(".cursor__ring");
   const hero = document.querySelector("[data-hero]");
   const heroFloat = document.querySelector("[data-hero-float]");
   const heroShift = document.querySelector("[data-hero-shift]");
@@ -77,12 +74,6 @@
       window.sessionStorage.setItem(introStorageKey, "1");
     } catch (_) {
       /* ignore */
-    }
-    if (!reduceMotion && finePointer && cursorEl) {
-      document.body.style.cursor = "none";
-      window.requestAnimationFrame(function () {
-        document.body.classList.add("is-cursor-ready");
-      });
     }
     if (!instant) {
       window.setTimeout(function () {
@@ -273,65 +264,6 @@
   window.addEventListener("scroll", onDepthScroll, { passive: true });
   window.addEventListener("resize", onDepthScroll, { passive: true });
   updateDepthScenes();
-
-  /* ——— Custom cursor ——— */
-  let cx = window.innerWidth / 2;
-  let cy = window.innerHeight / 2;
-  let rdx = cx;
-  let rdy = cy;
-  let rafCursor = 0;
-
-  function renderCursor() {
-    rafCursor = 0;
-    if (!cursorDot || !cursorRing) return;
-    rdx += (cx - rdx) * 0.12;
-    rdy += (cy - rdy) * 0.1;
-    const hover = document.body.classList.contains("cursor-hover");
-    const ringScale = hover ? 1.15 : 1;
-    const dotScale = hover ? 1.12 : 1;
-    cursorDot.style.transform =
-      "translate3d(" + cx + "px," + cy + "px,0) scale(" + dotScale + ")";
-    cursorRing.style.transform =
-      "translate3d(" + rdx + "px," + rdy + "px,0) scale(" + ringScale + ")";
-  }
-
-  function queueCursor() {
-    if (!rafCursor) rafCursor = window.requestAnimationFrame(renderCursor);
-  }
-
-  if (!reduceMotion && finePointer && cursorEl && cursorDot && cursorRing) {
-    document.addEventListener(
-      "mousemove",
-      function (e) {
-        cx = e.clientX;
-        cy = e.clientY;
-        queueCursor();
-      },
-      { passive: true }
-    );
-
-    const hoverTargets = document.querySelectorAll(
-      'a, button, [role="button"], input, textarea, select, .btn, [data-tilt], [data-tilt-panel], [data-reel-frame]'
-    );
-    hoverTargets.forEach(function (el) {
-      el.addEventListener(
-        "mouseenter",
-        function () {
-          document.body.classList.add("cursor-hover");
-        },
-        { passive: true }
-      );
-      el.addEventListener(
-        "mouseleave",
-        function () {
-          document.body.classList.remove("cursor-hover");
-        },
-        { passive: true }
-      );
-    });
-
-    queueCursor();
-  }
 
   /* ——— Hero parallax + scroll veil ——— */
   let hx = 0;
@@ -678,8 +610,12 @@
     const laneItems = Array.from(lanesRoot.querySelectorAll("[data-lane]"));
     const lanePlates = Array.from(lanesRoot.querySelectorAll("[data-lane-media]"));
     const lanesMedia = lanesRoot.querySelector("[data-lanes-media]");
-    let activeLane = "commercial";
+    const lanesStage = lanesRoot.querySelector("[data-lanes-stage]") || lanesRoot.querySelector(".lanes");
+    const launchRoot = lanesRoot.querySelector("[data-lanes-launch]");
+    const launchWord = launchRoot?.querySelector(".lanes__launch-word");
+    let activeLane = "spotlights";
     let switchTimer = null;
+    let launching = false;
 
     function setActiveLane(laneId, force) {
       if (!laneId) return;
@@ -705,20 +641,46 @@
       }
     }
 
+    function launchToPortfolio(item) {
+      if (launching) return;
+      const href = item.getAttribute("data-portfolio-href");
+      const laneId = item.getAttribute("data-lane");
+      const wordEl = item.querySelector(".lanes__word");
+      if (!href || !laneId) return;
+
+      launching = true;
+      setActiveLane(laneId, true);
+      item.classList.add("is-launching");
+      if (lanesStage) lanesStage.classList.add("is-portfolio-launch");
+
+      if (launchRoot && launchWord && wordEl) {
+        launchRoot.style.setProperty("--lane-glow", getComputedStyle(item).getPropertyValue("--lane-glow"));
+        launchRoot.style.setProperty("--lane-glow-soft", getComputedStyle(item).getPropertyValue("--lane-glow-soft"));
+        launchWord.textContent = wordEl.textContent;
+        launchRoot.classList.add("is-active");
+        launchRoot.setAttribute("aria-hidden", "false");
+      }
+
+      const delayMs = reduceMotion ? 0 : 820;
+      window.setTimeout(function () {
+        window.location.href = href;
+      }, delayMs);
+    }
+
     laneItems.forEach(function (item) {
       const laneId = item.getAttribute("data-lane");
       if (!laneId) return;
 
       item.addEventListener("mouseenter", function () {
-        setActiveLane(laneId);
+        if (!launching) setActiveLane(laneId);
       });
 
       item.addEventListener("focus", function () {
-        setActiveLane(laneId);
+        if (!launching) setActiveLane(laneId);
       });
 
       item.addEventListener("click", function () {
-        setActiveLane(laneId);
+        launchToPortfolio(item);
       });
     });
 
@@ -727,6 +689,11 @@
         return item.getAttribute("data-lane") === activeLane;
       });
       if (idx < 0) return;
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        launchToPortfolio(laneItems[idx]);
+        return;
+      }
       if (e.key === "ArrowDown" || e.key === "ArrowRight") {
         e.preventDefault();
         const next = laneItems[(idx + 1) % laneItems.length];
@@ -741,6 +708,96 @@
     });
 
     setActiveLane(activeLane, true);
+  }
+
+  /* ——— Portfolio page: category tabs + horizontal slide ——— */
+  const portfolioRoot = document.querySelector("[data-portfolio-root]");
+  if (portfolioRoot) {
+    const tabs = Array.from(document.querySelectorAll("[data-portfolio-cat]"));
+    const panels = Array.from(document.querySelectorAll("[data-portfolio-panel]"));
+    const track = document.querySelector("[data-portfolio-track]");
+    const indicator = document.querySelector("[data-portfolio-indicator]");
+    const cats = ["spotlights", "narratives", "solutions"];
+    let activeCat = "spotlights";
+
+    function readCatFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      const cat = params.get("cat");
+      if (cat && cats.includes(cat)) return cat;
+      return "spotlights";
+    }
+
+    function positionIndicator(btn) {
+      if (!indicator || !btn) return;
+      indicator.style.width = btn.offsetWidth + "px";
+      indicator.style.left = btn.offsetLeft + "px";
+    }
+
+    function setPortfolioCat(cat, updateUrl) {
+      if (!cats.includes(cat)) cat = "spotlights";
+      activeCat = cat;
+      const idx = cats.indexOf(cat);
+
+      tabs.forEach(function (tab) {
+        const isActive = tab.getAttribute("data-portfolio-cat") === cat;
+        tab.classList.toggle("is-active", isActive);
+        tab.setAttribute("aria-selected", isActive ? "true" : "false");
+        tab.tabIndex = isActive ? 0 : -1;
+      });
+
+      panels.forEach(function (panel) {
+        const isActive = panel.getAttribute("data-portfolio-panel") === cat;
+        panel.classList.toggle("is-active", isActive);
+        panel.setAttribute("aria-hidden", isActive ? "false" : "true");
+      });
+
+      if (track) {
+        track.style.transform = "translate3d(-" + idx * 33.333 + "%, 0, 0)";
+      }
+
+      const activeTab = tabs.find(function (t) {
+        return t.getAttribute("data-portfolio-cat") === cat;
+      });
+      positionIndicator(activeTab);
+
+      if (updateUrl) {
+        const url = new URL(window.location.href);
+        url.searchParams.set("cat", cat);
+        window.history.replaceState({}, "", url);
+      }
+    }
+
+    tabs.forEach(function (tab, i) {
+      tab.addEventListener("click", function () {
+        setPortfolioCat(tab.getAttribute("data-portfolio-cat"), true);
+      });
+      tab.addEventListener("keydown", function (e) {
+        if (e.key === "ArrowRight") {
+          e.preventDefault();
+          setPortfolioCat(cats[(i + 1) % cats.length], true);
+          tabs[(i + 1) % cats.length].focus();
+        } else if (e.key === "ArrowLeft") {
+          e.preventDefault();
+          setPortfolioCat(cats[(i - 1 + cats.length) % cats.length], true);
+          tabs[(i - 1 + cats.length) % cats.length].focus();
+        }
+      });
+    });
+
+    window.addEventListener("resize", function () {
+      const activeTab = tabs.find(function (t) {
+        return t.getAttribute("data-portfolio-cat") === activeCat;
+      });
+      positionIndicator(activeTab);
+    });
+
+    setPortfolioCat(readCatFromUrl(), false);
+    window.requestAnimationFrame(function () {
+      const activeTab = tabs.find(function (t) {
+        return t.getAttribute("data-portfolio-cat") === activeCat;
+      });
+      positionIndicator(activeTab);
+    });
   }
 
   /* ——— Project inquiry (client-side success until a backend / email hook is wired) ——— */
