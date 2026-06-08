@@ -20,15 +20,13 @@ Drop your best 4–10 second loops here. The hero mill is **14 tiles** — each 
 | 10 | `reel-10.mp4` | `reel-10-poster.jpg` |
 | 11 | `reel-11.mp4` | `reel-11-poster.jpg` |
 | 12 | `reel-12.mp4` | `reel-12-poster.jpg` |
-| 13 | `reel-13.mp4` | `reel-13-poster.jpg` |
+| 13 | `nathan.mp4` | `nathan-poster.jpg` |
 | 14 | `reel-14.mp4` | `reel-14-poster.jpg` |
 
 (GIF works too — name `reel-XX.gif`. MP4 is ~10× smaller for the same quality.)
 
-**Current production clips** (14 tiles in `index.html`; tiles **13–14** are placeholders awaiting media):  
-`iseered` ← `ISeeRed_Website.mp4`, `nordic`, `brighton`, `cars`, `whoop`, `kiltech`, `powmow`, `lincoln-spot`, `porsche`, `amici`, `talking-head`, `shan`.  
-
-`Testimonials_ForWebsite.mp4` is in the main folder but not used on the mill (13 clips → 12 tiles). Add it by swapping any tile’s `<source>` / `poster` if you want it live.
+**Current production clips** (14 tiles in `index.html`; tile **14** is still a placeholder):  
+`iseered`, `nordic`, `brighton`, `cars`, `whoop`, `kiltech`, `powmow`, `lincoln-spot`, `porsche`, `amici`, `talking-head`, `shan`, `nathan` ← `Top of Home Page Placeholders/NathanHomePage.mp4`.
 
 ## Encoding spec
 
