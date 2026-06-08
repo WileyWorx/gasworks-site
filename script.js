@@ -324,17 +324,8 @@
   }
 
   function updateHeroVeil() {
-    if (!hero || !heroVeil) return;
-    const r = hero.getBoundingClientRect();
-    const p = Math.max(0, Math.min(1, 1 - r.bottom / (window.innerHeight * 0.85)));
-    heroVeil.style.background =
-      "linear-gradient(180deg, rgba(7, 6, 10, " +
-      (0.1 + p * 0.2).toFixed(2) +
-      ") 0%, rgba(7, 6, 10, " +
-      (0.45 + p * 0.35).toFixed(2) +
-      ") 50%, rgba(7, 6, 10, " +
-      (0.88 + p * 0.1).toFixed(2) +
-      ") 100%)";
+    /* Static veil in CSS — do not paint over the site backdrop gradient behind the mill. */
+    if (heroVeil) heroVeil.style.background = "";
   }
 
   window.addEventListener("scroll", updateHeroVeil, { passive: true });

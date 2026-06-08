@@ -434,6 +434,7 @@ a:hover {
   position: absolute;
   inset: 0;
   z-index: 0;
+  background: transparent;
 }
 
 .hero__poster,
@@ -508,13 +509,19 @@ a:hover {
   margin: 0;
 }
 
+/* Hero mill — keep the fixed site-backdrop gradient visible between and behind tiles */
+.hero .hero__stage-3d,
+.hero .hero__grain {
+  display: none;
+}
+
 .media-mill__media {
   position: relative;
   width: 100%;
   height: 100%;
   border-radius: 6px;
   overflow: hidden;
-  background: #0d0c14;
+  background: transparent;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -575,6 +582,10 @@ a:hover {
   box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.55);
 }
 
+.hero .media-mill__floor {
+  opacity: 0.28;
+}
+
 .media-mill__veil {
   position: absolute;
   inset: 0;
@@ -586,6 +597,16 @@ a:hover {
     rgba(0, 0, 0, 0.06) 28%,
     rgba(0, 0, 0, 0.04) 62%,
     rgba(0, 0, 0, 0.62) 100%
+  );
+}
+
+.hero .media-mill__veil {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.18) 0%,
+    transparent 34%,
+    transparent 66%,
+    rgba(0, 0, 0, 0.2) 100%
   );
 }
 
@@ -609,6 +630,10 @@ a:hover {
     background-size: 48px 48px, 48px 48px;
     opacity: 0.4;
   }
+
+  .hero .media-mill__floor {
+    opacity: 0.22;
+  }
 }
 
 .hero__veil {
@@ -622,6 +647,15 @@ a:hover {
     rgba(0, 0, 0, 0.38) 100%
   );
   pointer-events: none;
+}
+
+.hero .hero__veil {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.1) 0%,
+    transparent 42%,
+    rgba(0, 0, 0, 0.14) 100%
+  );
 }
 
 .hero__content {
