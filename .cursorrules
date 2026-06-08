@@ -1,0 +1,17 @@
+# Gasworks site — Cursor rules
+
+## Project
+Static marketing site in this folder. Stack: HTML, CSS, JS. Deploy: Vercel (`gasworks-site.vercel.app`). Remote: `https://github.com/WileyWorx/gasworks-site.git`.
+
+## Git
+After completing any task that changes this site, commit and push to `main` without asking:
+- Stage only files changed for that task under `gasworks-site/`.
+- Use concise commit messages focused on why.
+- Push to `origin main` after each commit.
+
+Revoke only when the user explicitly says to stop auto commit/push.
+
+## Conventions
+- Brand fonts: Space Grotesk (display), DM Sans (body).
+- Do not re-add the footer slogan "Built different. Built to last."
+- Capability lanes: Spotlights, Narratives, Solutions → link to `portfolio.html?cat=…`
