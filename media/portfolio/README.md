@@ -30,10 +30,4 @@ Paths are wired in `portfolio.html` via `data-poster` and `data-video` on each c
 | 10 | USA Nordic | `Spotlights/US Nordic/` |
 | 11 | WHOOP | `Spotlights/Whoop/` |
 
-Replace `01.jpg`–`11.jpg` with final thumbnails when ready (same filenames).
-
-## Notes
-
-- JPG or WebP covers work; keep filenames aligned with the HTML.
-- Videos should be muted-friendly (site mutes on hover for autoplay).
-- Interim posters were extracted from video frames until custom thumbnails are supplied.
+Replace `01.jpg`–`11.jpg` with updated thumbnails from each client folder on the SSD when provided.
