@@ -4,10 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#000000" />
-    <title>Contractor roster — Gasworks</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Real Estate — Gasworks</title>
     <meta
       name="description"
-      content="Join the Gasworks contractor roster — crew and freelancers. Signup coming soon."
+      content="Cinematic property media for brokers, developers, and luxury listings — by invitation."
     />
     <link rel="icon" href="media/brand/favicon-32.png" sizes="32x32" type="image/png" />
     <link rel="apple-touch-icon" href="media/brand/favicon-180.png" />
@@ -19,7 +20,7 @@
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body class="intro-done page-contractors">
+  <body class="intro-done page-real-estate">
     <a class="skip-link" href="#main">Skip to content</a>
 
     <div class="site-backdrop" aria-hidden="true">
@@ -59,20 +60,63 @@
     </header>
 
     <main id="main" class="page-stage" data-page-stage>
-      <section class="contractors-hero" data-reveal-parent>
-        <div class="shell contractors-hero__inner">
-          <p class="contractors-hero__label" data-reveal>For contractors</p>
-          <h1 class="contractors-hero__title" data-reveal style="--reveal-delay: 0.06s">
-            Join the <span class="contractors-hero__accent">roster.</span>
+      <section class="re-hero" data-reveal-parent>
+        <div class="shell re-hero__inner">
+          <p class="re-hero__label" data-reveal>For select partners</p>
+          <h1 class="re-hero__title" data-reveal style="--reveal-delay: 0.06s">
+            Property, filmed with <span class="re-hero__accent">intention.</span>
           </h1>
-          <p class="contractors-hero__dek" data-reveal style="--reveal-delay: 0.12s">
-            Freelancers and crew — add yourself to our database so we can reach you when a project fits.
+          <p class="re-hero__dek" data-reveal style="--reveal-delay: 0.12s">
+            Listing films, agent brand pieces, and development media — crafted for brokers and developers who
+            want the listing to feel as considered as the architecture.
           </p>
-          <div class="contractors-signup" data-contractors-signup data-reveal style="--reveal-delay: 0.18s">
-            <p class="contractors-signup__status">Roster signup — coming soon</p>
-            <p class="contractors-signup__note">
-              This is a placeholder. We’ll wire a form here for roles, reels, and availability.
-            </p>
+        </div>
+      </section>
+
+      <section class="re-offerings" aria-labelledby="re-offerings-title" data-reveal-parent>
+        <div class="shell">
+          <h2 id="re-offerings-title" class="re-offerings__title" data-reveal>What we produce</h2>
+          <ul class="re-offerings__grid" role="list">
+            <li class="re-offerings__card" data-reveal style="--reveal-delay: 0.04s">
+              <p class="re-offerings__index">01</p>
+              <h3 class="re-offerings__name">Listing films</h3>
+              <p class="re-offerings__text">
+                Cinematic walk-throughs and hero edits built for MLS, social, and paid — paced for the room, the
+                light, and the neighborhood story.
+              </p>
+            </li>
+            <li class="re-offerings__card" data-reveal style="--reveal-delay: 0.08s">
+              <p class="re-offerings__index">02</p>
+              <h3 class="re-offerings__name">Agent &amp; brokerage brand</h3>
+              <p class="re-offerings__text">
+                Profile films, team reels, and campaign spots that position you beyond the transaction — same
+                craft we bring to national brand work.
+              </p>
+            </li>
+            <li class="re-offerings__card" data-reveal style="--reveal-delay: 0.12s">
+              <p class="re-offerings__index">03</p>
+              <h3 class="re-offerings__name">Developments &amp; luxury</h3>
+              <p class="re-offerings__text">
+                Pre-sales narratives, amenity stories, and launch films for new construction and high-touch
+                properties that need more than a slideshow.
+              </p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="re-cta" data-reveal-parent>
+        <div class="shell re-cta__inner">
+          <p class="re-cta__label" data-reveal>Private access</p>
+          <h2 class="re-cta__title" data-reveal style="--reveal-delay: 0.06s">
+            Ready when you have a listing or launch on the calendar.
+          </h2>
+          <p class="re-cta__dek" data-reveal style="--reveal-delay: 0.12s">
+            Reach out with property details, timeline, and deliverables — we’ll respond with scope and availability.
+          </p>
+          <div class="re-cta__actions" data-reveal style="--reveal-delay: 0.18s">
+            <a class="btn btn--primary" href="mailto:hello@gasworks.co?subject=Real%20Estate%20Inquiry">Email the team</a>
+            <a class="btn btn--ghost" href="index.html#contact">Project inquiry form</a>
           </div>
         </div>
       </section>
@@ -98,7 +142,7 @@
           <span class="footer__sep" aria-hidden="true">·</span>
           <a class="footer__link" href="index.html#contact">Project inquiry</a>
           <span class="footer__sep" aria-hidden="true">·</span>
-          <a class="footer__link" href="contractors.html" aria-current="page">Contractor roster</a>
+          <a class="footer__link" href="contractors.html">Contractor roster</a>
           <span class="footer__sep" aria-hidden="true">·</span>
           <a class="footer__link" href="mailto:hello@gasworks.co">hello@gasworks.co</a>
         </nav>
@@ -127,7 +171,7 @@
         <p class="footer__copy">
           © <span data-year></span> Gasworks. All rights reserved.
           <span class="footer__copy-sep" aria-hidden="true">·</span>
-          <a class="footer__quiet" href="real-estate.html">Real Estate</a>
+          <span class="footer__quiet" aria-current="page">Real Estate</span>
         </p>
       </div>
     </footer>
