@@ -267,9 +267,18 @@
         <div class="lanes" data-lanes-stage>
           <div class="lanes__media" data-lanes-media aria-hidden="true">
             <div class="lanes__plate is-active" data-lane-media="spotlights">
-              <div class="lanes__placeholder lanes__placeholder--spotlights">
-                <span class="lanes__placeholder-label">Spotlights reel</span>
-                <span class="lanes__placeholder-path">media/lanes/spotlights.mp4</span>
+              <div class="lanes__media-fill">
+                <video
+                  class="lanes__video"
+                  data-lane-video="spotlights"
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  poster="media/lanes/spotlights-poster.jpg"
+                >
+                  <source src="media/lanes/spotlights.mp4" type="video/mp4" />
+                </video>
               </div>
             </div>
             <div class="lanes__plate" data-lane-media="narratives">
