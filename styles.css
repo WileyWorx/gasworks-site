@@ -1535,6 +1535,7 @@ a:hover {
   margin-inline: auto;
 }
 
+/* Reserved for future footer tagline (accent gradient on .footer__tagline-accent) */
 .footer__tagline {
   margin: 0;
   font-family: var(--font-display);
