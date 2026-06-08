@@ -206,14 +206,27 @@ a:hover {
 .site-nav__cta {
   padding: 0.55rem 1rem;
   border-radius: 999px;
-  border: 1px solid var(--line-strong);
-  color: var(--text) !important;
-  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(207, 85, 37, 0.42);
+  color: var(--forge-black) !important;
+  background: var(--accent-gradient);
+  box-shadow:
+    0 0 12px rgba(207, 85, 37, 0.22),
+    0 14px 32px -16px var(--accent-glow),
+    inset 0 1px 0 rgba(255, 230, 200, 0.32);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .site-nav__cta:hover {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 1px var(--accent-soft), 0 12px 40px -16px var(--accent-glow);
+  color: #0c0907 !important;
+  border-color: rgba(232, 160, 96, 0.55);
+  transform: translateY(-1px);
+  box-shadow:
+    0 0 18px rgba(207, 85, 37, 0.38),
+    0 18px 40px -14px var(--accent-glow),
+    inset 0 1px 0 rgba(255, 230, 200, 0.42);
 }
 
 .nav-toggle {
