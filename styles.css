@@ -1062,6 +1062,20 @@ a:hover {
     );
 }
 
+.lanes__media-fill {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.lanes__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
 .lanes__placeholder-label,
 .lanes__placeholder-path {
   position: absolute;

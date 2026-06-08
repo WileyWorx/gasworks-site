@@ -616,6 +616,21 @@
     let switchTimer = null;
     let launching = false;
 
+    function syncLaneVideos(laneId) {
+      lanesRoot.querySelectorAll("[data-lane-video]").forEach(function (video) {
+        const isActive = video.getAttribute("data-lane-video") === laneId;
+        if (isActive && !reduceMotion) {
+          const playPromise = video.play();
+          if (playPromise && typeof playPromise.catch === "function") {
+            playPromise.catch(function () {});
+          }
+        } else {
+          video.pause();
+          if (!isActive) video.currentTime = 0;
+        }
+      });
+    }
+
     function setActiveLane(laneId, force) {
       if (!laneId) return;
       if (!force && laneId === activeLane) return;
@@ -630,6 +645,8 @@
       lanePlates.forEach(function (plate) {
         plate.classList.toggle("is-active", plate.getAttribute("data-lane-media") === laneId);
       });
+
+      syncLaneVideos(laneId);
 
       if (lanesMedia) {
         lanesMedia.classList.add("is-switching");

@@ -273,9 +273,18 @@
               </div>
             </div>
             <div class="lanes__plate" data-lane-media="narratives">
-              <div class="lanes__placeholder lanes__placeholder--narratives">
-                <span class="lanes__placeholder-label">Narratives reel</span>
-                <span class="lanes__placeholder-path">media/lanes/narratives.mp4</span>
+              <div class="lanes__media-fill">
+                <video
+                  class="lanes__video"
+                  data-lane-video="narratives"
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  poster="media/lanes/narratives-poster.jpg"
+                >
+                  <source src="media/lanes/narratives.mp4" type="video/mp4" />
+                </video>
               </div>
             </div>
             <div class="lanes__plate" data-lane-media="immersions">
