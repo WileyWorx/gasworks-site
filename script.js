@@ -744,7 +744,11 @@
     function stopPortfolioPreview(block) {
       if (!block) return;
       const video = block.querySelector(".portfolio-card__video");
-      block.classList.remove("is-previewing");
+      if (block._previewAbort) {
+        block._previewAbort.abort();
+        block._previewAbort = null;
+      }
+      block.classList.remove("is-previewing", "is-video-ready");
       if (video) {
         video.pause();
         try {
@@ -781,10 +785,15 @@
       video.muted = true;
       video.loop = true;
       video.playsInline = true;
-      video.preload = "none";
+      video.preload = "metadata";
       video.setAttribute("aria-hidden", "true");
       if (videoSrc) video.src = videoSrc;
       block.appendChild(video);
+
+      function revealVideo() {
+        if (activePreviewBlock !== block) return;
+        block.classList.add("is-video-ready");
+      }
 
       function startPreview() {
         if (reduceMotion || !videoSrc) return;
@@ -793,11 +802,42 @@
         }
         activePreviewBlock = block;
         block.classList.add("is-previewing");
-        const playPromise = video.play();
-        if (playPromise && typeof playPromise.catch === "function") {
-          playPromise.catch(function () {
-            stopPortfolioPreview(block);
-          });
+        block.classList.remove("is-video-ready");
+
+        if (block._previewAbort) block._previewAbort.abort();
+        const abort = new AbortController();
+        block._previewAbort = abort;
+        const signal = abort.signal;
+
+        function attemptPlay() {
+          if (signal.aborted || activePreviewBlock !== block) return;
+          const playPromise = video.play();
+          if (playPromise && typeof playPromise.catch === "function") {
+            playPromise.catch(function () {
+              if (!signal.aborted) stopPortfolioPreview(block);
+            });
+          }
+        }
+
+        video.addEventListener(
+          "playing",
+          function () {
+            revealVideo();
+          },
+          { signal, once: true }
+        );
+
+        if (video.readyState >= 2) {
+          attemptPlay();
+        } else {
+          video.addEventListener(
+            "loadeddata",
+            function () {
+              attemptPlay();
+            },
+            { signal, once: true }
+          );
+          if (video.readyState === 0) video.load();
         }
       }
 

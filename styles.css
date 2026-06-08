@@ -3690,7 +3690,7 @@ body.is-route-pulse .page-stage {
 
 .portfolio-card__poster {
   z-index: 1;
-  transition: opacity 0.35s ease;
+  transition: opacity 0.5s ease;
 }
 
 .portfolio-card__poster.is-missing {
@@ -3701,15 +3701,15 @@ body.is-route-pulse .page-stage {
 .portfolio-card__video {
   z-index: 2;
   opacity: 0;
-  transition: opacity 0.35s ease;
-  background: #000;
+  transition: opacity 0.5s ease;
+  background: transparent;
 }
 
-.portfolio-card__media.is-previewing .portfolio-card__video {
+.portfolio-card__media.is-video-ready .portfolio-card__video {
   opacity: 1;
 }
 
-.portfolio-card__media.is-previewing .portfolio-card__poster:not(.is-missing) {
+.portfolio-card__media.is-video-ready .portfolio-card__poster:not(.is-missing) {
   opacity: 0;
 }
 
