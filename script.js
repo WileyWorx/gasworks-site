@@ -617,7 +617,7 @@
           }
         } else {
           video.pause();
-          if (!isActive) video.currentTime = 0;
+          /* Keep currentTime — resume where the visitor left off until refresh. */
         }
       });
     }
