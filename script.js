@@ -612,7 +612,6 @@
     const lanesMedia = lanesRoot.querySelector("[data-lanes-media]");
     const lanesStage = lanesRoot.querySelector("[data-lanes-stage]") || lanesRoot.querySelector(".lanes");
     const launchRoot = lanesRoot.querySelector("[data-lanes-launch]");
-    const launchWord = launchRoot?.querySelector(".lanes__launch-word");
     let activeLane = "spotlights";
     let switchTimer = null;
     let launching = false;
@@ -645,7 +644,6 @@
       if (launching) return;
       const href = item.getAttribute("data-portfolio-href");
       const laneId = item.getAttribute("data-lane");
-      const wordEl = item.querySelector(".lanes__word");
       if (!href || !laneId) return;
 
       launching = true;
@@ -653,15 +651,14 @@
       item.classList.add("is-launching");
       if (lanesStage) lanesStage.classList.add("is-portfolio-launch");
 
-      if (launchRoot && launchWord && wordEl) {
+      if (launchRoot) {
         launchRoot.style.setProperty("--lane-glow", getComputedStyle(item).getPropertyValue("--lane-glow"));
         launchRoot.style.setProperty("--lane-glow-soft", getComputedStyle(item).getPropertyValue("--lane-glow-soft"));
-        launchWord.textContent = wordEl.textContent;
         launchRoot.classList.add("is-active");
         launchRoot.setAttribute("aria-hidden", "false");
       }
 
-      const delayMs = reduceMotion ? 0 : 820;
+      const delayMs = reduceMotion ? 0 : 480;
       window.setTimeout(function () {
         window.location.href = href;
       }, delayMs);
