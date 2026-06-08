@@ -4,17 +4,17 @@ Use this list as you migrate from **WileyWorx** to **Gasworks**. Files live in [
 
 ## Hero — the Media Mill (3D scroll-driven palette)
 
-The hero background is a **3D media mill**: a depth-staged grid of **12** video/gif tiles (no more, no less) that the camera moves through as you scroll. Thematically it’s the Gasworks production line — each tile is a "press" stamping out a shot. The mill auto-pauses any video that scrolls off-screen, and degrades to a static collage when the visitor has `prefers-reduced-motion` enabled.
+The hero background is a **3D media mill**: a depth-staged grid of **14** video/gif tiles that the camera moves through as you scroll. Thematically it’s the Gasworks production line — each tile is a "press" stamping out a shot. The mill auto-pauses any video that scrolls off-screen, and degrades to a static collage when the visitor has `prefers-reduced-motion` enabled.
 
 When sourcing new loops from your machine, use the main **`Gasworks Site Cursor/`** folder only — **not** `Gasworks Site Cursor/Extra/` (that directory is for alternates or duplicates and should not feed the live mill).
 
 ### Files to drop in
 
-Place loops at `gasworks-site/media/mill/reel-01.mp4` … `reel-12.mp4`. Posters at `reel-01-poster.jpg` … `reel-12-poster.jpg`. GIFs work too — see [`media/mill/README.md`](./media/mill/README.md) for the full spec.
+Place loops at `gasworks-site/media/mill/reel-01.mp4` … `reel-14.mp4`. Posters at `reel-01-poster.jpg` … `reel-14-poster.jpg`. GIFs work too — see [`media/mill/README.md`](./media/mill/README.md) for the full spec.
 
 | Asset | Spec |
 |---|---|
-| Loop | 4–10 s, **no audio**, MP4 (H.264) preferred for Safari, **640×360 to 960×540** is plenty (the tile renders ~180–320 px wide). Keep file sizes < 600 KB each — there are 12 of them. |
+| Loop | 4–10 s, **no audio**, MP4 (H.264) preferred for Safari, **640×360 to 960×540** is plenty (the tile renders ~180–320 px wide). Keep file sizes < 600 KB each — there are 14 of them. |
 | Poster | Same aspect (16:9), JPG/WebP, ~50 KB. Used as a fallback frame while the loop loads. |
 | GIF alternative | Use only if the source is already a GIF; MP4 is ~10× smaller for the same quality. |
 
