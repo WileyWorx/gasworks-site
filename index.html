@@ -1,0 +1,595 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#1C1C1E" />
+    <title>Gasworks</title>
+    <meta
+      name="description"
+      content="Gasworks — where structure meets spark. Spotlights, narratives, and immersions for brands who want craft that endures."
+    />
+    <link rel="icon" href="media/brand/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="media/brand/favicon-180.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- Sentry-style entry — dismissed after load (see script.js) -->
+    <div class="intro" data-intro aria-hidden="true">
+      <div class="intro__ambient" aria-hidden="true">
+        <span class="intro__ember intro__ember--1"></span>
+        <span class="intro__ember intro__ember--2"></span>
+        <span class="intro__ember intro__ember--3"></span>
+        <span class="intro__ember intro__ember--4"></span>
+        <span class="intro__ember intro__ember--5"></span>
+      </div>
+      <div class="intro__inner">
+        <p class="intro__kicker"><span class="intro__kicker-line">Where structure meets spark</span></p>
+        <div class="intro__forge" aria-hidden="true">
+          <p class="intro__loading">Stoking the forge…</p>
+          <div class="intro__bar" role="progressbar" aria-label="Loading site">
+            <div class="intro__bar-track">
+              <div class="intro__bar-bed"></div>
+              <div class="intro__bar-fill">
+                <span class="intro__bar-shine"></span>
+                <span class="intro__bar-meniscus" aria-hidden="true"></span>
+              </div>
+            </div>
+            <span class="intro__bar-coals" aria-hidden="true"></span>
+          </div>
+        </div>
+        <div class="intro__letters" aria-hidden="true">
+          <span style="--i: 0">G</span>
+          <span style="--i: 1">A</span>
+          <span style="--i: 2">S</span>
+          <span style="--i: 3">W</span>
+          <span style="--i: 4">O</span>
+          <span style="--i: 5">R</span>
+          <span style="--i: 6">K</span>
+          <span style="--i: 7">S</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cursor" data-cursor aria-hidden="true">
+      <span class="cursor__dot"></span>
+      <span class="cursor__ring"></span>
+    </div>
+
+    <header class="site-header" data-header>
+      <div class="shell site-header__inner" data-header-tilt>
+        <a class="wordmark" href="#top" aria-label="Gasworks — home">
+          <img
+            class="wordmark__lockup"
+            src="media/brand/logo-lockup-overlap-light.png"
+            srcset="
+              media/brand/logo-lockup-overlap-light.png 1x,
+              media/brand/logo-lockup-overlap-light@2x.png 2x
+            "
+            width="210"
+            height="28"
+            alt="Gasworks"
+          />
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </button>
+        <nav id="site-nav" class="site-nav" aria-label="Primary">
+          <a class="site-nav__cta" href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="page-stage" data-page-stage>
+      <!-- PLACEHOLDER: Hero — the media mill is the hero background. Drop loops/gifs into media/mill/ (see PLACEHOLDERS.md) -->
+      <section id="top" class="hero" data-hero data-depth-scene>
+        <!--
+          MEDIA MILL — 3D scroll-driven palette of project shots.
+          Each .media-mill__tile is a slot. To populate one, replace the inner
+          .media-mill__media--placeholder div with a <video> or <img>:
+
+            <div class="media-mill__media">
+              <video autoplay muted loop playsinline poster="media/mill/reel-01-poster.jpg">
+                <source src="media/mill/reel-01.mp4" type="video/mp4" />
+              </video>
+            </div>
+
+          Or for a GIF: <div class="media-mill__media"><img src="media/mill/reel-01.gif" alt="" /></div>
+          The tile’s 3D position is controlled by --tx/--ty/--tz/--rot inline.
+        -->
+        <div class="media-mill" data-media-mill aria-hidden="true">
+          <div class="media-mill__floor"></div>
+          <div class="media-mill__scene">
+            <div class="media-mill__lattice" data-mill-lattice>
+              <article class="media-mill__tile" data-tile="01" data-mill-row="back" style="--tx: -38vw; --ty: -22vh; --tz: -680px; --rot: -2deg;">
+                <div class="media-mill__media">
+                  <video autoplay muted loop playsinline preload="metadata" poster="media/mill/iseered-poster.jpg">
+                    <source src="media/mill/iseered.mp4" type="video/mp4" />
+                  </video>
+                </div>
+                <span class="media-mill__bezel" aria-hidden="true"></span>
+              </article>
+              <article class="media-mill__tile" data-tile="02" data-mill-row="back" style="--tx: -10vw; --ty: -26vh; --tz: -460px; --rot: 1deg;">
+                <div class="media-mill__media">
+                  <video autoplay muted loop playsinline preload="metadata" poster="media/mill/nordic-poster.jpg">
+                    <source src="media/mill/nordic.mp4" type="video/mp4" />
+                  </video>
+                </div>
+                <span class="media-mill__bezel" aria-hidden="true"></span>
+              </article>
+              <article class="media-mill__tile" data-tile="03" data-mill-row="back" style="--tx: 18vw; --ty: -28vh; --tz: -640px; --rot: -1deg;">
+                <div class="media-mill__media">
+                  <video autoplay muted loop playsinline preload="metadata" poster="media/mill/brighton-poster.jpg">
+                    <source src="media/mill/brighton.mp4" type="video/mp4" />
+                  </video>
+                </div>
+                <span class="media-mill__bezel" aria-hidden="true"></span>
+              </article>
+              <article class="media-mill__tile" data-tile="04" data-mill-row="back" style="--tx: 42vw; --ty: -20vh; --tz: -510px; --rot: 2deg;">
+                <div class="media-mill__media">
+                  <video autoplay muted loop playsinline preload="metadata" poster="media/mill/cars-poster.jpg">
+                    <source src="media/mill/cars.mp4" type="video/mp4" />
+                  </video>
+                </div>
+                <span class="media-mill__bezel" aria-hidden="true"></span>
+              </article>
+              <article class="media-mill__tile" data-tile="05" data-mill-row="mid" style="--tx: -42vw; --ty: 0vh; --tz: -380px; --rot: 1.5deg;">
+                <div class="media-mill__media">
+                  <video autoplay muted loop playsinline preload="metadata" poster="media/mill/whoop-poster.jpg">
+                    <source src="media/mill/whoop.mp4" type="video/mp4" />
+                  </video>
+                </div>
+                <span class="media-mill__bezel" aria-hidden="true"></span>
+              </article>
+              <article class="media-mill__tile" data-tile="06" data-mill-row="mid" style="--tx: -8vw; --ty: 6vh; --tz: -310px; --rot: -1deg;">
+                <div class="media-mill__media">
+                  <video autoplay muted loop playsinline preload="metadata" poster="media/mill/kiltech-poster.jpg">
+                    <source src="media/mill/kiltech.mp4" type="video/mp4" />
+                  </video>
+                </div>
+                <span class="media-mill__bezel" aria-hidden="true"></span>
+              </article>
+              <article class="media-mill__tile" data-tile="07" data-mill-row="mid" style="--tx: 22vw; --ty: -2vh; --tz: -290px; --rot: 0.5deg;">
+                <div class="media-mill__media">
+                  <video autoplay muted loop playsinline preload="metadata" poster="media/mill/powmow-poster.jpg">
+                    <source src="media/mill/powmow.mp4" type="video/mp4" />
+                  </video>
+                </div>
+                <span class="media-mill__bezel" aria-hidden="true"></span>
+              </article>
+              <article class="media-mill__tile" data-tile="08" data-mill-row="mid" style="--tx: 44vw; --ty: 4vh; --tz: -360px; --rot: -1.5deg;">
+                <div class="media-mill__media">
+                  <video autoplay muted loop playsinline preload="metadata" poster="media/mill/lincoln-spot-poster.jpg">
+                    <source src="media/mill/lincoln-spot.mp4" type="video/mp4" />
+                  </video>
+                </div>
+                <span class="media-mill__bezel" aria-hidden="true"></span>
+              </article>
+              <article class="media-mill__tile" data-tile="09" data-mill-row="front" style="--tx: -36vw; --ty: 22vh; --tz: -200px; --rot: -1deg;">
+                <div class="media-mill__media">
+                  <video autoplay muted loop playsinline preload="metadata" poster="media/mill/porsche-poster.jpg">
+                    <source src="media/mill/porsche.mp4" type="video/mp4" />
+                  </video>
+                </div>
+                <span class="media-mill__bezel" aria-hidden="true"></span>
+              </article>
+              <article class="media-mill__tile" data-tile="10" data-mill-row="front" style="--tx: -8vw; --ty: 28vh; --tz: -120px; --rot: 1deg;">
+                <div class="media-mill__media">
+                  <video autoplay muted loop playsinline preload="metadata" poster="media/mill/amici-poster.jpg">
+                    <source src="media/mill/amici.mp4" type="video/mp4" />
+                  </video>
+                </div>
+                <span class="media-mill__bezel" aria-hidden="true"></span>
+              </article>
+              <article class="media-mill__tile" data-tile="11" data-mill-row="front" style="--tx: 20vw; --ty: 26vh; --tz: -180px; --rot: -0.5deg;">
+                <div class="media-mill__media">
+                  <video autoplay muted loop playsinline preload="metadata" poster="media/mill/talking-head-poster.jpg">
+                    <source src="media/mill/talking-head.mp4" type="video/mp4" />
+                  </video>
+                </div>
+                <span class="media-mill__bezel" aria-hidden="true"></span>
+              </article>
+              <article class="media-mill__tile" data-tile="12" data-mill-row="front" style="--tx: 38vw; --ty: 24vh; --tz: -240px; --rot: 1.5deg;">
+                <div class="media-mill__media">
+                  <video autoplay muted loop playsinline preload="metadata" poster="media/mill/shan-poster.jpg">
+                    <source src="media/mill/shan.mp4" type="video/mp4" />
+                  </video>
+                </div>
+                <span class="media-mill__bezel" aria-hidden="true"></span>
+              </article>
+            </div>
+          </div>
+          <div class="media-mill__veil" aria-hidden="true"></div>
+        </div>
+        <div class="hero__grain" aria-hidden="true"></div>
+        <div class="hero__veil" data-hero-veil></div>
+        <div class="hero__stage-3d" aria-hidden="true">
+          <span class="hero__orb hero__orb--1"></span>
+          <span class="hero__orb hero__orb--2"></span>
+          <span class="hero__orb hero__orb--3"></span>
+        </div>
+        <div class="hero__content-float" data-hero-float>
+        <div class="shell hero__content">
+          <h1 class="hero__title">
+            <span class="hero__title-line" data-reveal style="--reveal-delay: 0.06s">Where structure</span>
+            <span class="hero__title-line hero__title-accent" data-reveal style="--reveal-delay: 0.14s">meets spark.</span>
+          </h1>
+          <div class="hero__actions" data-reveal style="--reveal-delay: 0.22s">
+            <span class="magnetic-wrap" data-magnetic>
+              <a class="btn btn--primary" href="#contact">Start a project</a>
+            </span>
+          </div>
+        </div>
+        </div>
+        <div class="hero__scroll-hint" aria-hidden="true">
+          <span>Scroll</span>
+          <span class="hero__scroll-line"></span>
+        </div>
+      </section>
+
+      <section
+        id="lanes"
+        class="section section--lanes"
+        aria-labelledby="lanes-heading"
+        data-lanes
+        data-reveal-parent
+      >
+        <h2 id="lanes-heading" class="sr-only">Formats</h2>
+        <div class="lanes" data-lanes-stage>
+          <div class="lanes__media" data-lanes-media aria-hidden="true">
+            <div class="lanes__plate is-active" data-lane-media="spotlights">
+              <div class="lanes__placeholder lanes__placeholder--spotlights">
+                <span class="lanes__placeholder-label">Spotlights reel</span>
+                <span class="lanes__placeholder-path">media/lanes/spotlights.mp4</span>
+              </div>
+            </div>
+            <div class="lanes__plate" data-lane-media="narratives">
+              <div class="lanes__placeholder lanes__placeholder--narratives">
+                <span class="lanes__placeholder-label">Narratives reel</span>
+                <span class="lanes__placeholder-path">media/lanes/narratives.mp4</span>
+              </div>
+            </div>
+            <div class="lanes__plate" data-lane-media="immersions">
+              <div class="lanes__placeholder lanes__placeholder--immersions">
+                <span class="lanes__placeholder-label">Immersions reel</span>
+                <span class="lanes__placeholder-path">media/lanes/immersions.mp4</span>
+              </div>
+            </div>
+            <div class="lanes__grain" aria-hidden="true"></div>
+            <div class="lanes__veil" aria-hidden="true"></div>
+          </div>
+
+          <ul class="lanes__stack" role="list" data-lanes-list>
+            <li class="lanes__row">
+              <button
+                type="button"
+                class="lanes__item is-active"
+                data-lane="spotlights"
+                style="--lane-glow: rgba(207, 85, 37, 0.42); --lane-glow-soft: rgba(207, 85, 37, 0.16)"
+                aria-pressed="true"
+              >
+                <span class="shell lanes__item-inner">
+                  <span class="lanes__index" aria-hidden="true">01</span>
+                  <span class="lanes__word">Spotlights</span>
+                  <span class="lanes__desc">Brand films, campaigns, and work built to shine</span>
+                </span>
+              </button>
+            </li>
+            <li class="lanes__row">
+              <button
+                type="button"
+                class="lanes__item"
+                data-lane="narratives"
+                style="--lane-glow: rgba(122, 155, 174, 0.4); --lane-glow-soft: rgba(122, 155, 174, 0.15)"
+                aria-pressed="false"
+              >
+                <span class="shell lanes__item-inner">
+                  <span class="lanes__index" aria-hidden="true">02</span>
+                  <span class="lanes__word">Narratives</span>
+                  <span class="lanes__desc">Scripted stories, series, and character-driven film</span>
+                </span>
+              </button>
+            </li>
+            <li class="lanes__row">
+              <button
+                type="button"
+                class="lanes__item"
+                data-lane="immersions"
+                style="--lane-glow: rgba(74, 107, 90, 0.4); --lane-glow-soft: rgba(74, 107, 90, 0.15)"
+                aria-pressed="false"
+              >
+                <span class="shell lanes__item-inner">
+                  <span class="lanes__index" aria-hidden="true">03</span>
+                  <span class="lanes__word">Immersions</span>
+                  <span class="lanes__desc">Events, activations, and worlds you step into</span>
+                </span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+    </main>
+
+    <section
+      id="contact"
+      class="section section--inquiry"
+      aria-labelledby="inquiry-heading"
+      data-reveal-parent
+      data-depth-scene
+    >
+      <div class="shell" data-depth-inner>
+        <h2 id="inquiry-heading" class="section__title" data-reveal>Project inquiry</h2>
+        <p class="section__dek inquiry__dek" data-reveal style="--reveal-delay: 0.06s">
+          Feel free to reach out by phone or email at any time.
+        </p>
+        <div class="inquiry-card" data-inquiry-root data-reveal style="--reveal-delay: 0.12s">
+          <p class="inquiry-card__reachout">
+            <a class="inquiry-card__link" href="mailto:hello@gasworks.co">hello@gasworks.co</a>
+            <span class="inquiry-card__sep" aria-hidden="true">·</span>
+            <a class="inquiry-card__link" href="tel:+10000000000">+1 (000) 000‑0000</a>
+          </p>
+          <form class="inquiry-form" data-inquiry-form action="#" method="post">
+            <div class="inquiry-form__grid">
+              <div class="inquiry-form__field">
+                <label class="inquiry-form__label" for="inquiry-name">Name</label>
+                <input
+                  class="inquiry-form__input"
+                  id="inquiry-name"
+                  name="name"
+                  type="text"
+                  autocomplete="name"
+                  required
+                />
+              </div>
+              <div class="inquiry-form__field">
+                <label class="inquiry-form__label" for="inquiry-email">Email</label>
+                <input
+                  class="inquiry-form__input"
+                  id="inquiry-email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  required
+                />
+              </div>
+              <div class="inquiry-form__field">
+                <label class="inquiry-form__label" for="inquiry-phone">Phone number</label>
+                <input
+                  class="inquiry-form__input"
+                  id="inquiry-phone"
+                  name="phone"
+                  type="tel"
+                  autocomplete="tel"
+                  required
+                />
+              </div>
+              <div class="inquiry-form__field">
+                <label class="inquiry-form__label" for="inquiry-website">Website <span class="inquiry-form__optional">(optional)</span></label>
+                <input
+                  class="inquiry-form__input"
+                  id="inquiry-website"
+                  name="website"
+                  type="text"
+                  inputmode="url"
+                  autocomplete="url"
+                  placeholder="https://…"
+                />
+              </div>
+              <div class="inquiry-form__field inquiry-form__field--full">
+                <label class="inquiry-form__label" for="inquiry-project-type">Project type</label>
+                <select class="inquiry-form__select" id="inquiry-project-type" name="project_type" required>
+                  <option value="" disabled selected>Select a project type</option>
+                  <option value="campaign">Campaign</option>
+                  <option value="documentary">Documentary</option>
+                  <option value="narrative-film">Narrative Film</option>
+                  <option value="commercial-advertising">Commercial Advertising</option>
+                  <option value="in-house-content">In-House Content</option>
+                  <option value="short-form">Short Form</option>
+                  <option value="other-unsure">Other / Unsure</option>
+                </select>
+              </div>
+              <div class="inquiry-form__field inquiry-form__field--full">
+                <label class="inquiry-form__label" for="inquiry-start-date">Start date</label>
+                <select class="inquiry-form__select" id="inquiry-start-date" name="start_date" required>
+                  <option value="" disabled selected>Select a timeline</option>
+                  <option value="asap">ASAP</option>
+                  <option value="within-1-month">Within 1 month</option>
+                  <option value="within-3-months">Within 3 months</option>
+                  <option value="within-6-months">Within 6 months</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="inquiry-form__field inquiry-form__field--full">
+                <label class="inquiry-form__label" for="inquiry-brief">Briefly describe your project</label>
+                <textarea
+                  class="inquiry-form__textarea"
+                  id="inquiry-brief"
+                  name="project_brief"
+                  rows="5"
+                  required
+                  placeholder="A quick rundown of what you are looking to do…"
+                ></textarea>
+              </div>
+            </div>
+            <div class="inquiry-form__actions">
+              <button type="submit" class="btn btn--primary inquiry-form__submit">Submit inquiry</button>
+            </div>
+          </form>
+          <div
+            class="inquiry-success"
+            data-inquiry-success
+            role="status"
+            aria-live="polite"
+            tabindex="-1"
+            hidden
+          >
+            <p class="inquiry-success__title">Inquiry sent</p>
+            <p class="inquiry-success__body">
+              Thank you — your message has been received and is complete. We will follow up soon.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="clients" class="section section--tight section--logos" aria-labelledby="clients-heading" data-reveal-parent data-depth-scene>
+        <div class="shell" data-depth-inner>
+          <h2 id="clients-heading" class="sr-only">Clients and collaborators</h2>
+          <div class="logo-carousel" data-reveal aria-label="Client logos">
+            <div class="logo-carousel__viewport">
+              <div class="logo-carousel__scene">
+                <ul class="logo-carousel__ring" role="list">
+                  <!-- 16 client faces on the cylinder; assets in media/clients/<slug>.png -->
+                  <li class="logo-carousel__face" style="--i: 0" role="listitem">
+                    <div class="logo-carousel__panel" data-brand="monster-energy">
+                      <img src="media/clients/monster-energy.png?v=20260515" alt="Monster Energy" loading="lazy" />
+                    </div>
+                  </li>
+                  <li class="logo-carousel__face" style="--i: 1" role="listitem">
+                    <div class="logo-carousel__panel" data-brand="utah">
+                      <img src="media/clients/utah.png?v=20260515" alt="University of Utah" loading="lazy" />
+                    </div>
+                  </li>
+                  <li class="logo-carousel__face" style="--i: 2" role="listitem">
+                    <div class="logo-carousel__panel" data-brand="burton">
+                      <img src="media/clients/burton.png?v=20260515" alt="Burton Snowboards" loading="lazy" />
+                    </div>
+                  </li>
+                  <li class="logo-carousel__face" style="--i: 3" role="listitem">
+                    <div class="logo-carousel__panel" data-brand="oakley">
+                      <img src="media/clients/oakley.png?v=20260515" alt="Oakley" loading="lazy" />
+                    </div>
+                  </li>
+                  <li class="logo-carousel__face" style="--i: 4" role="listitem">
+                    <div class="logo-carousel__panel" data-brand="oneill">
+                      <img src="media/clients/oneill.png?v=20260515" alt="O’Neill" loading="lazy" />
+                    </div>
+                  </li>
+                  <li class="logo-carousel__face" style="--i: 5" role="listitem">
+                    <div class="logo-carousel__panel" data-brand="espn">
+                      <img src="media/clients/espn.png?v=20260515" alt="ESPN" loading="lazy" />
+                    </div>
+                  </li>
+                  <li class="logo-carousel__face" style="--i: 6" role="listitem">
+                    <div class="logo-carousel__panel" data-brand="live-nation">
+                      <img src="media/clients/live-nation.png?v=20260515" alt="Live Nation" loading="lazy" />
+                    </div>
+                  </li>
+                  <li class="logo-carousel__face" style="--i: 7" role="listitem">
+                    <div class="logo-carousel__panel" data-brand="us-ski-team">
+                      <img src="media/clients/us-ski-team.png?v=20260515" alt="U.S. Ski &amp; Snowboard" loading="lazy" />
+                    </div>
+                  </li>
+                  <li class="logo-carousel__face" style="--i: 8" role="listitem">
+                    <div class="logo-carousel__panel" data-brand="usa-nordic">
+                      <img src="media/clients/usa-nordic.png?v=20260515" alt="USA Nordic" loading="lazy" />
+                    </div>
+                  </li>
+                  <li class="logo-carousel__face" style="--i: 9" role="listitem">
+                    <div class="logo-carousel__panel" data-brand="big-12">
+                      <img src="media/clients/big-12.png?v=20260515" alt="Big 12 Conference" loading="lazy" />
+                    </div>
+                  </li>
+                  <li class="logo-carousel__face" style="--i: 10" role="listitem">
+                    <div class="logo-carousel__panel" data-brand="snowbird">
+                      <img src="media/clients/snowbird.png?v=20260515" alt="Snowbird" loading="lazy" />
+                    </div>
+                  </li>
+                  <li class="logo-carousel__face" style="--i: 11" role="listitem">
+                    <div class="logo-carousel__panel" data-brand="subaru">
+                      <img src="media/clients/subaru.png?v=20260515" alt="Subaru" loading="lazy" />
+                    </div>
+                  </li>
+                  <li class="logo-carousel__face" style="--i: 12" role="listitem">
+                    <div class="logo-carousel__panel" data-brand="lincoln">
+                      <img src="media/clients/lincoln.png?v=20260515" alt="Lincoln" loading="lazy" />
+                    </div>
+                  </li>
+                  <li class="logo-carousel__face" style="--i: 13" role="listitem">
+                    <div class="logo-carousel__panel" data-brand="columbia">
+                      <img src="media/clients/columbia.png?v=20260515" alt="Columbia" loading="lazy" />
+                    </div>
+                  </li>
+                  <li class="logo-carousel__face" style="--i: 14" role="listitem">
+                    <div class="logo-carousel__panel" data-brand="advanced-gloves">
+                      <img src="media/clients/advanced-gloves.png?v=20260515" alt="Advanced Gloves" loading="lazy" />
+                    </div>
+                  </li>
+                  <li class="logo-carousel__face" style="--i: 15" role="listitem">
+                    <div class="logo-carousel__panel" data-brand="powder-mountain">
+                      <img src="media/clients/powder-mountain.png?v=20260515" alt="Powder Mountain" loading="lazy" />
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+    <footer class="site-footer" data-reveal-parent>
+      <div class="shell site-footer__inner">
+        <p class="footer__brand">
+          <img
+            class="footer__brand-mark"
+            src="media/brand/logo-wordmark-light.png"
+            srcset="
+              media/brand/logo-wordmark-light.png 1x,
+              media/brand/logo-wordmark-light@2x.png 2x
+            "
+            width="160"
+            height="22"
+            alt="Gasworks"
+          />
+        </p>
+        <p class="footer__tagline">
+          Built different.
+          <span class="footer__tagline-accent">Built to last.</span>
+        </p>
+        <nav class="footer__nav" aria-label="Footer links">
+          <a class="footer__link" href="#contact">Project inquiry</a>
+          <span class="footer__sep" aria-hidden="true">·</span>
+          <a class="footer__link" href="mailto:hello@gasworks.co">hello@gasworks.co</a>
+          <span class="footer__sep" aria-hidden="true">·</span>
+          <a class="footer__link" href="tel:+10000000000">+1 (000) 000‑0000</a>
+        </nav>
+        <ul class="footer-social" role="list">
+            <li>
+              <a class="footer-social__link" href="#" aria-label="Instagram">
+                <svg class="footer-social__icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+                  <path
+                    fill="currentColor"
+                    d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.97.24 2.427.403a4.92 4.92 0 0 1 1.731 1.128 4.92 4.92 0 0 1 1.128 1.731c.163.457.349 1.257.403 2.427.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.054 1.17-.24 1.97-.403 2.427a4.92 4.92 0 0 1-1.128 1.731 4.92 4.92 0 0 1-1.731 1.128c-.457.163-1.257.349-2.427.403-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.054-1.97-.24-2.427-.403a4.92 4.92 0 0 1-1.731-1.128 4.92 4.92 0 0 1-1.128-1.731c-.163-.457-.349-1.257-.403-2.427C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.054-1.17.24-1.97.403-2.427a4.92 4.92 0 0 1 1.128-1.731 4.92 4.92 0 0 1 1.731-1.128c.457-.163 1.257-.349 2.427-.403C8.416 2.175 8.796 2.163 12 2.163zm0 1.622c-3.15 0-3.518.012-4.755.07-1.002.046-1.547.213-1.907.354a3.3 3.3 0 0 0-1.197.78 3.3 3.3 0 0 0-.78 1.197c-.141.36-.308.905-.354 1.907-.058 1.237-.07 1.605-.07 4.755s.012 3.518.07 4.755c.046 1.002.213 1.547.354 1.907.18.458.42.85.78 1.197.347.36.739.6 1.197.78.36.141.905.308 1.907.354 1.237.058 1.605.07 4.755.07s3.518-.012 4.755-.07c1.002-.046 1.547-.213 1.907-.354a3.3 3.3 0 0 0 1.197-.78 3.3 3.3 0 0 0 .78-1.197c.141-.36.308-.905.354-1.907.058-1.237.07-1.605.07-4.755s-.012-3.518-.07-4.755c-.046-1.002-.213-1.547-.354-1.907a3.3 3.3 0 0 0-.78-1.197 3.3 3.3 0 0 0-1.197-.78c-.36-.141-.905-.308-1.907-.354-1.237-.058-1.605-.07-4.755-.07zM12 7.378a4.622 4.622 0 1 1 0 9.244 4.622 4.622 0 0 1 0-9.244zm0 1.622a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.884-3.155a1.08 1.08 0 1 1-2.16 0 1.08 1.08 0 0 1 2.16 0z"
+                  />
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a class="footer-social__link" href="#" aria-label="Vimeo">
+                <svg class="footer-social__icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+                  <path
+                    fill="currentColor"
+                    d="M23.977 6.416c-.105 2.338-1.739 5.543-4.894 9.609-3.268 4.247-6.026 6.37-8.29 6.37-1.409 0-2.601-1.302-3.58-3.906-.652-2.377-1.305-4.753-1.957-7.13-1.409-4.247-2.926-6.37-4.552-6.37-0.351 0-1.583 0.74-3.693 2.221L0 7.351c2.338-2.047 4.64-4.094 6.906-6.14C9.484-0.771 11.305-0.105 12.676 2.221c1.091 1.825 1.825 3.65 2.203 5.475.919 4.64 1.934 6.906 3.045 6.797 0.865-.087 2.29-1.434 4.276-4.042 2.203-2.72 3.41-4.812 3.624-6.275.325-2.377-1.357-3.563-5.048-3.563-.919 0-1.869.065-2.851.195 2.29-1.499 4.423-2.29 6.406-2.377 4.9-.325 7.217 2.59 6.953 8.772z"
+                  />
+                </svg>
+              </a>
+            </li>
+        </ul>
+        <p class="footer__copy">© <span data-year></span> Gasworks. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
