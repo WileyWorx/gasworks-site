@@ -1,0 +1,10 @@
+# Internal / planning files — keep them out of the public deployment
+PLACEHOLDERS.md
+.cursorrules
+gasworks-progress-full.png
+preview-fullpage.png
+README.md
+**/README.md
+media/brand/brand-guide-page*.png
+.github
+.gitignore

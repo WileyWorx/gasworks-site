@@ -26,10 +26,18 @@
   let open = false;
 
   function setNavOpen(next) {
-    open = next;
     if (!header || !toggle || !nav) return;
+    const was = open;
+    open = next;
     header.classList.toggle("is-open", open);
     toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    // Focus management: pull focus into the menu on open, restore to the toggle on close.
+    if (open && !was) {
+      const first = nav.querySelector("a, button");
+      if (first) first.focus();
+    } else if (!open && was) {
+      toggle.focus();
+    }
   }
 
   if (toggle && header && nav) {
@@ -41,13 +49,30 @@
       link.addEventListener("click", function () {
         setNavOpen(false);
       });
-      link.addEventListener("touchend", function () {
-        setNavOpen(false);
-      });
     });
 
     document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape") setNavOpen(false);
+      if (e.key === "Escape" && open) {
+        setNavOpen(false);
+        return;
+      }
+      // Trap Tab within the open mobile menu.
+      if (e.key === "Tab" && open) {
+        const focusables = Array.prototype.slice.call(
+          nav.querySelectorAll("a, button")
+        );
+        if (!focusables.length) return;
+        const firstEl = focusables[0];
+        const lastEl = focusables[focusables.length - 1];
+        const active = document.activeElement;
+        if (e.shiftKey && active === firstEl) {
+          e.preventDefault();
+          lastEl.focus();
+        } else if (!e.shiftKey && active === lastEl) {
+          e.preventDefault();
+          firstEl.focus();
+        }
+      }
     });
   }
 
@@ -323,14 +348,6 @@
     );
   }
 
-  function updateHeroVeil() {
-    /* Static veil in CSS — do not paint over the site backdrop gradient behind the mill. */
-    if (heroVeil) heroVeil.style.background = "";
-  }
-
-  window.addEventListener("scroll", updateHeroVeil, { passive: true });
-  window.addEventListener("resize", updateHeroVeil, { passive: true });
-  updateHeroVeil();
 
   /* ——— Media mill: scroll-driven 3D camera + per-tile video play/pause ——— */
   const mediaMill = document.querySelector("[data-media-mill]");
@@ -366,7 +383,7 @@
           entries.forEach(function (entry) {
             const v = entry.target.querySelector("video");
             if (!v) return;
-            if (entry.isIntersecting) {
+            if (entry.isIntersecting && !reduceMotion) {
               const playPromise = v.play();
               if (playPromise && typeof playPromise.catch === "function") {
                 playPromise.catch(function () {
@@ -486,13 +503,19 @@
   /* ——— Footer watermark parallax (light) ——— */
   const wm = document.querySelector(".footer__watermark");
   if (wm && !reduceMotion) {
+    let wmTick = false;
     window.addEventListener(
       "scroll",
       function () {
-        const r = wm.getBoundingClientRect();
-        const c = 1 - Math.min(1, Math.max(0, r.top / window.innerHeight));
-        wm.style.transform =
-          "translate3d(-50%, " + (c * 8 - 4).toFixed(1) + "px,0)";
+        if (wmTick) return;
+        wmTick = true;
+        window.requestAnimationFrame(function () {
+          const r = wm.getBoundingClientRect();
+          const c = 1 - Math.min(1, Math.max(0, r.top / window.innerHeight));
+          wm.style.transform =
+            "translate3d(-50%, " + (c * 8 - 4).toFixed(1) + "px,0)";
+          wmTick = false;
+        });
       },
       { passive: true }
     );
@@ -919,15 +942,40 @@
     });
   }
 
-  /* ——— Project inquiry (client-side success until a backend / email hook is wired) ——— */
+  /* ——— Project inquiry — hands off to the visitor's email client (no silent loss) ——— */
   const inquiryRoot = document.querySelector("[data-inquiry-root]");
   const inquiryForm = document.querySelector("[data-inquiry-form]");
   const inquirySuccess = document.querySelector("[data-inquiry-success]");
+  const INQUIRY_TO = "jack@wileyworx.com";
   if (inquiryForm && inquiryRoot && inquirySuccess) {
     inquiryForm.addEventListener("submit", function (e) {
       e.preventDefault();
       if (!inquiryForm.reportValidity()) return;
       const submitBtn = inquiryForm.querySelector(".inquiry-form__submit");
+      const val = function (name) {
+        const el = inquiryForm.querySelector('[name="' + name + '"]');
+        return el ? el.value.trim() : "";
+      };
+      const name = val("name");
+      const subject = "Project inquiry" + (name ? " — " + name : "");
+      const lines = [
+        "Name: " + name,
+        "Email: " + val("email"),
+        "Phone: " + val("phone"),
+        "Website: " + (val("website") || "—"),
+        "Project type: " + (val("project_type") || "—"),
+        "",
+        "Message:",
+        val("project_brief"),
+      ];
+      const mailto =
+        "mailto:" +
+        INQUIRY_TO +
+        "?subject=" +
+        encodeURIComponent(subject) +
+        "&body=" +
+        encodeURIComponent(lines.join("\n"));
+
       if (submitBtn) submitBtn.disabled = true;
       const delayMs = reduceMotion ? 0 : 480;
       window.setTimeout(function () {
@@ -936,6 +984,8 @@
         inquiryRoot.classList.add("is-complete");
         inquirySuccess.focus();
         if (submitBtn) submitBtn.disabled = false;
+        // Open the visitor's email client with the inquiry pre-filled.
+        window.location.href = mailto;
       }, delayMs);
     });
   }

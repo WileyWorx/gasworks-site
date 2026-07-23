@@ -22,7 +22,7 @@
   --line-strong: rgba(245, 240, 235, 0.18);
   --text: var(--flue-white);
   --text-muted: rgba(245, 240, 235, 0.68);
-  --text-dim: rgba(245, 240, 235, 0.45);
+  --text-dim: rgba(245, 240, 235, 0.6);
   --accent: var(--hot-steel);
   --accent-soft: rgba(207, 85, 37, 0.2);
   --accent-glow: rgba(207, 85, 37, 0.38);
@@ -103,7 +103,7 @@ body {
   height: min(64vmax, 820px);
   right: -12%;
   bottom: -20%;
-  background: radial-gradient(circle, rgba(232, 160, 96, 0.45) 0%, rgba(139, 76, 42, 0.14) 45%, transparent 74%);
+  background: radial-gradient(circle, rgba(240, 176, 96, 0.45) 0%, rgba(138, 58, 26, 0.14) 45%, transparent 74%);
   animation: site-bg-orb-2 48s ease-in-out infinite alternate;
 }
 
@@ -127,7 +127,7 @@ body {
       transparent 0%,
       rgba(207, 85, 37, 0.14) 22%,
       transparent 38%,
-      rgba(232, 160, 96, 0.09) 54%,
+      rgba(240, 176, 96, 0.09) 54%,
       transparent 68%,
       rgba(207, 85, 37, 0.11) 84%,
       transparent 100%
@@ -355,7 +355,7 @@ a:hover {
 
 .site-nav__cta:hover {
   color: #0c0907 !important;
-  border-color: rgba(232, 160, 96, 0.55);
+  border-color: rgba(240, 176, 96, 0.55);
   transform: translateY(-1px);
   box-shadow:
     0 0 18px rgba(207, 85, 37, 0.38),
@@ -820,7 +820,7 @@ a:hover {
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--smoke);
+  color: var(--warm-smoke);
 }
 
 .section__head {
@@ -2244,13 +2244,13 @@ span.footer__quiet[aria-current="page"] {
   100% {
     box-shadow:
       0 6px 20px rgba(207, 85, 37, 0.22),
-      0 0 14px rgba(212, 136, 62, 0.18);
+      0 0 14px rgba(240, 176, 96, 0.18);
   }
 
   50% {
     box-shadow:
       0 8px 26px rgba(207, 85, 37, 0.38),
-      0 0 24px rgba(212, 136, 62, 0.32);
+      0 0 24px rgba(240, 176, 96, 0.32);
   }
 }
 
@@ -2321,8 +2321,7 @@ body.intro-lock {
 
   /* Slower full 360° under reduced motion (still one revolution = all faces) */
   .logo-carousel__ring {
-    animation-duration: 200s !important;
-    animation-play-state: running !important;
+    animation: none !important;
   }
 
   .hero__orb {
@@ -2409,7 +2408,7 @@ body.intro-lock {
   pointer-events: none;
   background:
     radial-gradient(ellipse 70% 45% at 50% 88%, rgba(207, 85, 37, 0.14), transparent 58%),
-    radial-gradient(ellipse 50% 35% at 50% 42%, rgba(212, 136, 62, 0.06), transparent 55%);
+    radial-gradient(ellipse 50% 35% at 50% 42%, rgba(240, 176, 96, 0.06), transparent 55%);
 }
 
 .intro::after {
@@ -2442,7 +2441,7 @@ body.intro-lock {
   height: 3px;
   border-radius: 50%;
   background: var(--ember);
-  box-shadow: 0 0 8px rgba(212, 136, 62, 0.65);
+  box-shadow: 0 0 8px rgba(240, 176, 96, 0.65);
   opacity: 0;
   animation: introEmberDrift 4.5s ease-in-out infinite;
 }
@@ -2494,7 +2493,7 @@ body.intro-lock {
   font-weight: 500;
   letter-spacing: 0.42em;
   text-transform: uppercase;
-  color: var(--smoke);
+  color: var(--warm-smoke);
 }
 
 .intro__kicker-line {
@@ -2580,7 +2579,7 @@ body.intro-lock {
   );
   box-shadow:
     0 0 14px rgba(207, 85, 37, 0.45),
-    0 0 28px rgba(212, 136, 62, 0.22),
+    0 0 28px rgba(240, 176, 96, 0.22),
     inset 0 1px 0 rgba(255, 230, 200, 0.35);
   animation: introForgeProgress 2.35s cubic-bezier(0.33, 0.86, 0.42, 1) forwards;
 }
@@ -2772,7 +2771,7 @@ body.intro-lock {
     color: #f0b060;
     text-shadow:
       0 0 20px rgba(207, 85, 37, 0.35),
-      0 0 40px rgba(212, 136, 62, 0.15);
+      0 0 40px rgba(240, 176, 96, 0.15);
   }
   100% {
     opacity: 1;
@@ -2906,7 +2905,8 @@ body.intro-lock {
 .site-header {
   opacity: 0;
   transform: translate3d(0, -16px, 0);
-  transition: opacity 0.9s var(--reveal-ease) 0.15s, transform 0.9s var(--reveal-ease) 0.15s;
+  transition: opacity 0.9s var(--reveal-ease) 0.15s, transform 0.9s var(--reveal-ease) 0.15s,
+    background 0.35s ease, backdrop-filter 0.35s ease;
 }
 
 body.intro-done .site-header {
@@ -3341,7 +3341,7 @@ body.is-route-pulse .page-stage {
 
 .process-step__placeholder--05 {
   background-image:
-    radial-gradient(ellipse 75% 55% at 40% 45%, rgba(212, 136, 62, 0.14), transparent 58%),
+    radial-gradient(ellipse 75% 55% at 40% 45%, rgba(240, 176, 96, 0.14), transparent 58%),
     repeating-linear-gradient(
       -14deg,
       transparent,

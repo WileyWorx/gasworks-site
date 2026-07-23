@@ -2,7 +2,7 @@
 
 ## Project
 This is the **original / production** Gasworks marketing site workspace.
-- Stack: HTML, CSS, JS (static).
+- Stack: HTML, CSS, JS (static). **Preference for future website work / migration:** Astro on Vercel (do not migrate unless the user asks). Deploy/modify this Vercel project only when the user explicitly requests Gasworks changes in that session.
 - This workspace: `/Users/jackwiley/Downloads/gasworks-site`
 - Vercel project: `gasworks-site` → `https://gasworks-site.vercel.app`
 - GitHub: `https://github.com/WileyWorx/gasworks-site.git`
