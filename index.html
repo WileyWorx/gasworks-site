@@ -299,9 +299,18 @@
               </div>
             </div>
             <div class="lanes__plate" data-lane-media="immersions">
-              <div class="lanes__placeholder lanes__placeholder--immersions">
-                <span class="lanes__placeholder-label">Immersions reel</span>
-                <span class="lanes__placeholder-path">media/lanes/immersions.mp4</span>
+              <div class="lanes__media-fill">
+                <video
+                  class="lanes__video"
+                  data-lane-video="immersions"
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  poster="media/lanes/immersions-poster.jpg"
+                >
+                  <source src="media/lanes/immersions.mp4" type="video/mp4" />
+                </video>
               </div>
             </div>
             <div class="lanes__grain" aria-hidden="true"></div>
