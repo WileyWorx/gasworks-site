@@ -1,17 +1,32 @@
-# Gasworks site — Cursor rules
+# Gasworks site (ORIGINAL) — Cursor rules
 
 ## Project
-Static marketing site in this folder. Stack: HTML, CSS, JS. Deploy: Vercel (`gasworks-site.vercel.app`). Remote: `https://github.com/WileyWorx/gasworks-site.git`.
+This is the **original / production** Gasworks marketing site workspace.
+- Stack: HTML, CSS, JS (static).
+- This workspace: `/Users/jackwiley/Downloads/gasworks-site`
+- Vercel project: `gasworks-site` → `https://gasworks-site.vercel.app`
+- GitHub: `https://github.com/WileyWorx/gasworks-site.git`
 
-## Git
-After completing any task that changes this site, commit and push to `main` without asking:
-- Stage only files changed for that task under `gasworks-site/`.
-- Use concise commit messages focused on why.
-- Push to `origin main` after each commit.
-
-Revoke only when the user explicitly says to stop auto commit/push.
+## Hard boundaries
+- Work **only** on this original site from this workspace.
+- **Never** edit `/Users/jackwiley/Downloads/gasworks-site-alt` from here.
+- **Never** push to `WileyWorx/gasworks-site-alt` or deploy to Vercel project `gasworks-site-alt`.
+- Alt/experiment copy lives separately:
+  - Local: `/Users/jackwiley/Downloads/gasworks-site-alt`
+  - Vercel: `gasworks-site-alt` → `https://gasworks-site-alt.vercel.app`
+  - GitHub: `https://github.com/WileyWorx/gasworks-site-alt.git`
 
 ## Conventions
 - Brand fonts: Space Grotesk (display), DM Sans (body).
 - Do not re-add the footer slogan "Built different. Built to last."
 - Capability lanes: Spotlights, Narratives, Immersions → link to `portfolio.html?cat=…`
+- Home: media mill + category lane reels; portfolio tabs use `?cat=…`.
+- Large video: H.264 ~CRF 21, 1080p, faststart; keep files under ~98MB for git.
+
+## Git
+After completing any task that changes this site, commit and push to `main` without asking:
+- Stage only files changed for that task in this repo.
+- Use concise commit messages focused on why.
+- Push to `origin main` after each commit (this repo only).
+
+Revoke only when the user explicitly says to stop auto commit/push.
