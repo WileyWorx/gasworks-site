@@ -884,7 +884,7 @@ a:hover {
 }
 
 .logo-carousel__ring {
-  --n: 16;
+  --n: 17;
   --radius: clamp(440px, 56vw, 920px);
   --face-w: var(--logo-face-w);
   --face-h: var(--logo-face-h);
