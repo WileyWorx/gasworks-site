@@ -10,10 +10,10 @@ This is the **original / production** Gasworks marketing site workspace.
 ## Hard boundaries
 - Work **only** on this original site from this workspace.
 - **Never** edit `/Users/jackwiley/Downloads/gasworks-site-alt` from here.
-- **Never** push to `WileyWorx/gasworks-site-alt` or deploy to Vercel project `gasworks-site-alt`.
+- **Never** push to `WileyWorx/gasworks-site-alt` or deploy to Vercel project `missinginaction`.
 - Alt/experiment copy lives separately:
   - Local: `/Users/jackwiley/Downloads/gasworks-site-alt`
-  - Vercel: `gasworks-site-alt` → `https://gasworks-site-alt.vercel.app`
+  - Vercel: `missinginaction` (MissingInAction) → `https://missinginaction.vercel.app`
   - GitHub: `https://github.com/WileyWorx/gasworks-site-alt.git`
 
 ## Conventions
