@@ -1,21 +1,23 @@
 /* Gasworks — brand system v2.0 (see Gasworks-Brand-Guide.pdf) */
 
 :root {
-  /* Primary palette */
+  /* Primary palette — Gasworks brand kit */
   --hot-steel: #cf5525;
-  --forge-black: #1c1c1e;
-  --flue-white: #f5f0eb;
+  --forge-black: #1a1a1a; /* Char Black */
+  --flue-white: #f5f0eb; /* Bone White */
   /* Secondary palette */
   --patina: #4a6b5a;
   --lake-mist: #7a9bae;
-  --ember: #d4883e;
-  --smoke: #6b6b6f;
-  --oxidized: #8b4c2a;
+  --ember: #f0b060; /* Ember Glow */
+  --smoke: #5a5652; /* Steel Gray */
+  --oxidized: #8a3a1a; /* Deep Rust */
+  --warm-smoke: #b0a89e;
+  --coal: #2a2724;
   /* Semantic tokens */
   --bg: var(--forge-black);
-  --bg-rgb: 28, 28, 30;
-  --bg-elevated: #252528;
-  --surface: #2e2e32;
+  --bg-rgb: 26, 26, 26;
+  --bg-elevated: #2a2724;
+  --surface: #33302c;
   --line: rgba(245, 240, 235, 0.1);
   --line-strong: rgba(245, 240, 235, 0.18);
   --text: var(--flue-white);
@@ -26,10 +28,10 @@
   --accent-glow: rgba(207, 85, 37, 0.38);
   --accent-gradient: linear-gradient(
     135deg,
-    #cf5525 0%,
-    #e8a060 38%,
-    #cf5525 62%,
-    #8b4c2a 100%
+    #d05828 0%,
+    #d8653a 45%,
+    #cf5525 65%,
+    #c85020 100%
   );
   --radius: 18px;
   --radius-sm: 12px;
@@ -452,7 +454,7 @@ a:hover {
   background:
     radial-gradient(120% 80% at 15% 0%, rgba(207, 85, 37, 0.22), transparent 55%),
     radial-gradient(90% 70% at 95% 20%, rgba(120, 90, 255, 0.12), transparent 45%),
-    linear-gradient(180deg, #252528 0%, var(--forge-black) 100%);
+    linear-gradient(180deg, #2a2724 0%, var(--forge-black) 100%);
 }
 
 /* ——— Media mill (3D scroll-driven hero palette) ——— */
@@ -2571,7 +2573,7 @@ body.intro-lock {
     90deg,
     var(--oxidized) 0%,
     var(--hot-steel) 28%,
-    #e8a060 52%,
+    #f0b060 52%,
     #f0c89a 68%,
     var(--hot-steel) 88%,
     var(--ember) 100%
@@ -2600,7 +2602,7 @@ body.intro-lock {
   height: 160%;
   transform: translateY(-50%);
   border-radius: 45% 55% 50% 50%;
-  background: radial-gradient(ellipse at 30% 50%, #fff0dc 0%, #e8a060 35%, rgba(207, 85, 37, 0) 72%);
+  background: radial-gradient(ellipse at 30% 50%, #fff0dc 0%, #f0b060 35%, rgba(207, 85, 37, 0) 72%);
   filter: blur(0.5px);
   animation: introMeniscusPulse 0.85s ease-in-out infinite;
 }
@@ -2767,7 +2769,7 @@ body.intro-lock {
     color: var(--oxidized);
   }
   55% {
-    color: #e8a060;
+    color: #f0b060;
     text-shadow:
       0 0 20px rgba(207, 85, 37, 0.35),
       0 0 40px rgba(212, 136, 62, 0.15);
