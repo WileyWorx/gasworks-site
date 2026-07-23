@@ -3628,6 +3628,65 @@ body.is-route-pulse .page-stage {
   font-size: 0.98rem;
 }
 
+/* ——— Immersions: capability explainer (intentionally lighter than the grid) ——— */
+.immersions-caps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  margin: clamp(1.75rem, 4vw, 3rem) 0 clamp(1.5rem, 3.5vw, 2.5rem);
+  text-align: left;
+}
+
+.immersions-cap__title {
+  margin: 0 0 0.45rem;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--text);
+}
+
+.immersions-cap__body {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+.immersions-reel {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 2.5vw, 1.5rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.immersions-reel__label {
+  margin: 0.6rem 0 0;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--warm-smoke);
+}
+
+.immersions-note {
+  margin: clamp(1.25rem, 3vw, 2rem) auto 0;
+  max-width: 46ch;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+@media (max-width: 760px) {
+  .immersions-caps,
+  .immersions-reel {
+    grid-template-columns: 1fr;
+  }
+}
+
 .portfolio-grid {
   display: grid;
   gap: clamp(1rem, 2.5vw, 1.5rem);
