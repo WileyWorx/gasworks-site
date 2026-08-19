@@ -3809,6 +3809,40 @@ body.is-route-pulse .page-stage {
   color: var(--text-muted);
 }
 
+.immersions-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(1.25rem, 3.5vw, 2.5rem) clamp(1.75rem, 4vw, 3rem);
+  margin: clamp(2.25rem, 5vw, 3.5rem) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.immersions-logos li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 7.5rem;
+  height: 3.5rem;
+}
+
+.immersions-logos__wide {
+  width: 11.5rem;
+}
+
+.immersions-logos img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  filter:
+    drop-shadow(0 0 8px rgba(255, 255, 255, 0.2))
+    drop-shadow(0 0 18px rgba(255, 255, 255, 0.06));
+}
+
 @media (max-width: 760px) {
   .immersions-caps,
   .immersions-reel {
