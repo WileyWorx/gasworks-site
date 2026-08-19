@@ -3792,6 +3792,7 @@ body.is-route-pulse .page-stage {
   display: grid;
   gap: clamp(1rem, 2.5vw, 1.5rem);
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -3847,6 +3848,16 @@ body.is-route-pulse .page-stage {
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+.portfolio-card__media--poster {
+  aspect-ratio: var(--poster-ratio, 2 / 3);
+  background-color: #0a0a0a;
+}
+
+.portfolio-card__media--poster .portfolio-card__poster {
+  object-fit: contain;
+  object-position: center;
 }
 
 .portfolio-card__poster {
