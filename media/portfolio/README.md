@@ -44,3 +44,4 @@ Replace `01.jpg`–`11.jpg` with updated thumbnails from each client folder on t
 | 05 | Homecoming | `Narrative/HomeComing/` (cover + website reel) |
 | 06 | My Friend Mickey | `Narrative/My Friend Mickey/` (cover + website reel) |
 | 07 | Between Us | `Narrative/Between Us/` (cover + website reel) |
+| 08 | Shadow Deals | `Narrative/Shadow Deals/` (cover + website reel) |
