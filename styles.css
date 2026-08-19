@@ -3850,9 +3850,7 @@ body.is-route-pulse .page-stage {
   .portfolio-grid--narratives .narratives-cell--salt .portfolio-card,
   .portfolio-grid--narratives .narratives-cell--hc .portfolio-card,
   .portfolio-grid--narratives .narratives-cell--mfm .portfolio-card,
-  .portfolio-grid--narratives .narratives-cell--shrike .portfolio-card,
-  .portfolio-grid--narratives .narratives-cell--bu .portfolio-card,
-  .portfolio-grid--narratives .narratives-cell--sd .portfolio-card {
+  .portfolio-grid--narratives .narratives-cell--shrike .portfolio-card {
     display: flex;
     flex-direction: column;
     height: 100%;
