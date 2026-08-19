@@ -3826,6 +3826,54 @@ body.is-route-pulse .page-stage {
   list-style: none;
 }
 
+/* Narratives: landscape pairs stack to the Shrike poster; I See Red sits under it */
+@media (min-width: 901px) {
+  .portfolio-grid--narratives {
+    align-items: stretch;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-areas:
+      "fp shrike salt"
+      "hc shrike mfm"
+      "bu isr sd";
+  }
+
+  .narratives-cell--fp { grid-area: fp; }
+  .narratives-cell--shrike { grid-area: shrike; }
+  .narratives-cell--salt { grid-area: salt; }
+  .narratives-cell--hc { grid-area: hc; }
+  .narratives-cell--isr { grid-area: isr; }
+  .narratives-cell--mfm { grid-area: mfm; }
+  .narratives-cell--bu { grid-area: bu; }
+  .narratives-cell--sd { grid-area: sd; }
+
+  .portfolio-grid--narratives .narratives-cell--fp .portfolio-card,
+  .portfolio-grid--narratives .narratives-cell--salt .portfolio-card,
+  .portfolio-grid--narratives .narratives-cell--hc .portfolio-card,
+  .portfolio-grid--narratives .narratives-cell--mfm .portfolio-card,
+  .portfolio-grid--narratives .narratives-cell--shrike .portfolio-card,
+  .portfolio-grid--narratives .narratives-cell--bu .portfolio-card,
+  .portfolio-grid--narratives .narratives-cell--sd .portfolio-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .portfolio-grid--narratives .narratives-cell--fp .portfolio-card__media,
+  .portfolio-grid--narratives .narratives-cell--salt .portfolio-card__media,
+  .portfolio-grid--narratives .narratives-cell--hc .portfolio-card__media,
+  .portfolio-grid--narratives .narratives-cell--mfm .portfolio-card__media {
+    flex: 1 1 auto;
+    aspect-ratio: auto;
+    min-height: 0;
+  }
+
+  .portfolio-grid--narratives .narratives-cell--shrike .portfolio-card__media--poster {
+    flex: 0 0 auto;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+  }
+}
+
 @media (max-width: 900px) {
   .portfolio-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
