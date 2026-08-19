@@ -3421,6 +3421,14 @@ body.is-route-pulse .page-stage {
   min-height: 220px;
 }
 
+.process-step__photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
 .process-step__placeholder {
   width: 100%;
   height: 100%;
