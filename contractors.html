@@ -7,20 +7,20 @@
     <title>Contractor roster — Gasworks</title>
     <meta
       name="description"
-      content="Join the Gasworks contractor roster — crew and freelancers. Signup coming soon."
+      content="Join the Gasworks contractor roster. Share your role, reel, and availability so we can reach you when a project fits."
     />
     <link rel="canonical" href="https://gasworks-site.vercel.app/contractors" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Gasworks" />
     <meta property="og:title" content="Contractor roster — Gasworks" />
-    <meta property="og:description" content="Join the Gasworks contractor roster — crew and freelancers. Signup coming soon." />
+    <meta property="og:description" content="Join the Gasworks contractor roster. Share your role, reel, and availability so we can reach you when a project fits." />
     <meta property="og:url" content="https://gasworks-site.vercel.app/contractors" />
     <meta property="og:image" content="https://gasworks-site.vercel.app/media/brand/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Contractor roster — Gasworks" />
-    <meta name="twitter:description" content="Join the Gasworks contractor roster — crew and freelancers. Signup coming soon." />
+    <meta name="twitter:description" content="Join the Gasworks contractor roster. Share your role, reel, and availability so we can reach you when a project fits." />
     <meta name="twitter:image" content="https://gasworks-site.vercel.app/media/brand/og-image.png" />
     <link rel="icon" href="media/brand/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="media/brand/favicon-32.png" sizes="32x32" type="image/png" />
@@ -67,6 +67,7 @@
         </button>
         <nav id="site-nav" class="site-nav" aria-label="Primary">
           <a class="site-nav__link" href="process.html">Process</a>
+          <a class="site-nav__link is-active" href="contractors.html" aria-current="page">Roster</a>
           <a class="site-nav__cta" href="index.html#contact">Contact</a>
         </nav>
       </div>
@@ -74,21 +75,252 @@
 
     <main id="main" class="page-stage" data-page-stage>
       <section class="contractors-hero" data-reveal-parent>
-        <div class="shell contractors-hero__inner">
+        <div class="shell contractors-hero__intro">
           <p class="contractors-hero__label" data-reveal>For contractors</p>
           <h1 class="contractors-hero__title" data-reveal style="--reveal-delay: 0.06s">
             Join the <span class="contractors-hero__accent">roster.</span>
           </h1>
           <p class="contractors-hero__dek" data-reveal style="--reveal-delay: 0.12s">
-            Freelancers and crew — add yourself to our database so we can reach you when a project fits.
+            Freelancers and crew — add yourself so we can reach you when a project fits.
+            This isn’t a job board. It’s our working list.
           </p>
-          <div class="contractors-signup" data-contractors-signup data-reveal style="--reveal-delay: 0.18s">
-            <p class="contractors-signup__status">Roster signup — coming soon</p>
-            <p class="contractors-signup__note">
-              We’re building a proper signup for roles, reels, and availability. In the meantime, send your
-              reel and what you do to
-              <a class="footer__link" href="mailto:jack@wileyworx.com?subject=Contractor%20roster">jack@wileyworx.com</a>
-              and we’ll keep you in mind.
+        </div>
+
+        <div
+          class="shell inquiry-card contractors-card"
+          data-roster-root
+          data-roster-endpoint=""
+          data-reveal
+          style="--reveal-delay: 0.18s"
+        >
+          <form class="inquiry-form" data-roster-form action="#" method="post" novalidate>
+            <div class="inquiry-form__grid">
+              <div class="inquiry-form__field">
+                <label class="inquiry-form__label" for="roster-name">Name</label>
+                <input
+                  class="inquiry-form__input"
+                  id="roster-name"
+                  name="name"
+                  type="text"
+                  autocomplete="name"
+                  required
+                />
+              </div>
+              <div class="inquiry-form__field">
+                <label class="inquiry-form__label" for="roster-email">Email</label>
+                <input
+                  class="inquiry-form__input"
+                  id="roster-email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  required
+                />
+              </div>
+              <div class="inquiry-form__field">
+                <label class="inquiry-form__label" for="roster-phone">Phone</label>
+                <input
+                  class="inquiry-form__input"
+                  id="roster-phone"
+                  name="phone"
+                  type="tel"
+                  autocomplete="tel"
+                  inputmode="tel"
+                  required
+                  placeholder="(555) 123-4567"
+                />
+              </div>
+              <div class="inquiry-form__field">
+                <label class="inquiry-form__label" for="roster-location">Location</label>
+                <input
+                  class="inquiry-form__input"
+                  id="roster-location"
+                  name="location"
+                  type="text"
+                  autocomplete="address-level2"
+                  required
+                  placeholder="City, State"
+                />
+              </div>
+
+              <div class="inquiry-form__field inquiry-form__field--full">
+                <p class="inquiry-form__label" id="roster-roles-label">What you do</p>
+                <div class="roster-roles" role="group" aria-labelledby="roster-roles-label">
+                  <label class="roster-roles__option">
+                    <input type="checkbox" name="roles" value="Director" />
+                    <span>Director</span>
+                  </label>
+                  <label class="roster-roles__option">
+                    <input type="checkbox" name="roles" value="Producer" />
+                    <span>Producer</span>
+                  </label>
+                  <label class="roster-roles__option">
+                    <input type="checkbox" name="roles" value="DP" />
+                    <span>DP / Cinematographer</span>
+                  </label>
+                  <label class="roster-roles__option">
+                    <input type="checkbox" name="roles" value="Camera op" />
+                    <span>Camera op</span>
+                  </label>
+                  <label class="roster-roles__option">
+                    <input type="checkbox" name="roles" value="Drone" />
+                    <span>Drone</span>
+                  </label>
+                  <label class="roster-roles__option">
+                    <input type="checkbox" name="roles" value="Gaffer" />
+                    <span>Gaffer</span>
+                  </label>
+                  <label class="roster-roles__option">
+                    <input type="checkbox" name="roles" value="Grip" />
+                    <span>Grip</span>
+                  </label>
+                  <label class="roster-roles__option">
+                    <input type="checkbox" name="roles" value="Sound" />
+                    <span>Sound</span>
+                  </label>
+                  <label class="roster-roles__option">
+                    <input type="checkbox" name="roles" value="Editor" />
+                    <span>Editor</span>
+                  </label>
+                  <label class="roster-roles__option">
+                    <input type="checkbox" name="roles" value="Colorist" />
+                    <span>Colorist</span>
+                  </label>
+                  <label class="roster-roles__option">
+                    <input type="checkbox" name="roles" value="VFX" />
+                    <span>VFX / Motion</span>
+                  </label>
+                  <label class="roster-roles__option">
+                    <input type="checkbox" name="roles" value="PA" />
+                    <span>PA</span>
+                  </label>
+                </div>
+                <label class="inquiry-form__label roster-roles__other-label" for="roster-roles-other">
+                  Other / more specific <span class="inquiry-form__optional">(optional)</span>
+                </label>
+                <input
+                  class="inquiry-form__input"
+                  id="roster-roles-other"
+                  name="roles_other"
+                  type="text"
+                  placeholder="Steadicam, stills, casting, makeup…"
+                />
+              </div>
+
+              <div class="inquiry-form__field inquiry-form__field--full">
+                <label class="inquiry-form__label" for="roster-bio">About your work</label>
+                <textarea
+                  class="inquiry-form__textarea"
+                  id="roster-bio"
+                  name="bio"
+                  rows="4"
+                  required
+                  placeholder="What you’re strongest at, the kinds of jobs you want, gear you bring…"
+                ></textarea>
+              </div>
+
+              <div class="inquiry-form__field inquiry-form__field--full">
+                <label class="inquiry-form__label" for="roster-reel">Reel or portfolio URL</label>
+                <input
+                  class="inquiry-form__input"
+                  id="roster-reel"
+                  name="reel_url"
+                  type="url"
+                  inputmode="url"
+                  autocomplete="url"
+                  required
+                  placeholder="https://…"
+                />
+              </div>
+              <div class="inquiry-form__field">
+                <label class="inquiry-form__label" for="roster-website">
+                  Website <span class="inquiry-form__optional">(optional)</span>
+                </label>
+                <input
+                  class="inquiry-form__input"
+                  id="roster-website"
+                  name="website"
+                  type="url"
+                  inputmode="url"
+                  autocomplete="url"
+                  placeholder="https://…"
+                />
+              </div>
+              <div class="inquiry-form__field">
+                <label class="inquiry-form__label" for="roster-instagram">
+                  Instagram <span class="inquiry-form__optional">(optional)</span>
+                </label>
+                <input
+                  class="inquiry-form__input"
+                  id="roster-instagram"
+                  name="instagram"
+                  type="text"
+                  autocomplete="username"
+                  placeholder="@handle"
+                />
+              </div>
+              <div class="inquiry-form__field">
+                <label class="inquiry-form__label" for="roster-availability">Availability</label>
+                <select class="inquiry-form__select" id="roster-availability" name="availability" required>
+                  <option value="" selected disabled>Select…</option>
+                  <option value="Available now">Available now</option>
+                  <option value="Available with notice">Available with notice</option>
+                  <option value="Limited">Limited / booked out near-term</option>
+                  <option value="Not currently">Not currently taking work</option>
+                </select>
+              </div>
+              <div class="inquiry-form__field">
+                <label class="inquiry-form__label" for="roster-rate">
+                  Day rate <span class="inquiry-form__optional">(optional)</span>
+                </label>
+                <input
+                  class="inquiry-form__input"
+                  id="roster-rate"
+                  name="day_rate"
+                  type="text"
+                  placeholder="$ / day, or a range"
+                />
+              </div>
+              <div class="inquiry-form__field inquiry-form__field--full">
+                <label class="inquiry-form__label" for="roster-notes">
+                  Anything else <span class="inquiry-form__optional">(optional)</span>
+                </label>
+                <textarea
+                  class="inquiry-form__textarea"
+                  id="roster-notes"
+                  name="notes"
+                  rows="3"
+                  placeholder="Travel radius, union status, languages, kit notes…"
+                ></textarea>
+              </div>
+            </div>
+
+            <p class="roster-form__honeypot" aria-hidden="true">
+              <label for="roster-company">Company</label>
+              <input id="roster-company" name="company" type="text" tabindex="-1" autocomplete="off" />
+            </p>
+
+            <div class="inquiry-form__actions">
+              <button type="submit" class="btn btn--primary inquiry-form__submit">Join the roster</button>
+            </div>
+            <p class="roster-form__fineprint">
+              We’ll keep this on file and reach out when a job matches. Questions:
+              <a class="inquiry-card__link" href="mailto:jack@wileyworx.com">jack@wileyworx.com</a>
+            </p>
+          </form>
+          <div
+            class="inquiry-success"
+            data-roster-success
+            role="status"
+            aria-live="polite"
+            tabindex="-1"
+            hidden
+          >
+            <p class="inquiry-success__title">You’re on the list.</p>
+            <p class="inquiry-success__body">
+              Thanks — we’ll reach out if a project fits. If nothing opened, email
+              <a class="inquiry-card__link" href="mailto:jack@wileyworx.com">jack@wileyworx.com</a>
+              with your reel.
             </p>
           </div>
         </div>

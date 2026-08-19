@@ -989,4 +989,123 @@
       }, delayMs);
     });
   }
+
+  /* ——— Contractor roster — posts to a spreadsheet endpoint when set; otherwise email ——— */
+  const rosterRoot = document.querySelector("[data-roster-root]");
+  const rosterForm = document.querySelector("[data-roster-form]");
+  const rosterSuccess = document.querySelector("[data-roster-success]");
+  const ROSTER_TO = "jack@wileyworx.com";
+  if (rosterForm && rosterRoot && rosterSuccess) {
+    rosterForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (!rosterForm.reportValidity()) return;
+
+      const company = rosterForm.querySelector('[name="company"]');
+      if (company && company.value.trim()) return;
+
+      const val = function (name) {
+        const el = rosterForm.querySelector('[name="' + name + '"]');
+        return el ? el.value.trim() : "";
+      };
+      const roles = Array.from(rosterForm.querySelectorAll('input[name="roles"]:checked')).map(function (el) {
+        return el.value;
+      });
+      const rolesOther = val("roles_other");
+      if (!roles.length && !rolesOther) {
+        const other = rosterForm.querySelector('[name="roles_other"]');
+        if (other) {
+          other.setCustomValidity("Pick at least one role, or describe what you do.");
+          other.reportValidity();
+          other.setCustomValidity("");
+        }
+        return;
+      }
+
+      const payload = {
+        timestamp: new Date().toISOString(),
+        name: val("name"),
+        email: val("email"),
+        phone: val("phone"),
+        location: val("location"),
+        roles: roles.join(", "),
+        roles_other: rolesOther,
+        bio: val("bio"),
+        reel_url: val("reel_url"),
+        website: val("website"),
+        instagram: val("instagram"),
+        availability: val("availability"),
+        day_rate: val("day_rate"),
+        notes: val("notes"),
+      };
+
+      const submitBtn = rosterForm.querySelector(".inquiry-form__submit");
+      if (submitBtn) submitBtn.disabled = true;
+
+      const finish = function (openMail) {
+        rosterForm.hidden = true;
+        rosterSuccess.hidden = false;
+        rosterRoot.classList.add("is-complete");
+        rosterSuccess.focus();
+        if (submitBtn) submitBtn.disabled = false;
+        if (openMail) window.location.href = openMail;
+      };
+
+      const subject = "Contractor roster" + (payload.name ? " — " + payload.name : "");
+      const lines = [
+        "Name: " + payload.name,
+        "Email: " + payload.email,
+        "Phone: " + payload.phone,
+        "Location: " + payload.location,
+        "Roles: " + (payload.roles || "—"),
+        "Other: " + (payload.roles_other || "—"),
+        "Availability: " + payload.availability,
+        "Day rate: " + (payload.day_rate || "—"),
+        "Reel: " + payload.reel_url,
+        "Website: " + (payload.website || "—"),
+        "Instagram: " + (payload.instagram || "—"),
+        "",
+        "About:",
+        payload.bio,
+        "",
+        "Notes:",
+        payload.notes || "—",
+      ];
+      const mailto =
+        "mailto:" +
+        ROSTER_TO +
+        "?subject=" +
+        encodeURIComponent(subject) +
+        "&body=" +
+        encodeURIComponent(lines.join("\n"));
+
+      const endpoint = (rosterRoot.getAttribute("data-roster-endpoint") || "").trim();
+      const delayMs = reduceMotion ? 0 : 420;
+
+      if (!endpoint) {
+        window.setTimeout(function () {
+          finish(mailto);
+        }, delayMs);
+        return;
+      }
+
+      fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      })
+        .then(function (res) {
+          if (!res.ok) throw new Error("roster-post-failed");
+        })
+        .then(function () {
+          window.setTimeout(function () {
+            finish(null);
+          }, delayMs);
+        })
+        .catch(function () {
+          window.setTimeout(function () {
+            finish(mailto);
+          }, delayMs);
+        });
+    });
+  }
 })();
