@@ -3418,6 +3418,10 @@ body.is-route-pulse .page-stage {
   object-position: center;
 }
 
+.process-step__media--wide {
+  aspect-ratio: 21 / 10;
+}
+
 .process-step__placeholder {
   width: 100%;
   height: 100%;
