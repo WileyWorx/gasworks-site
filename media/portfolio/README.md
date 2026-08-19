@@ -30,6 +30,7 @@ Paths are wired in `portfolio.html` via `data-poster` and `data-video` on each c
 | 10 | USA Nordic | `Spotlights/US Nordic/` |
 | 11 | WHOOP | `Spotlights/Whoop/` |
 | 12 | BCA | `Spotlights/BCA/` |
+| 13 | VastNaut | `Spotlights/VastNaut/` |
 
 Replace `01.jpg`–`11.jpg` with updated thumbnails from each client folder on the SSD when provided.
 
