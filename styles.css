@@ -2412,6 +2412,10 @@ body.intro-lock {
     opacity: 0.12 !important;
   }
 
+  .process-hero__video {
+    opacity: 0.16 !important;
+  }
+
   [data-reveal],
   .hero__title-line,
   .site-header {
@@ -3230,10 +3234,43 @@ body.is-route-pulse .page-stage {
 }
 
 .process-hero {
+  position: relative;
+  overflow: hidden;
   padding: calc(var(--header-h) + clamp(3rem, 8vw, 5.5rem)) 0 clamp(2.5rem, 5vw, 3.5rem);
 }
 
+.process-hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.process-hero__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  opacity: 0.28;
+}
+
+.process-hero__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.18) 0%,
+    transparent 42%,
+    rgba(0, 0, 0, 0.42) 100%
+  );
+}
+
 .process-hero__inner {
+  position: relative;
+  z-index: 1;
   max-width: 52rem;
 }
 
