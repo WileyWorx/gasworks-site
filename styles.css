@@ -3711,6 +3711,14 @@ body.is-route-pulse .page-stage {
   font-size: 0.98rem;
 }
 
+.portfolio-panel__note {
+  margin: 0.7rem auto 0;
+  max-width: 46ch;
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
 /* ——— Immersions: capability explainer (intentionally lighter than the grid) ——— */
 .immersions-caps {
   display: grid;
