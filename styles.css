@@ -3847,6 +3847,22 @@ body.is-route-pulse .page-stage {
   margin: 0;
 }
 
+.portfolio-card__link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.portfolio-card__link:focus-visible {
+  outline: none;
+}
+
+.portfolio-card__link:focus-visible .portfolio-card__media {
+  transform: translateY(-4px) scale(1.01);
+  border-color: rgba(207, 85, 37, 0.35);
+  box-shadow: 0 20px 48px -28px rgba(207, 85, 37, 0.45);
+}
+
 .portfolio-card__media {
   position: relative;
   aspect-ratio: 16 / 10;
