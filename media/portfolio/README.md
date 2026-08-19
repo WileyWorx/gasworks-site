@@ -39,3 +39,4 @@ Replace `01.jpg`–`11.jpg` with updated thumbnails from each client folder on t
 |---|--------|--------|
 | 01 | Fixed Points | `FixedPoints-Trailer.mp4` |
 | 02 | Shrike | `Narrative/Shrike/` (poster + website reel) |
+| 03 | Salt | `Narrative/SALT/` (cover + trailer) |
