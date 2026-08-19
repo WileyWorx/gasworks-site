@@ -426,7 +426,7 @@ a:hover {
   min-height: min(100vh, 1040px);
   display: flex;
   align-items: flex-end;
-  padding: calc(var(--header-h) + 4rem) 0 5rem;
+  padding: calc(var(--header-h) + 4rem) 0 2.75rem;
   overflow: hidden;
   background: transparent;
 }
