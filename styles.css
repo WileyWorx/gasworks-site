@@ -3609,6 +3609,12 @@ body.is-route-pulse .page-stage {
   --portfolio-cat-h: 3.75rem;
 }
 
+/* Site header is position:fixed (out of flow). Offset the category bar
+   so it starts below the header, then stick to that same offset on scroll. */
+body.page-portfolio {
+  padding-top: var(--header-h);
+}
+
 .portfolio-cat-bar {
   position: sticky;
   top: var(--header-h, 4rem);
@@ -3691,7 +3697,7 @@ body.is-route-pulse .page-stage {
 .portfolio-panel {
   flex: 0 0 33.333%;
   min-width: 33.333%;
-  padding-top: clamp(2rem, 5vw, 3.5rem);
+  padding-top: clamp(2.5rem, 5.5vw, 4rem);
   opacity: 0.35;
   transition: opacity 0.5s ease;
 }
