@@ -21,6 +21,8 @@ Drop the official **transparent‑background PNGs** (or SVGs) for each brand her
 | Columbia | `columbia.png` |
 | Advanced Gloves | `advanced-gloves.png` |
 | Powder Mountain | `powder-mountain.png` |
+| Nissan | `nissan.png` |
+| Suunto | `suunto.png` |
 
 ## File specs
 
