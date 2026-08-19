@@ -384,6 +384,14 @@
             const v = entry.target.querySelector("video");
             if (!v) return;
             if (entry.isIntersecting && !reduceMotion) {
+              if (v.getAttribute("data-src-bound") !== "1") {
+                const src = v.getAttribute("data-src");
+                if (src) {
+                  v.src = src;
+                  v.setAttribute("data-src-bound", "1");
+                  v.load();
+                }
+              }
               const playPromise = v.play();
               if (playPromise && typeof playPromise.catch === "function") {
                 playPromise.catch(function () {
@@ -395,7 +403,7 @@
             }
           });
         },
-        { threshold: 0 }
+        { rootMargin: "200px 0px", threshold: 0 }
       );
       document.querySelectorAll(".media-mill__tile").forEach(function (tile) {
         tilesIo.observe(tile);
@@ -630,10 +638,20 @@
     let switchTimer = null;
     let launching = false;
 
+    function ensureLaneVideoSrc(video) {
+      if (!video || video.getAttribute("data-src-bound") === "1") return;
+      const src = video.getAttribute("data-src");
+      if (!src) return;
+      video.src = src;
+      video.setAttribute("data-src-bound", "1");
+      video.load();
+    }
+
     function syncLaneVideos(laneId) {
       lanesRoot.querySelectorAll("[data-lane-video]").forEach(function (video) {
         const isActive = video.getAttribute("data-lane-video") === laneId;
         if (isActive && !reduceMotion) {
+          ensureLaneVideoSrc(video);
           const playPromise = video.play();
           if (playPromise && typeof playPromise.catch === "function") {
             playPromise.catch(function () {});
@@ -643,6 +661,19 @@
           /* Keep currentTime — resume where the visitor left off until refresh. */
         }
       });
+    }
+
+    /* Prefetch neighboring lane media after the active clip is playing, idle-time only. */
+    function prefetchLaneVideos() {
+      const idle = window.requestIdleCallback || function (cb) {
+        return window.setTimeout(cb, 1200);
+      };
+      idle(function () {
+        lanesRoot.querySelectorAll("[data-lane-video]").forEach(function (video) {
+          if (video.getAttribute("data-lane-video") === activeLane) return;
+          ensureLaneVideoSrc(video);
+        });
+      }, { timeout: 4000 });
     }
 
     function setActiveLane(laneId, force) {
@@ -736,6 +767,7 @@
     });
 
     setActiveLane(activeLane, true);
+    prefetchLaneVideos();
   }
 
   /* ——— Portfolio page: category tabs + horizontal slide ——— */
@@ -808,10 +840,16 @@
       video.muted = true;
       video.loop = true;
       video.playsInline = true;
-      video.preload = "metadata";
+      video.preload = "none";
       video.setAttribute("aria-hidden", "true");
-      if (videoSrc) video.src = videoSrc;
       block.appendChild(video);
+
+      function ensureVideoSrc() {
+        if (!videoSrc || video.getAttribute("data-src-bound") === "1") return;
+        video.src = videoSrc;
+        video.setAttribute("data-src-bound", "1");
+        video.load();
+      }
 
       function revealVideo() {
         if (activePreviewBlock !== block) return;
@@ -850,6 +888,7 @@
           { signal, once: true }
         );
 
+        ensureVideoSrc();
         if (video.readyState >= 2) {
           attemptPlay();
         } else {
