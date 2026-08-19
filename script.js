@@ -642,9 +642,31 @@
       if (!video || video.getAttribute("data-src-bound") === "1") return;
       const src = video.getAttribute("data-src");
       if (!src) return;
+      video.muted = true;
+      video.defaultMuted = true;
+      video.playsInline = true;
+      video.loop = true;
       video.src = src;
       video.setAttribute("data-src-bound", "1");
       video.load();
+    }
+
+    function playLaneVideo(video) {
+      if (!video || reduceMotion) return;
+      video.muted = true;
+      const tryPlay = function () {
+        if (video.getAttribute("data-lane-video") !== activeLane) return;
+        const playPromise = video.play();
+        if (playPromise && typeof playPromise.catch === "function") {
+          playPromise.catch(function () {});
+        }
+      };
+      if (video.readyState >= 2) {
+        tryPlay();
+      } else {
+        video.addEventListener("canplay", tryPlay, { once: true });
+        video.addEventListener("loadeddata", tryPlay, { once: true });
+      }
     }
 
     function syncLaneVideos(laneId) {
@@ -652,10 +674,7 @@
         const isActive = video.getAttribute("data-lane-video") === laneId;
         if (isActive && !reduceMotion) {
           ensureLaneVideoSrc(video);
-          const playPromise = video.play();
-          if (playPromise && typeof playPromise.catch === "function") {
-            playPromise.catch(function () {});
-          }
+          playLaneVideo(video);
         } else {
           video.pause();
           /* Keep currentTime — resume where the visitor left off until refresh. */
@@ -764,6 +783,15 @@
         prev.focus();
         setActiveLane(prev.getAttribute("data-lane"));
       }
+    });
+
+    lanesRoot.querySelectorAll("[data-lane-video]").forEach(function (video) {
+      video.addEventListener("ended", function () {
+        if (reduceMotion) return;
+        if (video.getAttribute("data-lane-video") !== activeLane) return;
+        video.currentTime = 0;
+        playLaneVideo(video);
+      });
     });
 
     setActiveLane(activeLane, true);
