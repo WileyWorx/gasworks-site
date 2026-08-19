@@ -42,3 +42,4 @@ Replace `01.jpg`–`11.jpg` with updated thumbnails from each client folder on t
 | 03 | Salt | `Narrative/SALT/` (cover + trailer) |
 | 04 | I See Red | `Narrative/I SEE RED/` (cover + website reel) |
 | 05 | Homecoming | `Narrative/HomeComing/` (cover + website reel) |
+| 06 | My Friend Mickey | `Narrative/My Friend Mickey/` (cover + website reel) |
