@@ -1790,6 +1790,8 @@ a:hover {
 }
 
 .inquiry-form__actions {
+  display: flex;
+  justify-content: center;
   margin-top: 1.75rem;
 }
 
