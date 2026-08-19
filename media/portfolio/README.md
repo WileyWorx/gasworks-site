@@ -32,6 +32,7 @@ Paths are wired in `portfolio.html` via `data-poster` and `data-video` on each c
 | 12 | BCA | `Spotlights/BCA/` |
 | 13 | VastNaut | `Spotlights/VastNaut/` |
 | 14 | Set Free | `Spotlights/Set Free/` (click opens YouTube) |
+| 15 | Spin360 | `Spotlights/Spin360/` |
 
 Replace `01.jpg`–`11.jpg` with updated thumbnails from each client folder on the SSD when provided.
 
