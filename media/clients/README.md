@@ -23,6 +23,7 @@ Drop the official **transparent‑background PNGs** (or SVGs) for each brand her
 | Powder Mountain | `powder-mountain.png` |
 | Nissan | `nissan.png` |
 | Suunto | `suunto.png` |
+| Amangiri | `amangiri.png` |
 
 ## File specs
 
