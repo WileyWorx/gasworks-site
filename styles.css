@@ -3398,7 +3398,8 @@ body.is-route-pulse .page-stage {
   min-height: 220px;
 }
 
-.process-step__photo {
+.process-step__photo,
+.process-step__video {
   display: block;
   width: 100%;
   height: 100%;

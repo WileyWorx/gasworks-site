@@ -798,50 +798,51 @@
     prefetchLaneVideos();
   }
 
-  /* ——— Process page: muted low-opacity hero loop ——— */
-  const processHeroVideo = document.querySelector("[data-process-hero-video]");
-  if (processHeroVideo && !reduceMotion) {
-    const processHero = processHeroVideo.closest(".process-hero") || processHeroVideo;
-
-    function playProcessHeroVideo() {
-      processHeroVideo.muted = true;
-      processHeroVideo.defaultMuted = true;
-      processHeroVideo.playsInline = true;
-      processHeroVideo.loop = true;
-      if (processHeroVideo.getAttribute("data-src-bound") !== "1") {
-        const src = processHeroVideo.getAttribute("data-src");
+  /* ——— Process page: muted loops (hero + step media) ——— */
+  const processLoopVideos = Array.from(document.querySelectorAll("[data-process-loop]"));
+  if (processLoopVideos.length && !reduceMotion) {
+    function playProcessLoop(video) {
+      video.muted = true;
+      video.defaultMuted = true;
+      video.playsInline = true;
+      video.loop = true;
+      if (video.getAttribute("data-src-bound") !== "1") {
+        const src = video.getAttribute("data-src");
         if (src) {
-          processHeroVideo.src = src;
-          processHeroVideo.setAttribute("data-src-bound", "1");
-          processHeroVideo.load();
+          video.src = src;
+          video.setAttribute("data-src-bound", "1");
+          video.load();
         }
       }
       const tryPlay = function () {
-        const playPromise = processHeroVideo.play();
+        const playPromise = video.play();
         if (playPromise && typeof playPromise.catch === "function") {
           playPromise.catch(function () {});
         }
       };
-      if (processHeroVideo.readyState >= 2) {
+      if (video.readyState >= 2) {
         tryPlay();
       } else {
-        processHeroVideo.addEventListener("canplay", tryPlay, { once: true });
+        video.addEventListener("canplay", tryPlay, { once: true });
       }
     }
 
     if ("IntersectionObserver" in window) {
-      const processHeroIo = new IntersectionObserver(
+      const processLoopIo = new IntersectionObserver(
         function (entries) {
           entries.forEach(function (entry) {
-            if (entry.isIntersecting) playProcessHeroVideo();
-            else processHeroVideo.pause();
+            const video = entry.target;
+            if (entry.isIntersecting) playProcessLoop(video);
+            else video.pause();
           });
         },
         { threshold: 0.2 }
       );
-      processHeroIo.observe(processHero);
+      processLoopVideos.forEach(function (video) {
+        processLoopIo.observe(video);
+      });
     } else {
-      playProcessHeroVideo();
+      processLoopVideos.forEach(playProcessLoop);
     }
   }
 
