@@ -932,28 +932,27 @@ a:hover {
 
 .logo-carousel__panel img {
   display: block;
-  width: 88%;
-  height: 72%;
-  max-width: 88%;
-  max-height: 72%;
+  width: auto;
+  height: auto;
+  max-width: 92%;
+  max-height: 68%;
   object-fit: contain;
-  object-position: center;
+  object-position: center center;
+  margin: 0;
   /* Slightly softer glow so less gets clipped at strip edges */
   filter:
     drop-shadow(0 0 8px rgba(255, 255, 255, 0.2))
     drop-shadow(0 0 18px rgba(255, 255, 255, 0.06));
 }
 
-/* Extra-wide wordmarks were reading small vs square marks in the same face */
+/* Extra-wide wordmarks were reading small vs square marks — use more width, same height cap */
 .logo-carousel__panel[data-brand="burton"] img,
 .logo-carousel__panel[data-brand="amangiri"] img,
 .logo-carousel__panel[data-brand="columbia"] img,
 .logo-carousel__panel[data-brand="espn"] img,
 .logo-carousel__panel[data-brand="live-nation"] img {
-  width: 100%;
   max-width: 100%;
-  height: 58%;
-  max-height: 58%;
+  max-height: 68%;
 }
 
 .logo-carousel__panel--placeholder {
@@ -978,10 +977,10 @@ a:hover {
 
 @keyframes logoCarouselSpin {
   from {
-    transform: translateZ(calc(-1 * var(--radius))) rotateX(2deg) rotateY(0deg);
+    transform: translateZ(calc(-1 * var(--radius))) rotateY(0deg);
   }
   to {
-    transform: translateZ(calc(-1 * var(--radius))) rotateX(2deg) rotateY(-1turn);
+    transform: translateZ(calc(-1 * var(--radius))) rotateY(-1turn);
   }
 }
 
