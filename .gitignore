@@ -4,4 +4,5 @@ node_modules/
 *.log
 .env
 .env.*
-HANDOFF_FROM_MISSINGINACTION_CHAT.md
+.cursor
+HANDOFF_*.md

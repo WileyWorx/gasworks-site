@@ -1,25 +1,15 @@
-# Gasworks site (ORIGINAL) — Cursor rules
+# Gasworks site — Cursor rules
 
 ## Project
-This is the **original / production** Gasworks marketing site workspace.
+This is the **production** Gasworks marketing site workspace.
 - Stack: HTML, CSS, JS (static). **Preference for future website work / migration:** Astro on Vercel (do not migrate unless the user asks). Deploy/modify this Vercel project only when the user explicitly requests Gasworks changes in that session.
 - This workspace: `/Users/jackwiley/Downloads/gasworks-site`
 - Vercel project: `gasworks-site` → `https://gasworks-site.vercel.app`
 - GitHub: `https://github.com/WileyWorx/gasworks-site.git`
 
 ## Hard boundaries
-- Work **only** on this original site from this workspace.
-- **Never** edit `/Users/jackwiley/Downloads/gasworks-site-alt` from here.
-- **Never** push to `WileyWorx/gasworks-site-alt` or deploy to Vercel project `missinginaction`.
-- Alt/experiment copy lives separately:
-  - Local: `/Users/jackwiley/Downloads/gasworks-site-alt`
-  - Vercel: `missinginaction` (MissingInAction) → `https://missinginaction.vercel.app`
-  - GitHub: `https://github.com/WileyWorx/gasworks-site-alt.git`
-
-## Cross-chat memory
-- Full handoff from the MissingInAction / alt-copy conversation lives in `HANDOFF_FROM_MISSINGINACTION_CHAT.md` (gitignored). Read it when resuming dual-site, domain, or looser-copy work.
-- MissingInAction already has contact copy: “Got something cooking?” + pitch/half-idea dek; footers say “Say hey.” Original still has “Project inquiry.”
-- Prefer prebuilt Vercel deploy for `missinginaction` (CLI `--prod` often hangs).
+- Work **only** on this site from this workspace.
+- The former MissingInAction / `gasworks-site-alt` experiment (local folder, Vercel `missinginaction`, GitHub `WileyWorx/gasworks-site-alt`) has been removed — do not recreate it unless the user asks.
 
 ## Conventions
 - Brand fonts: Space Grotesk (display), DM Sans (body).
