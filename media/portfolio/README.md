@@ -33,6 +33,10 @@ Paths are wired in `portfolio.html` via `data-poster` and `data-video` on each c
 | 13 | VastNaut | `Spotlights/VastNaut/` |
 | 14 | Set Free | `Spotlights/Set Free/` (click opens YouTube) |
 | 15 | Spin360 | `Spotlights/Spin360/` |
+| 16 | Wild One | `Spotlights/Peech./Wild One/` (click opens YouTube) |
+| 17 | Tomorrows | `Spotlights/Peech./tomorrows/` (click opens YouTube) |
+
+Display order on Spotlights is custom (not file order). Peech tiles are spaced apart. Ford / Porsche / Hoang stay below the first two rows.
 
 Replace `01.jpg`–`11.jpg` with updated thumbnails from each client folder on the SSD when provided.
 
