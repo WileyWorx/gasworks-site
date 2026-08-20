@@ -16,6 +16,11 @@ This is the **original / production** Gasworks marketing site workspace.
   - Vercel: `missinginaction` (MissingInAction) → `https://missinginaction.vercel.app`
   - GitHub: `https://github.com/WileyWorx/gasworks-site-alt.git`
 
+## Cross-chat memory
+- Full handoff from the MissingInAction / alt-copy conversation lives in `HANDOFF_FROM_MISSINGINACTION_CHAT.md` (gitignored). Read it when resuming dual-site, domain, or looser-copy work.
+- MissingInAction already has contact copy: “Got something cooking?” + pitch/half-idea dek; footers say “Say hey.” Original still has “Project inquiry.”
+- Prefer prebuilt Vercel deploy for `missinginaction` (CLI `--prod` often hangs).
+
 ## Conventions
 - Brand fonts: Space Grotesk (display), DM Sans (body).
 - Do not re-add the footer slogan "Built different. Built to last."
