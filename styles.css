@@ -4026,7 +4026,7 @@ body.page-portfolio {
 
 .portfolio-card__poster {
   z-index: 1;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.12s ease;
 }
 
 .portfolio-card__poster.is-missing {
@@ -4037,7 +4037,7 @@ body.page-portfolio {
 .portfolio-card__video {
   z-index: 2;
   opacity: 0;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.12s ease;
   background: transparent;
 }
 

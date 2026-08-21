@@ -646,6 +646,7 @@
       video.defaultMuted = true;
       video.playsInline = true;
       video.loop = true;
+      video.preload = "auto";
       video.src = src;
       video.setAttribute("data-src-bound", "1");
       video.load();
@@ -882,17 +883,42 @@
       block.classList.remove("is-previewing", "is-video-ready");
       if (video) {
         video.pause();
-        try {
-          video.currentTime = 0;
-        } catch (err) {
-          /* ignore seek errors while metadata loads */
-        }
+        /* Keep buffer + currentTime so the next hover can resume instantly. */
       }
       if (activePreviewBlock === block) activePreviewBlock = null;
     }
 
     function stopAllPortfolioPreviews() {
       hoverMediaBlocks.forEach(stopPortfolioPreview);
+    }
+
+    function warmPortfolioVideo(block) {
+      if (!block || reduceMotion) return;
+      const video = block.querySelector(".portfolio-card__video");
+      const videoSrc = block.getAttribute("data-video");
+      if (!video || !videoSrc) return;
+      if (video.getAttribute("data-src-bound") !== "1") {
+        video.preload = "auto";
+        video.src = videoSrc;
+        video.setAttribute("data-src-bound", "1");
+        video.load();
+      } else if (video.preload !== "auto") {
+        video.preload = "auto";
+      }
+    }
+
+    function warmVisiblePortfolioVideos() {
+      const activePanel = panels.find(function (panel) {
+        return panel.classList.contains("is-active");
+      });
+      if (!activePanel) return;
+      activePanel.querySelectorAll("[data-portfolio-hover]").forEach(function (block) {
+        const rect = block.getBoundingClientRect();
+        const near =
+          rect.bottom > -240 &&
+          rect.top < (window.innerHeight || document.documentElement.clientHeight) + 240;
+        if (near) warmPortfolioVideo(block);
+      });
     }
 
     hoverMediaBlocks.forEach(function (block) {
@@ -914,18 +940,14 @@
       const video = document.createElement("video");
       video.className = "portfolio-card__video";
       video.muted = true;
+      video.defaultMuted = true;
       video.loop = true;
       video.playsInline = true;
       video.preload = "none";
+      video.setAttribute("playsinline", "");
+      video.setAttribute("webkit-playsinline", "");
       video.setAttribute("aria-hidden", "true");
       block.appendChild(video);
-
-      function ensureVideoSrc() {
-        if (!videoSrc || video.getAttribute("data-src-bound") === "1") return;
-        video.src = videoSrc;
-        video.setAttribute("data-src-bound", "1");
-        video.load();
-      }
 
       function revealVideo() {
         if (activePreviewBlock !== block) return;
@@ -939,7 +961,6 @@
         }
         activePreviewBlock = block;
         block.classList.add("is-previewing");
-        block.classList.remove("is-video-ready");
 
         if (block._previewAbort) block._previewAbort.abort();
         const abort = new AbortController();
@@ -949,33 +970,28 @@
         function attemptPlay() {
           if (signal.aborted || activePreviewBlock !== block) return;
           const playPromise = video.play();
-          if (playPromise && typeof playPromise.catch === "function") {
-            playPromise.catch(function () {
-              if (!signal.aborted) stopPortfolioPreview(block);
-            });
+          if (playPromise && typeof playPromise.then === "function") {
+            playPromise
+              .then(function () {
+                revealVideo();
+              })
+              .catch(function () {
+                if (!signal.aborted) stopPortfolioPreview(block);
+              });
+          } else {
+            revealVideo();
           }
         }
 
-        video.addEventListener(
-          "playing",
-          function () {
-            revealVideo();
-          },
-          { signal, once: true }
-        );
+        /* Reveal as soon as a frame can paint; don't wait only on "playing". */
+        video.addEventListener("playing", revealVideo, { signal, once: true });
+        video.addEventListener("canplay", attemptPlay, { signal, once: true });
+        video.addEventListener("loadeddata", attemptPlay, { signal, once: true });
 
-        ensureVideoSrc();
+        warmPortfolioVideo(block);
+
         if (video.readyState >= 2) {
           attemptPlay();
-        } else {
-          video.addEventListener(
-            "loadeddata",
-            function () {
-              attemptPlay();
-            },
-            { signal, once: true }
-          );
-          if (video.readyState === 0) video.load();
         }
       }
 
@@ -983,7 +999,36 @@
       block.addEventListener("pointerleave", function () {
         stopPortfolioPreview(block);
       });
+      /* Start warming as the cursor approaches the card. */
+      block.addEventListener("pointerover", function () {
+        warmPortfolioVideo(block);
+      });
     });
+
+    if ("IntersectionObserver" in window) {
+      const hoverWarmIo = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            const panel = entry.target.closest("[data-portfolio-panel]");
+            if (panel && !panel.classList.contains("is-active")) return;
+            warmPortfolioVideo(entry.target);
+          });
+        },
+        { root: null, rootMargin: "280px 0px", threshold: 0.01 }
+      );
+      hoverMediaBlocks.forEach(function (block) {
+        hoverWarmIo.observe(block);
+      });
+    }
+
+    window.addEventListener(
+      "scroll",
+      function () {
+        warmVisiblePortfolioVideos();
+      },
+      { passive: true }
+    );
 
     document.addEventListener("visibilitychange", function () {
       if (document.hidden) stopAllPortfolioPreviews();
@@ -1022,6 +1067,11 @@
         url.searchParams.set("cat", cat);
         window.history.replaceState({}, "", url);
       }
+
+      /* Warm nearby tiles in the newly active category right away. */
+      window.requestAnimationFrame(function () {
+        warmVisiblePortfolioVideos();
+      });
     }
 
     tabs.forEach(function (tab, i) {
