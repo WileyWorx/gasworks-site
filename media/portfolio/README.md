@@ -26,7 +26,7 @@ Paths are wired in `portfolio.html` via `data-poster` and `data-video` on each c
 | 06 | Lincoln | `Spotlights/Lincoln/` |
 | 07 | Porsche | `Spotlights/Porsche/` |
 | 08 | Powder Mountain | `Spotlights/PowMow/` |
-| 09 | SHAN | `Spotlights/SHAN/` |
+| 09 | SHAN | `Spotlights/SHAN/` (click opens Spotify) |
 | 10 | USA Nordic | `Spotlights/US Nordic/` |
 | 11 | WHOOP | `Spotlights/Whoop/` |
 | 12 | BCA | `Spotlights/BCA/` |
