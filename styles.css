@@ -3845,34 +3845,6 @@ body.page-portfolio {
   color: var(--text-dim);
 }
 
-.immersions-soon {
-  margin: 0 auto;
-  max-width: 40rem;
-  padding: clamp(1.5rem, 3.5vw, 2.25rem) clamp(1.25rem, 3vw, 2rem);
-  text-align: center;
-  border: 1px solid var(--line-strong);
-  border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.03);
-}
-
-.immersions-soon__kicker {
-  margin: 0 0 0.65rem;
-  font-family: var(--font-display);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--warm-smoke);
-}
-
-.immersions-soon__body {
-  margin: 0 auto 1.25rem;
-  max-width: 46ch;
-  font-size: 0.95rem;
-  line-height: 1.55;
-  color: var(--text-muted);
-}
-
 .immersions-logos {
   display: flex;
   flex-wrap: wrap;
@@ -3882,6 +3854,10 @@ body.page-portfolio {
   margin: clamp(2.25rem, 5vw, 3.5rem) 0 0;
   padding: 0;
   list-style: none;
+}
+
+#panel-immersions .portfolio-grid {
+  margin-top: clamp(2.25rem, 5vw, 3.5rem);
 }
 
 .immersions-logos li {

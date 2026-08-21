@@ -52,3 +52,11 @@ Replace `01.jpg`–`11.jpg` with updated thumbnails from each client folder on t
 | 06 | My Friend Mickey | `Narrative/My Friend Mickey/` (cover + website reel) |
 | 07 | Between Us | `Narrative/Between Us/` (cover + website reel) |
 | 08 | Shadow Deals | `Narrative/Shadow Deals/` (cover + website reel) |
+
+## Immersions index (current)
+
+| # | Title | Notes |
+|---|--------|--------|
+| 01 | (placeholder) | Drop `01.jpg` + `01.mp4` in `media/portfolio/immersions/` |
+| 02 | (placeholder) | Drop `02.jpg` + `02.mp4` in `media/portfolio/immersions/` |
+| 03 | (placeholder) | Drop `03.jpg` + `03.mp4` in `media/portfolio/immersions/` |
