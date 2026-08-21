@@ -17,6 +17,7 @@ This is the **production** Gasworks marketing site workspace.
 - Capability lanes: Spotlights, Narratives, Immersions → link to `portfolio.html?cat=…`
 - Home: media mill + category lane reels; portfolio tabs use `?cat=…`.
 - Large video: H.264 ~CRF 21, 1080p, faststart; keep files under ~98MB for git.
+- **Copy:** no hyphens, en dashes, or em dashes in visitor-facing text unless absolutely required (phone numbers, URLs, filenames, code, legal brand spellings). Prefer periods, commas, or colons.
 
 ## Git
 After completing any task that changes this site, commit and push to `main` without asking:

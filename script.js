@@ -1072,13 +1072,13 @@
         return el ? el.value.trim() : "";
       };
       const name = val("name");
-      const subject = "Say hey" + (name ? " — " + name : "");
+      const subject = "Say hey" + (name ? ": " + name : "");
       const lines = [
         "Name: " + name,
         "Email: " + val("email"),
         "Phone: " + val("phone"),
-        "Website: " + (val("website") || "—"),
-        "Project type: " + (val("project_type") || "—"),
+        "Website: " + (val("website") || "n/a"),
+        "Project type: " + (val("project_type") || "n/a"),
         "",
         "Message:",
         val("project_brief"),
@@ -1165,25 +1165,25 @@
         if (openMail) window.location.href = openMail;
       };
 
-      const subject = "Contractor roster" + (payload.name ? " — " + payload.name : "");
+      const subject = "Contractor roster" + (payload.name ? ": " + payload.name : "");
       const lines = [
         "Name: " + payload.name,
         "Email: " + payload.email,
         "Phone: " + payload.phone,
         "Location: " + payload.location,
-        "Roles: " + (payload.roles || "—"),
-        "Other: " + (payload.roles_other || "—"),
+        "Roles: " + (payload.roles || "n/a"),
+        "Other: " + (payload.roles_other || "n/a"),
         "Availability: " + payload.availability,
-        "Day rate: " + (payload.day_rate || "—"),
+        "Day rate: " + (payload.day_rate || "n/a"),
         "Reel: " + payload.reel_url,
-        "Website: " + (payload.website || "—"),
-        "Instagram: " + (payload.instagram || "—"),
+        "Website: " + (payload.website || "n/a"),
+        "Instagram: " + (payload.instagram || "n/a"),
         "",
         "About:",
         payload.bio,
         "",
         "Notes:",
-        payload.notes || "—",
+        payload.notes || "n/a",
       ];
       const mailto =
         "mailto:" +
