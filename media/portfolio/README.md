@@ -59,4 +59,4 @@ Replace `01.jpg`–`11.jpg` with updated thumbnails from each client folder on t
 |---|--------|--------|
 | 01 | Burton | `Immersive/BurtonImmersions_Website.mp4` + `BurrtonImmersionsCover copy.jpg` |
 | 02 | Immersions reel | `Immersive/Immersions_Replace_Aug2026.mp4` + `Music_Cover_Web.jpg` |
-| 03 | (placeholder) | Drop `03.jpg` + `03.mp4` in `media/portfolio/immersions/` |
+| 03 | Broadcast | `Immersive/Broadcast_Web.mp4` + `Broadcast_Thumbnail.jpg` |
