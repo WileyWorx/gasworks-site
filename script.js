@@ -1057,7 +1057,7 @@
     });
   }
 
-  /* ——— Project inquiry — hands off to the visitor's email client (no silent loss) ——— */
+  /* ——— Contact form — hands off to the visitor's email client (no silent loss) ——— */
   const inquiryRoot = document.querySelector("[data-inquiry-root]");
   const inquiryForm = document.querySelector("[data-inquiry-form]");
   const inquirySuccess = document.querySelector("[data-inquiry-success]");
@@ -1072,7 +1072,7 @@
         return el ? el.value.trim() : "";
       };
       const name = val("name");
-      const subject = "Project inquiry" + (name ? " — " + name : "");
+      const subject = "Say hey" + (name ? " — " + name : "");
       const lines = [
         "Name: " + name,
         "Email: " + val("email"),
