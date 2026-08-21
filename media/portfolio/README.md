@@ -35,6 +35,7 @@ Paths are wired in `portfolio.html` via `data-poster` and `data-video` on each c
 | 15 | Spin360 | `Spotlights/Spin360/` |
 | 16 | Wild One | `Spotlights/Peech./Wild One/` (click opens YouTube) |
 | 17 | Tomorrows | `Spotlights/Peech./tomorrows/` (click opens YouTube) |
+| 18 | All This Time Is Wasting | `Spotlights/Murmurs/All this time is Wasting/` (click opens YouTube) |
 
 Display order on Spotlights is custom (not file order). Peech tiles are spaced apart. Powder Mountain, Ford, Porsche, and Hoang stay below the first two rows.
 
