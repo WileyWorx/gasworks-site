@@ -4,5 +4,7 @@ node_modules/
 *.log
 .env
 .env.*
-.cursor
+.cursor/*
+!.cursor/rules/
+!.cursor/rules/**
 HANDOFF_*.md

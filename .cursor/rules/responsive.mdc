@@ -1,0 +1,39 @@
+---
+description: "Cross-device correctness rules for the Gasworks site. Applies to all HTML, CSS and JS changes."
+alwaysApply: true
+---
+
+# Cross-device correctness (hard requirements)
+
+These are checkable requirements, not guidelines. A change that fails any rule is not done.
+
+## Layout
+
+- Never use `100vh` alone for full-height sections. Declare a `vh` fallback first, then `dvh` (e.g. `height: 100vh; height: 100dvh;`). Mobile browser chrome makes bare `vh` wrong.
+- Never use `100vw`. It includes the scrollbar and causes horizontal overflow. Use `100%` or `dvw`.
+- No element may cause horizontal page scroll at any width from 320px up.
+- Every new layout uses flex or grid with `gap`. No fixed pixel widths on containers.
+- Prefer `clamp()`, `min()`, `max()`, grid `auto-fit` / `minmax()`, and `aspect-ratio` over adding new breakpoints.
+
+## Touch and input
+
+- Every interactive element has a minimum 44×44px hit area on touch devices.
+- Any hover-triggered behavior MUST have a touch equivalent. Detect with `(hover: none)` and `(pointer: coarse)` — never user-agent sniffing. A feature that only works on hover is a bug, not a desktop feature.
+- Form inputs are never smaller than 16px font size (smaller triggers iOS zoom).
+
+## Media
+
+- Every `img` and `video` carries explicit dimensions or `aspect-ratio` to prevent layout shift.
+- Video is `muted` + `playsinline` wherever it autoplays, or iOS will refuse to play it.
+- Respect `prefers-reduced-motion`, `navigator.connection.saveData`, and `effectiveType` of `slow-2g` / `2g` by falling back to poster images with no video loading.
+
+## Safe areas
+
+- Fixed and sticky elements pad with `env(safe-area-inset-*)`. The viewport meta includes `viewport-fit=cover`.
+
+## Process (required after every HTML / CSS / JS change)
+
+- After ANY change to HTML, CSS, or JS, re-verify the affected area at **320px**, **390px**, **768px**, and **1280px** before reporting the work as done.
+- State in your response which viewports you checked and what you observed. If you did not check, say so explicitly.
+- If a change works on desktop but not on touch, it is not finished.
+- Never introduce a framework, bundler, or dependency into this project. It is hand-built static HTML/CSS/JS and stays that way.

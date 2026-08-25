@@ -1,0 +1,17 @@
+---
+description: No hyphens or dashes in Gasworks website copy
+alwaysApply: true
+---
+
+# Copy: no hyphens or dashes
+
+Do not use hyphens (`-`), en dashes (`–`), or em dashes (`—`) in any visitor-facing website copy (HTML text, titles, meta descriptions, placeholders, aria-labels, alt text, button labels, email subject lines shown to users).
+
+Rewrite with periods, commas, colons, or new sentences instead.
+
+**Allowed exceptions (only when truly required):**
+- Phone number formatting (e.g. `555-123-4567`)
+- URLs, filenames, CSS class names, code, and technical IDs
+- Proper nouns / brand names that legally include a hyphen
+
+**Also avoid:** calling Gasworks a “production company” or “production house” in visitor-facing copy. Let that be understood from the work.
