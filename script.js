@@ -85,21 +85,82 @@
   window.addEventListener("scroll", onScrollHeader, { passive: true });
 
   /* ——— Intro ——— */
-  function completeIntro(opts) {
-    const instant = Boolean(opts && opts.instant);
-    if (!intro) {
-      document.body.classList.add("intro-done");
-      return;
+  const introSkipBtn = intro ? intro.querySelector("[data-intro-skip]") : null;
+  const introMaxMs = 2500;
+  let introFinished = false;
+  let introAbort = null;
+
+  function readIntroSeen() {
+    try {
+      return window.sessionStorage.getItem(introStorageKey) === "1";
+    } catch (_) {
+      return false;
     }
-    intro.classList.add("is-hidden");
-    intro.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("intro-lock");
-    document.body.classList.add("intro-done");
+  }
+
+  function writeIntroSeen() {
     try {
       window.sessionStorage.setItem(introStorageKey, "1");
     } catch (_) {
-      /* ignore */
+      /* privacy mode / blocked storage — ignore */
     }
+  }
+
+  function shouldAutoSkipIntro() {
+    if (reduceMotion) return true;
+    const connection =
+      navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    if (connection && connection.saveData) return true;
+    if (
+      connection &&
+      (connection.effectiveType === "slow-2g" || connection.effectiveType === "2g")
+    ) {
+      return true;
+    }
+    const hash = location.hash || "";
+    if (/^#work\//i.test(hash)) return true;
+    if (hash === "#contact") return true;
+    return false;
+  }
+
+  function setIntroPageInert(on) {
+    document.querySelectorAll("header.site-header, main#main, footer.site-footer, [data-credits-section]").forEach(
+      function (el) {
+        if (on) el.setAttribute("inert", "");
+        else el.removeAttribute("inert");
+      }
+    );
+  }
+
+  function completeIntro(opts) {
+    if (introFinished) return;
+    introFinished = true;
+    const instant = Boolean(opts && opts.instant);
+
+    if (introAbort) {
+      try {
+        introAbort.abort();
+      } catch (_) {
+        /* ignore */
+      }
+      introAbort = null;
+    }
+
+    setIntroPageInert(false);
+
+    if (!intro) {
+      document.body.classList.add("intro-done");
+      document.body.classList.remove("intro-lock");
+      return;
+    }
+
+    intro.classList.add("is-hidden");
+    intro.setAttribute("aria-hidden", "true");
+    if (introSkipBtn) introSkipBtn.setAttribute("tabindex", "-1");
+    document.body.classList.remove("intro-lock");
+    document.body.classList.add("intro-done");
+    writeIntroSeen();
+
     if (!instant) {
       window.setTimeout(function () {
         intro.style.display = "none";
@@ -110,54 +171,76 @@
   }
 
   function runIntro() {
-    if (!intro || reduceMotion) {
+    if (!intro) {
       completeIntro({ instant: true });
       return;
     }
 
-    let stored = false;
-    try {
-      stored = window.sessionStorage.getItem(introStorageKey) === "1";
-    } catch (_) {
-      stored = false;
-    }
-    if (stored) {
+    if (shouldAutoSkipIntro() || readIntroSeen()) {
       completeIntro({ instant: true });
       return;
     }
 
     document.body.classList.add("intro-lock");
     intro.setAttribute("aria-hidden", "false");
+    intro.style.display = "";
+    setIntroPageInert(true);
+    if (introSkipBtn) {
+      introSkipBtn.removeAttribute("tabindex");
+    }
 
-    function dismiss() {
+    introAbort = typeof AbortController !== "undefined" ? new AbortController() : null;
+    const signal = introAbort ? introAbort.signal : undefined;
+
+    function dismissWithOutro(e) {
+      if (introFinished) return;
+      /* Ignore synthetic/non-user noise; still allow Skip button and hard timeout */
       completeIntro({ instant: false });
     }
 
-    skipLink?.addEventListener("click", function () {
-      completeIntro({ instant: true });
-    });
+    if (introSkipBtn) {
+      introSkipBtn.addEventListener(
+        "click",
+        function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          completeIntro({ instant: false });
+        },
+        signal ? { signal: signal } : false
+      );
+    }
 
-    document.addEventListener(
-      "keydown",
-      function (e) {
-        if (e.key === "Escape" && !intro.classList.contains("is-hidden")) dismiss();
+    skipLink?.addEventListener(
+      "click",
+      function () {
+        completeIntro({ instant: true });
       },
-      { once: false }
+      signal ? { signal: signal } : false
     );
+
+    const dismissOpts = signal ? { signal: signal, passive: true, capture: true } : { passive: true, capture: true };
+    document.addEventListener("keydown", dismissWithOutro, dismissOpts);
+    document.addEventListener("pointerdown", dismissWithOutro, dismissOpts);
+    document.addEventListener("wheel", dismissWithOutro, dismissOpts);
+    document.addEventListener("touchmove", dismissWithOutro, dismissOpts);
+    document.addEventListener("scroll", dismissWithOutro, dismissOpts);
 
     if (introBarFill) {
       introBarFill.addEventListener(
         "animationend",
         function (e) {
           if (e.animationName === "introForgeProgress" || e.animationName === "introBar") {
-            window.setTimeout(dismiss, 480);
+            completeIntro({ instant: false });
           }
         },
-        { once: true }
+        signal ? { once: true, signal: signal } : { once: true }
       );
-    } else {
-      window.setTimeout(dismiss, 2400);
     }
+
+    /* Hard ceiling: always dismiss by 2.5s, even if animationend never fires */
+    window.setTimeout(function () {
+      completeIntro({ instant: false });
+    }, introMaxMs);
   }
 
   runIntro();
