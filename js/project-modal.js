@@ -60,6 +60,10 @@
   }
 
   function resumeMillMedia() {
+    if (typeof window.GASWORKS_SYNC_MILL === "function") {
+      window.GASWORKS_SYNC_MILL();
+      return;
+    }
     if (reduceMotion) return;
     if (!document.querySelector("[data-media-mill]")) return;
     document.querySelectorAll(".media-mill__tile video").forEach(function (video) {
@@ -284,7 +288,55 @@
   }
 
   document.querySelectorAll("[data-project-open]").forEach(function (btn) {
-    btn.addEventListener("click", function () {
+    var pointerOrigin = null;
+    var suppressClick = false;
+
+    btn.addEventListener(
+      "pointerdown",
+      function (e) {
+        if (e.pointerType === "mouse" && e.button !== 0) return;
+        pointerOrigin = { x: e.clientX, y: e.clientY };
+        suppressClick = false;
+      },
+      { passive: true }
+    );
+
+    btn.addEventListener(
+      "pointermove",
+      function (e) {
+        if (!pointerOrigin) return;
+        var dx = e.clientX - pointerOrigin.x;
+        var dy = e.clientY - pointerOrigin.y;
+        if (dx * dx + dy * dy > 144) {
+          suppressClick = true;
+        }
+      },
+      { passive: true }
+    );
+
+    btn.addEventListener(
+      "pointerup",
+      function () {
+        pointerOrigin = null;
+      },
+      { passive: true }
+    );
+
+    btn.addEventListener(
+      "pointercancel",
+      function () {
+        pointerOrigin = null;
+        suppressClick = true;
+      },
+      { passive: true }
+    );
+
+    btn.addEventListener("click", function (e) {
+      if (suppressClick) {
+        e.preventDefault();
+        suppressClick = false;
+        return;
+      }
       openProject(btn.getAttribute("data-project-open"));
     });
   });

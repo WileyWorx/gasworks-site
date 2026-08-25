@@ -649,12 +649,12 @@ a:hover {
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 720px) and (min-width: 640px) {
   .media-mill__tile {
     --tw: clamp(140px, 38vw, 220px);
   }
 
-  /* Phones get a thinner lattice — drop the back row, keep mid + front */
+  /* Narrow tablets keep the scatter but drop the back row */
   .media-mill__tile[data-mill-row="back"] {
     display: none;
   }
@@ -666,6 +666,63 @@ a:hover {
 
   .hero .media-mill__floor {
     opacity: 0.22;
+  }
+}
+
+/* Phones: readable two-column mill instead of overlapping 3D scatter */
+@media (max-width: 639px) {
+  .media-mill__floor {
+    background-size: 48px 48px, 48px 48px;
+    opacity: 0.28;
+  }
+
+  .hero .media-mill__floor {
+    opacity: 0.16;
+  }
+
+  .media-mill__scene {
+    perspective: none;
+  }
+
+  .media-mill__lattice {
+    position: absolute;
+    inset: auto;
+    left: 0;
+    right: 0;
+    top: calc(var(--header-h) + 0.35rem);
+    bottom: clamp(7.25rem, 24vh, 11.5rem);
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-content: start;
+    justify-items: stretch;
+    gap: 0.55rem 0.65rem;
+    padding: 0 clamp(0.85rem, 3.5vw, 1.25rem);
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    transform: none !important;
+    transform-style: flat;
+    will-change: auto;
+  }
+
+  .media-mill__tile {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 100%;
+    --tw: 100%;
+    margin: 0;
+    transform: none !important;
+    transform-style: flat;
+  }
+
+  .media-mill__tile[data-mill-row="back"] {
+    display: block;
+  }
+
+  .media-mill__media {
+    filter: brightness(0.86) contrast(0.97) saturate(0.78);
   }
 }
 

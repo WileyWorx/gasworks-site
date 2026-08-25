@@ -353,11 +353,33 @@
   const mediaMill = document.querySelector("[data-media-mill]");
   const millLattice = document.querySelector("[data-mill-lattice]");
   if (mediaMill && millLattice && hero) {
+    const noHover = window.matchMedia("(hover: none)").matches;
+    const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
+    const touchMill = noHover && coarsePointer;
+    const connection =
+      navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    const saveData = !!(connection && connection.saveData);
+    const slowNet =
+      !!connection &&
+      (connection.effectiveType === "slow-2g" || connection.effectiveType === "2g");
+    const millPosterOnly = reduceMotion || saveData || slowNet;
+    const millMaxPlaying = 3;
+    const millTiles = Array.prototype.slice.call(
+      document.querySelectorAll(".media-mill__tile")
+    );
+    const millNear = new Set();
+
+    mediaMill.classList.toggle("is-touch-mill", touchMill);
+    mediaMill.classList.toggle("is-poster-only", millPosterOnly);
+    document.documentElement.classList.toggle("is-touch-mill", touchMill);
+
     let millTick = false;
 
     function renderMill() {
       millTick = false;
       if (reduceMotion) return;
+      /* Mobile grid layout owns transform; skip 3D camera pull */
+      if (window.matchMedia("(max-width: 639px)").matches) return;
       const r = hero.getBoundingClientRect();
       const heroH = hero.offsetHeight || window.innerHeight || 1;
       const raw = -r.top / heroH;
@@ -377,41 +399,112 @@
     window.addEventListener("scroll", queueMill, { passive: true });
     window.addEventListener("resize", queueMill, { passive: true });
 
+    function millPauseVideo(video) {
+      if (!video) return;
+      try {
+        video.pause();
+      } catch (err) {
+        /* ignore */
+      }
+    }
+
+    function millBindSrc(video) {
+      if (!video || millPosterOnly) return;
+      if (video.getAttribute("data-src-bound") === "1") return;
+      const src = video.getAttribute("data-src");
+      if (!src) return;
+      video.muted = true;
+      video.defaultMuted = true;
+      video.setAttribute("muted", "");
+      video.setAttribute("playsinline", "");
+      video.setAttribute("webkit-playsinline", "");
+      video.playsInline = true;
+      video.src = src;
+      video.setAttribute("data-src-bound", "1");
+      video.load();
+    }
+
+    function millPlayVideo(video) {
+      if (!video || millPosterOnly) return;
+      if (document.documentElement.classList.contains("is-project-modal-open")) return;
+      millBindSrc(video);
+      const playPromise = video.play();
+      if (playPromise && typeof playPromise.catch === "function") {
+        playPromise.catch(function () {
+          /* autoplay blocked — ignore */
+        });
+      }
+    }
+
+    function millCenterDistance(tile) {
+      const rect = tile.getBoundingClientRect();
+      const mid = (rect.top + rect.bottom) / 2;
+      const viewMid = (window.innerHeight || document.documentElement.clientHeight) / 2;
+      return Math.abs(mid - viewMid);
+    }
+
+    function syncMillPlayback() {
+      if (
+        millPosterOnly ||
+        document.documentElement.classList.contains("is-project-modal-open")
+      ) {
+        millTiles.forEach(function (tile) {
+          millPauseVideo(tile.querySelector("video"));
+        });
+        return;
+      }
+
+      let winners;
+      if (touchMill) {
+        const candidates = millTiles.filter(function (tile) {
+          return millNear.has(tile);
+        });
+        candidates.sort(function (a, b) {
+          return millCenterDistance(a) - millCenterDistance(b);
+        });
+        winners = new Set(candidates.slice(0, millMaxPlaying));
+      } else {
+        winners = millNear;
+      }
+
+      millTiles.forEach(function (tile) {
+        const video = tile.querySelector("video");
+        if (!video) return;
+        if (winners.has(tile)) millPlayVideo(video);
+        else millPauseVideo(video);
+      });
+    }
+
+    window.GASWORKS_SYNC_MILL = syncMillPlayback;
+
     if ("IntersectionObserver" in window) {
       const tilesIo = new IntersectionObserver(
         function (entries) {
           entries.forEach(function (entry) {
-            const v = entry.target.querySelector("video");
-            if (!v) return;
-            if (
-              entry.isIntersecting &&
-              !reduceMotion &&
-              !document.documentElement.classList.contains("is-project-modal-open")
-            ) {
-              if (v.getAttribute("data-src-bound") !== "1") {
-                const src = v.getAttribute("data-src");
-                if (src) {
-                  v.src = src;
-                  v.setAttribute("data-src-bound", "1");
-                  v.load();
-                }
-              }
-              const playPromise = v.play();
-              if (playPromise && typeof playPromise.catch === "function") {
-                playPromise.catch(function () {
-                  /* autoplay blocked — ignore */
-                });
-              }
-            } else {
-              v.pause();
-            }
+            if (entry.isIntersecting) millNear.add(entry.target);
+            else millNear.delete(entry.target);
           });
+          syncMillPlayback();
         },
         { rootMargin: "200px 0px", threshold: 0 }
       );
-      document.querySelectorAll(".media-mill__tile").forEach(function (tile) {
+      millTiles.forEach(function (tile) {
         tilesIo.observe(tile);
       });
+    }
+
+    if (touchMill && !millPosterOnly) {
+      let syncTick = false;
+      function queueMillSync() {
+        if (syncTick) return;
+        syncTick = true;
+        window.requestAnimationFrame(function () {
+          syncTick = false;
+          syncMillPlayback();
+        });
+      }
+      window.addEventListener("scroll", queueMillSync, { passive: true });
+      window.addEventListener("resize", queueMillSync, { passive: true });
     }
   }
 
