@@ -8,3 +8,4 @@ node_modules/
 !.cursor/rules/
 !.cursor/rules/**
 HANDOFF_*.md
+scripts/screenshots/*.png
