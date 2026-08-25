@@ -894,6 +894,41 @@ a:hover {
   color: var(--text-dim);
 }
 
+.logos__lead {
+  margin: 0 0 0.35rem;
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: var(--text-muted);
+}
+
+.credits-group + .credits-group {
+  margin-top: clamp(2.25rem, 4.5vw, 3.5rem);
+}
+
+.logo-carousel__panel--link {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: 6px;
+}
+
+.logo-carousel__panel--link:focus {
+  outline: none;
+}
+
+.logo-carousel__panel--link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
 .logo-carousel {
   width: 100vw;
   max-width: 100vw;
