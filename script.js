@@ -383,7 +383,11 @@
           entries.forEach(function (entry) {
             const v = entry.target.querySelector("video");
             if (!v) return;
-            if (entry.isIntersecting && !reduceMotion) {
+            if (
+              entry.isIntersecting &&
+              !reduceMotion &&
+              !document.documentElement.classList.contains("is-project-modal-open")
+            ) {
               if (v.getAttribute("data-src-bound") !== "1") {
                 const src = v.getAttribute("data-src");
                 if (src) {

@@ -117,93 +117,121 @@
 
     <main id="main" class="page-stage" data-page-stage>
       <section id="top" class="hero" data-hero data-depth-scene>
-        <div class="media-mill" data-media-mill aria-hidden="true">
-          <div class="media-mill__floor"></div>
+        <div class="media-mill" data-media-mill>
+          <div class="media-mill__floor" aria-hidden="true"></div>
           <div class="media-mill__scene">
             <div class="media-mill__lattice" data-mill-lattice>
               <article class="media-mill__tile" data-tile="01" data-mill-row="back" style="--tx: -38vw; --ty: -22vh; --tz: -680px; --rot: -2deg;">
-                <div class="media-mill__media">
-                  <video muted loop playsinline preload="none" poster="media/mill/iseered-poster.jpg" data-src="media/mill/iseered.mp4"></video>
-                </div>
-                <span class="media-mill__bezel" aria-hidden="true"></span>
+                <button type="button" class="media-mill__open" data-project-open="iseered" aria-haspopup="dialog" aria-label="I See Red">
+                  <div class="media-mill__media">
+                    <video muted loop playsinline preload="none" poster="media/mill/iseered-poster.jpg" data-src="media/mill/iseered.mp4"></video>
+                  </div>
+                  <span class="media-mill__bezel" aria-hidden="true"></span>
+                </button>
               </article>
               <article class="media-mill__tile" data-tile="02" data-mill-row="back" style="--tx: -10vw; --ty: -26vh; --tz: -460px; --rot: 1deg;">
-                <div class="media-mill__media">
-                  <video muted loop playsinline preload="none" poster="media/mill/nordic-poster.jpg" data-src="media/mill/nordic.mp4"></video>
-                </div>
-                <span class="media-mill__bezel" aria-hidden="true"></span>
+                <button type="button" class="media-mill__open" data-project-open="nordic" aria-haspopup="dialog" aria-label="USA Nordic">
+                  <div class="media-mill__media">
+                    <video muted loop playsinline preload="none" poster="media/mill/nordic-poster.jpg" data-src="media/mill/nordic.mp4"></video>
+                  </div>
+                  <span class="media-mill__bezel" aria-hidden="true"></span>
+                </button>
               </article>
               <article class="media-mill__tile" data-tile="03" data-mill-row="back" style="--tx: 18vw; --ty: -28vh; --tz: -640px; --rot: -1deg;">
-                <div class="media-mill__media">
-                  <video muted loop playsinline preload="none" poster="media/mill/brighton-poster.jpg" data-src="media/mill/brighton.mp4"></video>
-                </div>
-                <span class="media-mill__bezel" aria-hidden="true"></span>
+                <button type="button" class="media-mill__open" data-project-open="brighton" aria-haspopup="dialog" aria-label="Brighton">
+                  <div class="media-mill__media">
+                    <video muted loop playsinline preload="none" poster="media/mill/brighton-poster.jpg" data-src="media/mill/brighton.mp4"></video>
+                  </div>
+                  <span class="media-mill__bezel" aria-hidden="true"></span>
+                </button>
               </article>
               <article class="media-mill__tile" data-tile="04" data-mill-row="back" style="--tx: 42vw; --ty: -20vh; --tz: -510px; --rot: 2deg;">
-                <div class="media-mill__media">
-                  <video muted loop playsinline preload="none" poster="media/mill/cars-poster.jpg" data-src="media/mill/cars.mp4"></video>
-                </div>
-                <span class="media-mill__bezel" aria-hidden="true"></span>
+                <button type="button" class="media-mill__open" data-project-open="cars" aria-haspopup="dialog" aria-label="Open project">
+                  <div class="media-mill__media">
+                    <video muted loop playsinline preload="none" poster="media/mill/cars-poster.jpg" data-src="media/mill/cars.mp4"></video>
+                  </div>
+                  <span class="media-mill__bezel" aria-hidden="true"></span>
+                </button>
               </article>
               <article class="media-mill__tile" data-tile="05" data-mill-row="mid" style="--tx: -42vw; --ty: 0vh; --tz: -380px; --rot: 1.5deg;">
-                <div class="media-mill__media">
-                  <video muted loop playsinline preload="none" poster="media/mill/whoop-poster.jpg" data-src="media/mill/whoop.mp4"></video>
-                </div>
-                <span class="media-mill__bezel" aria-hidden="true"></span>
+                <button type="button" class="media-mill__open" data-project-open="whoop" aria-haspopup="dialog" aria-label="WHOOP">
+                  <div class="media-mill__media">
+                    <video muted loop playsinline preload="none" poster="media/mill/whoop-poster.jpg" data-src="media/mill/whoop.mp4"></video>
+                  </div>
+                  <span class="media-mill__bezel" aria-hidden="true"></span>
+                </button>
               </article>
               <article class="media-mill__tile" data-tile="06" data-mill-row="mid" style="--tx: -8vw; --ty: 6vh; --tz: -310px; --rot: -1deg;">
-                <div class="media-mill__media">
-                  <video muted loop playsinline preload="none" poster="media/mill/kiltech-poster.jpg" data-src="media/mill/kiltech.mp4"></video>
-                </div>
-                <span class="media-mill__bezel" aria-hidden="true"></span>
+                <button type="button" class="media-mill__open" data-project-open="kiltech" aria-haspopup="dialog" aria-label="Kiltech">
+                  <div class="media-mill__media">
+                    <video muted loop playsinline preload="none" poster="media/mill/kiltech-poster.jpg" data-src="media/mill/kiltech.mp4"></video>
+                  </div>
+                  <span class="media-mill__bezel" aria-hidden="true"></span>
+                </button>
               </article>
               <article class="media-mill__tile" data-tile="07" data-mill-row="mid" style="--tx: 22vw; --ty: -2vh; --tz: -290px; --rot: 0.5deg;">
-                <div class="media-mill__media">
-                  <video muted loop playsinline preload="none" poster="media/mill/powmow-poster.jpg" data-src="media/mill/powmow.mp4"></video>
-                </div>
-                <span class="media-mill__bezel" aria-hidden="true"></span>
+                <button type="button" class="media-mill__open" data-project-open="powmow" aria-haspopup="dialog" aria-label="Powder Mountain">
+                  <div class="media-mill__media">
+                    <video muted loop playsinline preload="none" poster="media/mill/powmow-poster.jpg" data-src="media/mill/powmow.mp4"></video>
+                  </div>
+                  <span class="media-mill__bezel" aria-hidden="true"></span>
+                </button>
               </article>
               <article class="media-mill__tile" data-tile="08" data-mill-row="mid" style="--tx: 44vw; --ty: 4vh; --tz: -360px; --rot: -1.5deg;">
-                <div class="media-mill__media">
-                  <video muted loop playsinline preload="none" poster="media/mill/lincoln-spot-poster.jpg" data-src="media/mill/lincoln-spot.mp4"></video>
-                </div>
-                <span class="media-mill__bezel" aria-hidden="true"></span>
+                <button type="button" class="media-mill__open" data-project-open="lincoln-spot" aria-haspopup="dialog" aria-label="Lincoln">
+                  <div class="media-mill__media">
+                    <video muted loop playsinline preload="none" poster="media/mill/lincoln-spot-poster.jpg" data-src="media/mill/lincoln-spot.mp4"></video>
+                  </div>
+                  <span class="media-mill__bezel" aria-hidden="true"></span>
+                </button>
               </article>
               <article class="media-mill__tile" data-tile="09" data-mill-row="front" style="--tx: -36vw; --ty: 22vh; --tz: -200px; --rot: -1deg;">
-                <div class="media-mill__media">
-                  <video muted loop playsinline preload="none" poster="media/mill/porsche-poster.jpg" data-src="media/mill/porsche.mp4"></video>
-                </div>
-                <span class="media-mill__bezel" aria-hidden="true"></span>
+                <button type="button" class="media-mill__open" data-project-open="porsche" aria-haspopup="dialog" aria-label="Porsche">
+                  <div class="media-mill__media">
+                    <video muted loop playsinline preload="none" poster="media/mill/porsche-poster.jpg" data-src="media/mill/porsche.mp4"></video>
+                  </div>
+                  <span class="media-mill__bezel" aria-hidden="true"></span>
+                </button>
               </article>
               <article class="media-mill__tile" data-tile="10" data-mill-row="front" style="--tx: -8vw; --ty: 28vh; --tz: -120px; --rot: 1deg;">
-                <div class="media-mill__media">
-                  <video muted loop playsinline preload="none" poster="media/mill/amici-poster.jpg" data-src="media/mill/amici.mp4"></video>
-                </div>
-                <span class="media-mill__bezel" aria-hidden="true"></span>
+                <button type="button" class="media-mill__open" data-project-open="amici" aria-haspopup="dialog" aria-label="Amici">
+                  <div class="media-mill__media">
+                    <video muted loop playsinline preload="none" poster="media/mill/amici-poster.jpg" data-src="media/mill/amici.mp4"></video>
+                  </div>
+                  <span class="media-mill__bezel" aria-hidden="true"></span>
+                </button>
               </article>
               <article class="media-mill__tile" data-tile="11" data-mill-row="front" style="--tx: 20vw; --ty: 26vh; --tz: -180px; --rot: -0.5deg;">
-                <div class="media-mill__media">
-                  <video muted loop playsinline preload="none" poster="media/mill/talking-head-poster.jpg" data-src="media/mill/talking-head.mp4"></video>
-                </div>
-                <span class="media-mill__bezel" aria-hidden="true"></span>
+                <button type="button" class="media-mill__open" data-project-open="talking-head" aria-haspopup="dialog" aria-label="Open project">
+                  <div class="media-mill__media">
+                    <video muted loop playsinline preload="none" poster="media/mill/talking-head-poster.jpg" data-src="media/mill/talking-head.mp4"></video>
+                  </div>
+                  <span class="media-mill__bezel" aria-hidden="true"></span>
+                </button>
               </article>
               <article class="media-mill__tile" data-tile="12" data-mill-row="front" style="--tx: 38vw; --ty: 24vh; --tz: -240px; --rot: 1.5deg;">
-                <div class="media-mill__media">
-                  <video muted loop playsinline preload="none" poster="media/mill/shan-poster.jpg" data-src="media/mill/shan.mp4"></video>
-                </div>
-                <span class="media-mill__bezel" aria-hidden="true"></span>
+                <button type="button" class="media-mill__open" data-project-open="shan" aria-haspopup="dialog" aria-label="SHAN">
+                  <div class="media-mill__media">
+                    <video muted loop playsinline preload="none" poster="media/mill/shan-poster.jpg" data-src="media/mill/shan.mp4"></video>
+                  </div>
+                  <span class="media-mill__bezel" aria-hidden="true"></span>
+                </button>
               </article>
               <article class="media-mill__tile" data-tile="13" data-mill-row="back" style="--tx: -54vw; --ty: -25vh; --tz: -620px; --rot: -1.5deg;">
-                <div class="media-mill__media">
-                  <video muted loop playsinline preload="none" poster="media/mill/nathan-poster.jpg" data-src="media/mill/nathan.mp4"></video>
-                </div>
-                <span class="media-mill__bezel" aria-hidden="true"></span>
+                <button type="button" class="media-mill__open" data-project-open="nathan" aria-haspopup="dialog" aria-label="Open project">
+                  <div class="media-mill__media">
+                    <video muted loop playsinline preload="none" poster="media/mill/nathan-poster.jpg" data-src="media/mill/nathan.mp4"></video>
+                  </div>
+                  <span class="media-mill__bezel" aria-hidden="true"></span>
+                </button>
               </article>
               <article class="media-mill__tile" data-tile="14" data-mill-row="mid" style="--tx: 54vw; --ty: 3vh; --tz: -330px; --rot: 1deg;">
-                <div class="media-mill__media">
-                  <video muted loop playsinline preload="none" poster="media/mill/mfm-poster.jpg" data-src="media/mill/mfm.mp4"></video>
-                </div>
-                <span class="media-mill__bezel" aria-hidden="true"></span>
+                <button type="button" class="media-mill__open" data-project-open="mfm" aria-haspopup="dialog" aria-label="My Friend Mickey">
+                  <div class="media-mill__media">
+                    <video muted loop playsinline preload="none" poster="media/mill/mfm-poster.jpg" data-src="media/mill/mfm.mp4"></video>
+                  </div>
+                  <span class="media-mill__bezel" aria-hidden="true"></span>
+                </button>
               </article>
             </div>
           </div>
@@ -601,6 +629,35 @@
       </div>
     </footer>
 
+    <div class="project-modal" data-project-modal hidden>
+      <div class="project-modal__backdrop" data-project-backdrop></div>
+      <div
+        class="project-modal__dialog"
+        data-project-dialog
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="project-modal-title"
+        tabindex="-1"
+      >
+        <button type="button" class="project-modal__close" data-project-close aria-label="Close project">
+          <span aria-hidden="true">×</span>
+        </button>
+        <div class="project-modal__scroll">
+          <div class="project-modal__media" data-project-media></div>
+          <div class="project-modal__body">
+            <h2 id="project-modal-title" class="project-modal__title" data-project-title></h2>
+            <p class="project-modal__meta" data-project-meta hidden></p>
+            <p class="project-modal__role" data-project-role hidden></p>
+            <p class="project-modal__agency" data-project-agency hidden></p>
+            <p class="project-modal__summary" data-project-summary hidden></p>
+            <div class="project-modal__credits" data-project-credits hidden></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/projects.js" defer></script>
+    <script src="js/project-modal.js" defer></script>
     <script src="script.js" defer></script>
   </body>
 </html>
