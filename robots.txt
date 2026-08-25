@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /contractors
+
+Sitemap: https://wearegasworks.com/sitemap.xml
