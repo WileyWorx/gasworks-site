@@ -152,7 +152,7 @@ function lintFile(file, css, allowedBpPx) {
         file,
         lineNo,
         "max-width-media",
-        `max-width media query (mobile-first only): ${query.slice(0, 120)}`
+        `max-width media query (use min-width authoring only): ${query.slice(0, 120)}`
       );
     }
 
