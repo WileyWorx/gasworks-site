@@ -37,10 +37,12 @@ Hand-built static marketing site. **No frameworks, bundlers, or new dependencies
 
 Full rules: `.cursor/rules/responsive.mdc` (`alwaysApply: true`). Contributor checklist: `RESPONSIVE.md`.
 
+Desktop and mobile are equal first-class experiences. `min-width` authoring is a technique to avoid undo-rules, not a priority order. Verify with "is this good here?" at 320 / 375 / 768 / 1024 / 1440 — not only "is this unbroken?"
+
 - Tokens: `styles/tokens.css` (spacing, type, breakpoints, containers)
 - Lint: `npm run lint:responsive` — no `max-width` layout queries, no `vh`, no px font-sizes outside tokens
 - Device matrix: `npm run check:responsive` (see `RESPONSIVE.md`)
-- Components: work at 320px, in arbitrary-width parents, with 2× content length; no outer margin on the component itself
+- Components: work at 320px, in arbitrary-width parents, with 2× content length; no outer margin on the component itself; large screens use space deliberately
 - Touch: 44×44px hit areas; hover features need a touch equivalent via `(hover: none)` / `(pointer: coarse)`
 - Forms: ≥16px input font size
 - Fixed UI: `env(safe-area-inset-*)` + `viewport-fit=cover`

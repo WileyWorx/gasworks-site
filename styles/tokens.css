@@ -4,8 +4,12 @@
  * Spacing, type, breakpoints, and container widths live here.
  * Colors/brand stay in styles.css :root for now; do not invent parallel scales elsewhere.
  *
- * Prefer fluid primitives (clamp, min, max, grid auto-fit, aspect-ratio) before breakpoints.
- * Breakpoints are mobile-first (min-width) for structural mode switches only.
+ * Desktop and mobile are equal first-class experiences. Base styles target the narrow
+ * viewport only because CSS cascades; min-width queries define wider layouts. That is an
+ * authoring technique (fewer undo-rules), not a priority order.
+ *
+ * Prefer fluid primitives (clamp, min, max, grid auto-fit, aspect-ratio) before accidental
+ * breakpoints. Intentional structural switches at token breakpoints are good design.
  * Do not add max-width layout queries.
  *
  * Note: CSS custom properties cannot be used inside @media in all browsers.
@@ -13,10 +17,10 @@
  *   @media (min-width: 640px)  -- then comment: bp-sm
  */
 :root {
-  /* ——— Breakpoints (structural mode switches only) ——— */
-  --bp-sm: 640px; /* mill 3D scatter; denser chrome when needed */
-  --bp-md: 1024px; /* inline nav; multi-column layouts */
-  --bp-lg: 1280px; /* wide desktop breathing room */
+  /* ——— Breakpoints (intentional structural switches; both ends stay first-class) ——— */
+  --bp-sm: 640px; /* e.g. mill 3D scatter; denser chrome when structure changes */
+  --bp-md: 1024px; /* e.g. inline nav; multi-column layouts that earn the width */
+  --bp-lg: 1280px; /* wide desktop breathing room — use space, do not stretch */
 
   /* ——— Containers (one-line gutters; no media query) ——— */
   --container-max: 1180px;

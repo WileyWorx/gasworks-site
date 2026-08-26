@@ -7,14 +7,30 @@ alwaysApply: true
 
 These are checkable requirements, not guidelines. A change that fails any rule is not done.
 
+## Equal first-class experiences
+
+Desktop and mobile are equally important. Neither is a degraded version of the other, and neither is an "enhancement" layered onto the other. Both must be correct by design for their context.
+
+What we use is a CSS **authoring technique**, not a priority order:
+
+- Base styles (no media query) target the narrowest viewport because CSS cascades and unqualified rules apply everywhere.
+- `min-width` queries then define wider layouts. This produces fewer override rules than desktop-first authoring (which forces mobile rules to undo desktop rules — those undo-rules are what break when new content is added).
+
+Do not treat any viewport as a fallback. "Doesn't break" is not enough. Ask "is this good here?" at every width you check.
+
+- **Desktop:** genuine use of horizontal space, multi-column structure where it aids comprehension, density suited to a large screen with a pointer. Do not let a small-screen layout merely stretch to 1440px.
+- **Mobile:** tap targets, thumb-reachable primary actions, content ordering suited to a small screen.
+- **Tablet / mid sizes (768, 1024):** verify explicitly. They are not an afterthought between two poles.
+- **Intentional breakpoints are good design** when the ideal structure genuinely differs by width. Fluid primitives eliminate *accidental* breakpoints; they do not forbid deliberate structural changes.
+
 ## Layout
 
 - Never use `vh` for full-height sections. Use `dvh` or `svh` (see `styles/tokens.css` and `RESPONSIVE.md`). Mobile browser chrome makes `vh` wrong.
 - Never use `100vw`. It includes the scrollbar and causes horizontal overflow. Use `100%` or `dvw`.
 - No element may cause horizontal page scroll at any width from 320px up.
 - Every new layout uses flex or grid with `gap`. No fixed pixel widths on containers.
-- Prefer `clamp()`, `min()`, `max()`, grid `auto-fit` / `minmax()`, and `aspect-ratio` over adding new breakpoints.
-- Media queries are **mobile-first** (`min-width` only). Do not add `max-width` layout queries.
+- Prefer `clamp()`, `min()`, `max()`, grid `auto-fit` / `minmax()`, and `aspect-ratio` over adding *accidental* breakpoints.
+- Media queries use **`min-width` only** (authoring technique). Do not add `max-width` layout queries.
 - Breakpoints (tokens only): `--bp-sm` 640, `--bp-md` 1024, `--bp-lg` 1280. In `@media`, use those pixel values with a token comment — `var(--bp-*)` is not reliable inside media queries.
 - New breakpoints must come from `--bp-*` in `styles/tokens.css`.
 
@@ -37,7 +53,8 @@ These are checkable requirements, not guidelines. A change that fails any rule i
 ## Process (required after every HTML / CSS / JS change)
 
 - After ANY change to HTML, CSS, or JS, re-verify the affected area at **320px**, **375px**, **768px**, **1024px**, and **1440px** before reporting the work as done.
+- At each width ask **"is this good here?"** — not only "is this unbroken here?" Report any viewport where the layout is functional but poorly used (e.g. stretched single column on desktop, cramped density on phone).
 - State in your response which viewports you checked and what you observed. If you did not check, say so explicitly.
-- If a change works on desktop but not on touch, it is not finished.
+- If a change works on desktop but not on touch, it is not finished. If it works on mobile but wastes or misuses a large screen, it is not finished either.
 - Run `npm run lint:responsive` and `npm run check` before treating layout work as done. See `RESPONSIVE.md`.
 - Never introduce a framework, bundler, or dependency into this project. It is hand-built static HTML/CSS/JS and stays that way. (Dev-only npm tooling for lint/check is allowed.)
