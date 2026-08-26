@@ -3,12 +3,17 @@
   "private": true,
   "description": "Gasworks marketing site — static HTML/CSS/JS. Tooling only in this package.json.",
   "scripts": {
-    "check": "node scripts/check-responsive.mjs",
-    "check:live": "node scripts/check-responsive.mjs https://wearegasworks.com",
+    "check:responsive": "playwright test --config=playwright.config.mjs",
+    "check:responsive:update": "playwright test --config=playwright.config.mjs --update-snapshots",
+    "check:responsive:strict": "RESPONSIVE_STRICT=1 playwright test --config=playwright.config.mjs",
+    "check:responsive:ui": "playwright test --config=playwright.config.mjs --ui",
+    "check": "npm run lint:responsive && npm run check:responsive",
     "lint:responsive": "node scripts/lint-responsive.mjs",
     "lint": "npm run lint:responsive"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.10.1",
+    "@playwright/test": "^1.55.0",
     "playwright": "^1.55.0",
     "serve-handler": "^6.1.6"
   }

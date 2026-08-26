@@ -8,4 +8,10 @@ node_modules/
 !.cursor/rules/
 !.cursor/rules/**
 HANDOFF_*.md
-scripts/screenshots/*.png
+
+# Playwright / responsive check (baselines ARE committed)
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+scripts/screenshots/

@@ -50,8 +50,18 @@ It **warns** on breakpoints not in the token set, and on selectors overridden in
 ## Verify before shipping
 
 ```bash
-npm run lint:responsive   # architecture constraints
-npm run check             # Playwright device matrix
+npm run lint:responsive          # CSS architecture constraints
+npm run check:responsive         # full viewport + device + visual matrix (local)
+npm run check:responsive:update  # refresh committed screenshot baselines
+npm run check                    # lint + check:responsive
 ```
+
+`check:responsive` always fails on **horizontal overflow** and **unexpected visual diffs**. Off-screen content, touch targets, text clipping, and axe (including contrast) are logged as warnings; set `RESPONSIVE_STRICT=1` (or `npm run check:responsive:strict`) to fail the build on those too.
+
+CI runs the same suite on every pull request and on pushes to `main` (`.github/workflows/responsive.yml`). Failures upload the Playwright HTML report and diff screenshots as artifacts.
+
+Baselines live in `tests/responsive/baselines/` and are committed so PR diffs are reviewable.
+
+There is no component library in this repo — visual checks cover full pages only.
 
 A non-zero exit means fix before deploy. See also `.cursor/rules/responsive.mdc` and `AGENTS.md`.
