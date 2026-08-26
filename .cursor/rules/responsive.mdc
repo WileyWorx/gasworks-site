@@ -15,6 +15,7 @@ These are checkable requirements, not guidelines. A change that fails any rule i
 - Every new layout uses flex or grid with `gap`. No fixed pixel widths on containers.
 - Prefer `clamp()`, `min()`, `max()`, grid `auto-fit` / `minmax()`, and `aspect-ratio` over adding new breakpoints.
 - Media queries are **mobile-first** (`min-width` only). Do not add `max-width` layout queries.
+- Breakpoints (tokens only): `--bp-sm` 640, `--bp-md` 1024, `--bp-lg` 1280. In `@media`, use those pixel values with a token comment — `var(--bp-*)` is not reliable inside media queries.
 - New breakpoints must come from `--bp-*` in `styles/tokens.css`.
 
 ## Touch and input
@@ -35,7 +36,7 @@ These are checkable requirements, not guidelines. A change that fails any rule i
 
 ## Process (required after every HTML / CSS / JS change)
 
-- After ANY change to HTML, CSS, or JS, re-verify the affected area at **320px**, **390px**, **768px**, and **1280px** before reporting the work as done.
+- After ANY change to HTML, CSS, or JS, re-verify the affected area at **320px**, **375px**, **768px**, **1024px**, and **1440px** before reporting the work as done.
 - State in your response which viewports you checked and what you observed. If you did not check, say so explicitly.
 - If a change works on desktop but not on touch, it is not finished.
 - Run `npm run lint:responsive` and `npm run check` before treating layout work as done. See `RESPONSIVE.md`.

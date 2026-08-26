@@ -7,9 +7,10 @@ Hand-built static site. No frameworks. Layout stays fluid first; breakpoints are
 All spacing, type, breakpoints, and container widths live in [`styles/tokens.css`](styles/tokens.css).
 
 - Reference tokens with `var(--…)` — do not invent parallel scales in components
-- Breakpoints: `--bp-sm` (640), `--bp-md` (768), `--bp-lg` (1024), `--bp-xl` (1280), `--bp-2xl` (1440)
+- Breakpoints: `--bp-sm` (640), `--bp-md` (1024), `--bp-lg` (1280)
 - Mobile-first only: `@media (min-width: …)`. **No `max-width` layout queries**
 - Prefer `clamp()`, `min()`, `max()`, grid `auto-fit` / `minmax()`, and `aspect-ratio` before adding a breakpoint
+- In `@media`, use the token pixel values with a comment (`/* --bp-sm */`) — `var(--bp-*)` is not reliable inside media queries
 
 ## Hard lint rules
 

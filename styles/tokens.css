@@ -6,14 +6,16 @@
  *
  * Breakpoints are mobile-first (min-width). Do not add max-width layout queries.
  * Prefer fluid primitives (clamp, min, max, grid auto-fit, aspect-ratio) before new breakpoints.
+ *
+ * Note: CSS custom properties cannot be used inside @media in all browsers.
+ * When writing queries, use the pixel values below and annotate with the token name, e.g.
+ *   @media (min-width: 640px)  -- then comment: bp-sm
  */
 :root {
-  /* ——— Breakpoints (use with min-width only) ——— */
-  --bp-sm: 640px; /* large phone / small tablet */
-  --bp-md: 768px; /* tablet portrait */
-  --bp-lg: 1024px; /* tablet landscape / small desktop */
-  --bp-xl: 1280px; /* desktop */
-  --bp-2xl: 1440px; /* wide desktop */
+  /* ——— Breakpoints (min-width only; three content-driven stops) ——— */
+  --bp-sm: 640px; /* shell padding + denser chrome */
+  --bp-md: 1024px; /* inline nav; multi-column layouts */
+  --bp-lg: 1280px; /* wide desktop breathing room */
 
   /* ——— Containers ——— */
   --container-max: 1180px;

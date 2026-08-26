@@ -16,13 +16,7 @@ const ROOT = path.resolve(__dirname, "..");
 const TOKENS_FILE = path.join(ROOT, "styles", "tokens.css");
 const CSS_GLOBS = ["styles.css", "styles/tokens.css"];
 
-const ALLOWED_BP_VARS = new Set([
-  "--bp-sm",
-  "--bp-md",
-  "--bp-lg",
-  "--bp-xl",
-  "--bp-2xl",
-]);
+const ALLOWED_BP_VARS = new Set(["--bp-sm", "--bp-md", "--bp-lg"]);
 
 const failures = [];
 const warnings = [];
