@@ -4,7 +4,9 @@
   "description": "Gasworks marketing site — static HTML/CSS/JS. Tooling only in this package.json.",
   "scripts": {
     "check": "node scripts/check-responsive.mjs",
-    "check:live": "node scripts/check-responsive.mjs https://wearegasworks.com"
+    "check:live": "node scripts/check-responsive.mjs https://wearegasworks.com",
+    "lint:responsive": "node scripts/lint-responsive.mjs",
+    "lint": "npm run lint:responsive"
   },
   "devDependencies": {
     "playwright": "^1.55.0",

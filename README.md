@@ -4,20 +4,15 @@ Static marketing site for [wearegasworks.com](https://wearegasworks.com). Hand-b
 
 ## Before deploying
 
-Run the automated cross-device check before every deploy:
-
 ```bash
 npm install
 npx playwright install chromium
-npm run check
+npm run lint:responsive   # architecture constraints (tokens, media queries, vh, fixed widths)
+npm run check             # Playwright device matrix + screenshots
 ```
 
-Point it at production instead of a local server:
+`lint:responsive` fails on `max-width` media queries, `vh` units, px font-sizes outside `styles/tokens.css`, and large fixed widths. See [`RESPONSIVE.md`](RESPONSIVE.md).
 
-```bash
-npm run check:live
-```
-
-A **non-zero exit** means at least one viewport/page failed a hard rule (horizontal overflow, undersized touch targets, text/inputs too small, layout-shift media, safe-area collisions, or a console error). Fix those before shipping. Screenshots land in `scripts/screenshots/` for a visual pass.
+`npm run check` / `npm run check:live` fails on overflow, touch targets, type size, media CLS, and console errors. Screenshots land in `scripts/screenshots/`.
 
 This tooling is `devDependencies` only. It does not ship to visitors or change how the site loads in production.

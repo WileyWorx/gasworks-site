@@ -1,4 +1,5 @@
 /* Gasworks — brand system v2.0 (see Gasworks-Brand-Guide.pdf) */
+@import url("styles/tokens.css");
 
 :root {
   /* Primary palette — Gasworks brand kit */
@@ -13,7 +14,7 @@
   --oxidized: #8a3a1a; /* Deep Rust */
   --warm-smoke: #b0a89e;
   --coal: #2a2724;
-  /* Semantic tokens */
+  /* Semantic color tokens */
   --bg: var(--forge-black);
   --bg-rgb: 26, 26, 26;
   --bg-elevated: #2a2724;
@@ -33,33 +34,10 @@
     #cf5525 65%,
     #c85020 100%
   );
-  --radius: 18px;
-  --radius-sm: 12px;
-  --max: 1180px;
+  /* Layout/type/spacing/breakpoints: styles/tokens.css */
+  --max: var(--container-max);
   --font-display: "Space Grotesk", system-ui, sans-serif;
   --font-body: "DM Sans", system-ui, -apple-system, sans-serif;
-  --header-h: 72px;
-  --safe-top: env(safe-area-inset-top, 0px);
-  --safe-right: env(safe-area-inset-right, 0px);
-  --safe-bottom: env(safe-area-inset-bottom, 0px);
-  --safe-left: env(safe-area-inset-left, 0px);
-  --header-offset: calc(var(--header-h) + var(--safe-top));
-  --touch-min: 44px;
-  /* Spacing scale */
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 0.75rem;
-  --space-4: 1rem;
-  --space-5: 1.5rem;
-  --space-6: 2rem;
-  --space-7: 3rem;
-  --space-8: 4.5rem;
-  /* Fluid type */
-  --text-body: 1rem;
-  --text-small: 0.875rem;
-  --text-display: clamp(2.1rem, 5.6vw + 0.6rem, 4.35rem);
-  --text-title: clamp(1.65rem, 2.4vw + 0.85rem, 2.75rem);
-  --text-kicker: clamp(0.72rem, 0.2vw + 0.68rem, 0.82rem);
   --brand-grid: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 0H0v40' fill='none' stroke='rgba(245,240,235,0.06)' stroke-width='1'/%3E%3C/svg%3E");
   --page-atmosphere: none;
 }

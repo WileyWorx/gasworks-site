@@ -1,0 +1,51 @@
+/**
+ * Gasworks design tokens — single source of truth for layout scale.
+ *
+ * Spacing, type, breakpoints, and container widths live here.
+ * Colors/brand stay in styles.css :root for now; do not invent parallel scales elsewhere.
+ *
+ * Breakpoints are mobile-first (min-width). Do not add max-width layout queries.
+ * Prefer fluid primitives (clamp, min, max, grid auto-fit, aspect-ratio) before new breakpoints.
+ */
+:root {
+  /* ——— Breakpoints (use with min-width only) ——— */
+  --bp-sm: 640px; /* large phone / small tablet */
+  --bp-md: 768px; /* tablet portrait */
+  --bp-lg: 1024px; /* tablet landscape / small desktop */
+  --bp-xl: 1280px; /* desktop */
+  --bp-2xl: 1440px; /* wide desktop */
+
+  /* ——— Containers ——— */
+  --container-max: 1180px;
+  --container-pad: clamp(0.875rem, 2.5vw, 1.5rem);
+
+  /* ——— Spacing scale ——— */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
+
+  /* ——— Type scale (rem / clamp only — never px in consuming CSS) ——— */
+  --text-body: 1rem; /* 16px floor — never go below on form inputs */
+  --text-small: 0.875rem;
+  --text-kicker: clamp(0.72rem, 0.2vw + 0.68rem, 0.82rem);
+  --text-title: clamp(1.65rem, 2.4vw + 0.85rem, 2.75rem);
+  --text-display: clamp(2.1rem, 5.6vw + 0.6rem, 4.35rem);
+
+  /* ——— Chrome / touch ——— */
+  --header-h: 72px;
+  --touch-min: 44px;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --header-offset: calc(var(--header-h) + var(--safe-top));
+
+  /* ——— Radii (shared) ——— */
+  --radius: 18px;
+  --radius-sm: 12px;
+}

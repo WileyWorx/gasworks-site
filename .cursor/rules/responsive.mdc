@@ -9,11 +9,13 @@ These are checkable requirements, not guidelines. A change that fails any rule i
 
 ## Layout
 
-- Never use `100vh` alone for full-height sections. Declare a `vh` fallback first, then `dvh` (e.g. `height: 100vh; height: 100dvh;`). Mobile browser chrome makes bare `vh` wrong.
+- Never use `vh` for full-height sections. Use `dvh` or `svh` (see `styles/tokens.css` and `RESPONSIVE.md`). Mobile browser chrome makes `vh` wrong.
 - Never use `100vw`. It includes the scrollbar and causes horizontal overflow. Use `100%` or `dvw`.
 - No element may cause horizontal page scroll at any width from 320px up.
 - Every new layout uses flex or grid with `gap`. No fixed pixel widths on containers.
 - Prefer `clamp()`, `min()`, `max()`, grid `auto-fit` / `minmax()`, and `aspect-ratio` over adding new breakpoints.
+- Media queries are **mobile-first** (`min-width` only). Do not add `max-width` layout queries.
+- New breakpoints must come from `--bp-*` in `styles/tokens.css`.
 
 ## Touch and input
 
@@ -36,4 +38,5 @@ These are checkable requirements, not guidelines. A change that fails any rule i
 - After ANY change to HTML, CSS, or JS, re-verify the affected area at **320px**, **390px**, **768px**, and **1280px** before reporting the work as done.
 - State in your response which viewports you checked and what you observed. If you did not check, say so explicitly.
 - If a change works on desktop but not on touch, it is not finished.
-- Never introduce a framework, bundler, or dependency into this project. It is hand-built static HTML/CSS/JS and stays that way.
+- Run `npm run lint:responsive` and `npm run check` before treating layout work as done. See `RESPONSIVE.md`.
+- Never introduce a framework, bundler, or dependency into this project. It is hand-built static HTML/CSS/JS and stays that way. (Dev-only npm tooling for lint/check is allowed.)

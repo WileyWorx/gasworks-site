@@ -35,12 +35,12 @@ Hand-built static marketing site. **No frameworks, bundlers, or new dependencies
 
 ## Cross-device (summary)
 
-Full rules: `.cursor/rules/responsive.mdc` (`alwaysApply: true`).
+Full rules: `.cursor/rules/responsive.mdc` (`alwaysApply: true`). Contributor checklist: `RESPONSIVE.md`.
 
-- Full-height: `vh` fallback then `dvh` — never bare `100vh`
-- No `100vw`; no horizontal page scroll from 320px up
+- Tokens: `styles/tokens.css` (spacing, type, breakpoints, containers)
+- Lint: `npm run lint:responsive` — no `max-width` layout queries, no `vh`, no px font-sizes outside tokens
+- Device matrix: `npm run check`
+- Components: work at 320px, in arbitrary-width parents, with 2× content length; no outer margin on the component itself
 - Touch: 44×44px hit areas; hover features need a touch equivalent via `(hover: none)` / `(pointer: coarse)`
 - Forms: ≥16px input font size
-- Media: dimensions / `aspect-ratio`; autoplay needs `muted` + `playsinline`; respect reduced motion and data-saver
 - Fixed UI: `env(safe-area-inset-*)` + `viewport-fit=cover`
-- After any HTML/CSS/JS change: verify at 320, 390, 768, and 1280 — report what you checked
