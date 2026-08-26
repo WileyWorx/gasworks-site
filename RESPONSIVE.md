@@ -16,12 +16,16 @@ Hand-built static site. No frameworks. Desktop and mobile are **equal first-clas
 
 All spacing, type, breakpoints, and container widths live in [`styles/tokens.css`](styles/tokens.css).
 
-- Reference tokens with `var(--…)` — do not invent parallel scales in components
-- **Type:** `--text-xs` … `--text-display`, plus `--text-input` (16px floor for form fields). Body floor is 14px (`0.875rem`) via `--text-body`
-- **Spacing:** `--space-xs` … `--space-3xl` (clamp). Prefer these over ad hoc rem values
-- **Container:** `--container-width` = `min(max, 100% − 2×pad)` — one line, no media query for gutters
-- **Grid helper:** `--grid-card-min` = `min(17.5rem, 100%)` for `auto-fit` card grids
-- Breakpoints: `--bp-sm` (640), `--bp-md` (1024), `--bp-lg` (1280) — intentional structural switches
+| Kind | Tokens |
+|---|---|
+| Breakpoints | `--bp-sm` 640, `--bp-md` 1024, `--bp-lg` 1280 |
+| Container | `--container-max`, `--container-pad`, `--container-width` |
+| Spacing | `--space-xs` … `--space-3xl` (prefer these; `--space-1`…`8` are aliases) |
+| Type | `--text-xs` … `--text-display`, `--text-input` (16px floor for inputs) |
+| Chrome | `--header-h`, `--touch-min`, `--safe-*`, `--header-offset` |
+| Grid | `--grid-card-min` |
+
+- Reference tokens with `var(--…)`. Do not invent parallel scales in components
 - Authoring: `@media (min-width: …)` only. **No `max-width` layout queries**
 - Prefer `clamp()`, `min()`, `max()`, grid `auto-fit` / `minmax()`, and `aspect-ratio` before adding an accidental breakpoint
 - In `@media`, use the token pixel values with a comment (`/* --bp-sm */`) — `var(--bp-*)` is not reliable inside media queries
@@ -46,9 +50,14 @@ overflow-wrap: break-word;
 - `font-size` with `px` outside `styles/tokens.css`
 - `max-width` media queries
 - `vh` units (use `dvh` or `svh`)
+- `100vw` (use `100%` or `dvw`)
 - Fixed `width: Npx` (≥100px) on layout declarations
 
-It **warns** on breakpoints not in the token set, and on selectors overridden in more than two width media queries.
+It **warns** on:
+
+- Breakpoints not in the token set
+- Selectors overridden in more than two width media queries
+- `font-size` values that are not `var(--text-*)` (raw rem/em/clamp — migrate to tokens)
 
 ## Component rules (review)
 

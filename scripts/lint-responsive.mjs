@@ -112,13 +112,34 @@ function lintFile(file, css, allowedBpPx) {
 
     // font-size: …px outside tokens
     const fs = line.match(/font-size\s*:\s*([^;]+);/);
-    if (fs && /\d+\s*px/.test(fs[1]) && !inTokens) {
-      fail(file, lineNo, "font-size-px", `hardcoded px font-size outside tokens: ${fs[1].trim()}`);
+    if (fs && !inTokens) {
+      const val = fs[1].trim();
+      if (/\d+\s*px/.test(val)) {
+        fail(file, lineNo, "font-size-px", `hardcoded px font-size outside tokens: ${val}`);
+      } else if (!/var\(\s*--text-/.test(val) && !/inherit|unset|initial|revert/.test(val)) {
+        // Soft: rem/em/clamp sizes should move onto --text-* tokens
+        warn(
+          file,
+          lineNo,
+          "font-size-raw",
+          `font-size is not a --text-* token (use styles/tokens.css): ${val.slice(0, 80)}`
+        );
+      }
     }
 
-    // vh units (fail — use dvh/svh)
+    // vh units (fail — use dvh/svh). `\d+vh` does not match `dvh`/`svh`/`lvh`.
     if (/\d[\d.]*vh\b/.test(line) && !inTokens) {
       fail(file, lineNo, "vh-unit", `vh unit found — use dvh or svh instead: ${line.trim().slice(0, 100)}`);
+    }
+
+    // 100vw causes scrollbar overflow — ban outside tokens
+    if (/\b100vw\b/.test(line) && !inTokens) {
+      fail(
+        file,
+        lineNo,
+        "viewport-vw",
+        `100vw found — use 100% or dvw: ${line.trim().slice(0, 100)}`
+      );
     }
 
     // fixed width on likely layout containers
