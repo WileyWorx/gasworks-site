@@ -4,43 +4,61 @@
  * Spacing, type, breakpoints, and container widths live here.
  * Colors/brand stay in styles.css :root for now; do not invent parallel scales elsewhere.
  *
- * Breakpoints are mobile-first (min-width). Do not add max-width layout queries.
- * Prefer fluid primitives (clamp, min, max, grid auto-fit, aspect-ratio) before new breakpoints.
+ * Prefer fluid primitives (clamp, min, max, grid auto-fit, aspect-ratio) before breakpoints.
+ * Breakpoints are mobile-first (min-width) for structural mode switches only.
+ * Do not add max-width layout queries.
  *
  * Note: CSS custom properties cannot be used inside @media in all browsers.
  * When writing queries, use the pixel values below and annotate with the token name, e.g.
  *   @media (min-width: 640px)  -- then comment: bp-sm
  */
 :root {
-  /* ——— Breakpoints (min-width only; three content-driven stops) ——— */
-  --bp-sm: 640px; /* shell padding + denser chrome */
+  /* ——— Breakpoints (structural mode switches only) ——— */
+  --bp-sm: 640px; /* mill 3D scatter; denser chrome when needed */
   --bp-md: 1024px; /* inline nav; multi-column layouts */
   --bp-lg: 1280px; /* wide desktop breathing room */
 
-  /* ——— Containers ——— */
+  /* ——— Containers (one-line gutters; no media query) ——— */
   --container-max: 1180px;
-  --container-pad: clamp(0.875rem, 2.5vw, 1.5rem);
+  --container-pad: clamp(0.875rem, 0.55rem + 2.2vw, 1.5rem);
+  --container-width: min(var(--container-max), calc(100% - 2 * var(--container-pad)));
 
-  /* ——— Spacing scale ——— */
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 0.75rem;
-  --space-4: 1rem;
-  --space-5: 1.5rem;
-  --space-6: 2rem;
-  --space-7: 3rem;
-  --space-8: 4.5rem;
+  /* ——— Spacing scale (xs → 3xl; clamp so padding/gaps track viewport) ——— */
+  --space-xs: clamp(0.25rem, 0.2rem + 0.2vw, 0.375rem);
+  --space-sm: clamp(0.5rem, 0.4rem + 0.35vw, 0.75rem);
+  --space-md: clamp(0.75rem, 0.55rem + 0.55vw, 1.25rem);
+  --space-lg: clamp(1rem, 0.7rem + 0.85vw, 1.75rem);
+  --space-xl: clamp(1.5rem, 1rem + 1.25vw, 2.5rem);
+  --space-2xl: clamp(2rem, 1.2rem + 1.9vw, 3.5rem);
+  --space-3xl: clamp(2.75rem, 1.5rem + 2.6vw, 5rem);
 
-  /* ——— Type scale (rem / clamp only — never px in consuming CSS) ——— */
-  --text-body: 1rem; /* 16px floor — never go below on form inputs */
-  --text-small: 0.875rem;
-  --text-kicker: clamp(0.72rem, 0.2vw + 0.68rem, 0.82rem);
-  --text-title: clamp(1.65rem, 2.4vw + 0.85rem, 2.75rem);
-  --text-display: clamp(2.1rem, 5.6vw + 0.6rem, 4.35rem);
+  /* Numeric aliases (legacy); prefer named tokens in new CSS */
+  --space-1: var(--space-xs);
+  --space-2: var(--space-sm);
+  --space-3: var(--space-md);
+  --space-4: var(--space-lg);
+  --space-5: var(--space-xl);
+  --space-6: var(--space-2xl);
+  --space-7: var(--space-3xl);
+  --space-8: clamp(3.5rem, 2rem + 3vw, 5.5rem);
+
+  /* ——— Type scale (every text size references one of these) ——— */
+  /* Body floor 0.875rem (14px) at 320; form inputs use --text-input (16px) */
+  --text-xs: clamp(0.625rem, 0.58rem + 0.18vw, 0.72rem);
+  --text-sm: clamp(0.75rem, 0.7rem + 0.22vw, 0.875rem);
+  --text-body: clamp(0.875rem, 0.82rem + 0.28vw, 1.0625rem);
+  --text-md: clamp(0.9375rem, 0.88rem + 0.35vw, 1.125rem);
+  --text-lg: clamp(1.05rem, 0.95rem + 0.55vw, 1.35rem);
+  --text-kicker: clamp(0.72rem, 0.68rem + 0.2vw, 0.82rem);
+  --text-nav: clamp(0.75rem, 0.72rem + 0.15vw, 0.82rem);
+  --text-btn: clamp(0.8125rem, 0.78rem + 0.2vw, 0.9rem);
+  --text-title: clamp(1.5rem, 0.85rem + 2.2vw, 2.75rem);
+  --text-display: clamp(2rem, 0.55rem + 5.2vw, 4.2rem);
+  --text-input: 1rem; /* 16px floor — never smaller (iOS zoom) */
 
   /* ——— Chrome / touch ——— */
-  --header-h: 72px;
-  --touch-min: 44px;
+  --header-h: 4.5rem; /* 72px at 16px root */
+  --touch-min: 2.75rem; /* 44px */
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-right: env(safe-area-inset-right, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
@@ -48,6 +66,9 @@
   --header-offset: calc(var(--header-h) + var(--safe-top));
 
   /* ——— Radii (shared) ——— */
-  --radius: 18px;
-  --radius-sm: 12px;
+  --radius: 1.125rem;
+  --radius-sm: 0.75rem;
+
+  /* ——— Intrinsic grid helpers ——— */
+  --grid-card-min: min(17.5rem, 100%); /* 280px cap; never overflow below */
 }
