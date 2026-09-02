@@ -189,17 +189,17 @@
     },
     {
       slug: "nathan",
-      title: "TODO",
+      title: "Nathan",
       client: "TODO",
       year: "TODO",
-      lane: "TODO",
+      lane: "Spotlights",
       role: "TODO",
       agency: null,
       credits: [],
       summary: "TODO",
       loopSrc: "/media/mill/nathan.mp4",
-      posterSrc: "/media/mill/nathan-poster.jpg",
-      fullSrc: "",
+      posterSrc: "/media/portfolio/spotlights/19.jpg",
+      fullSrc: "/media/portfolio/spotlights/19.mp4",
       externalUrl: null
     },
     {
