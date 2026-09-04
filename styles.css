@@ -4170,7 +4170,8 @@ body.page-portfolio {
     grid-template-areas:
       "fp shrike salt"
       "hc shrike mfm"
-      "bu isr sd";
+      "bu isr sd"
+      "tiwypsl . .";
   }
 
   .narratives-cell--fp { grid-area: fp; }
@@ -4181,6 +4182,7 @@ body.page-portfolio {
   .narratives-cell--mfm { grid-area: mfm; }
   .narratives-cell--bu { grid-area: bu; }
   .narratives-cell--sd { grid-area: sd; }
+  .narratives-cell--tiwypsl { grid-area: tiwypsl; }
 
   .portfolio-grid--narratives .narratives-cell--fp .portfolio-card,
   .portfolio-grid--narratives .narratives-cell--salt .portfolio-card,
