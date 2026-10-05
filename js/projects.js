@@ -203,6 +203,21 @@
       externalUrl: null
     },
     {
+      slug: "mastercard",
+      title: "Mastercard",
+      client: "TODO",
+      year: "TODO",
+      lane: "Spotlights",
+      role: "TODO",
+      agency: null,
+      credits: [],
+      summary: "TODO",
+      loopSrc: "",
+      posterSrc: "/media/portfolio/spotlights/20.jpg",
+      fullSrc: "/media/portfolio/spotlights/20.mp4",
+      externalUrl: null
+    },
+    {
       slug: "mfm",
       title: "My Friend Mickey",
       client: "TODO",
