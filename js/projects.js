@@ -213,7 +213,7 @@
       credits: [],
       summary: "TODO",
       loopSrc: "",
-      posterSrc: "/media/portfolio/spotlights/20.jpg",
+      posterSrc: "/media/portfolio/spotlights/20.jpg?v=2",
       fullSrc: "/media/portfolio/spotlights/20.mp4",
       externalUrl: null
     },
