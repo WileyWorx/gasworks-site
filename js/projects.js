@@ -229,7 +229,7 @@
       summary: "TODO",
       loopSrc: "",
       posterSrc: "/media/portfolio/spotlights/21.jpg",
-      fullSrc: "/media/portfolio/spotlights/21.mp4",
+      fullSrc: "/media/portfolio/spotlights/21.mp4?v=2",
       externalUrl: null
     },
     {
