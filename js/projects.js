@@ -233,6 +233,21 @@
       externalUrl: null
     },
     {
+      slug: "new-light",
+      title: "New Light",
+      client: "TODO",
+      year: "TODO",
+      lane: "Spotlights",
+      role: "TODO",
+      agency: null,
+      credits: [],
+      summary: "TODO",
+      loopSrc: "",
+      posterSrc: "/media/portfolio/spotlights/22.jpg",
+      fullSrc: "/media/portfolio/spotlights/22.mp4",
+      externalUrl: null
+    },
+    {
       slug: "mfm",
       title: "My Friend Mickey",
       client: "TODO",
