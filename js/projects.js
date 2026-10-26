@@ -248,6 +248,21 @@
       externalUrl: null
     },
     {
+      slug: "amici-dion",
+      title: "Amici Dion",
+      client: "TODO",
+      year: "TODO",
+      lane: "Spotlights",
+      role: "TODO",
+      agency: null,
+      credits: [],
+      summary: "TODO",
+      loopSrc: "",
+      posterSrc: "/media/portfolio/spotlights/23.jpg",
+      fullSrc: "/media/portfolio/spotlights/23.mp4",
+      externalUrl: null
+    },
+    {
       slug: "mfm",
       title: "My Friend Mickey",
       client: "TODO",
