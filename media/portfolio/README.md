@@ -38,6 +38,7 @@ Paths are wired in `portfolio.html` via `data-poster` and `data-video` on each c
 | 18 | All This Time Is Wasting | `Spotlights/Murmurs/All this time is Wasting/` (click opens YouTube) |
 | 22 | New Light | `Downloads/New Light for jack (1)/FINAL_compressed.mov` |
 | 23 | Amici Dion | `Downloads/Amici_Dion_1080_Branded_Final.mov` |
+| 24 | Suunto | `Downloads/Suunto Run 2 – See the Run Ahead - Suunto (1080p).mp4` |
 
 Display order on Spotlights is custom (not file order). Peech tiles are spaced apart. Powder Mountain, Ford, Porsche, and Hoang stay below the first two rows.
 
