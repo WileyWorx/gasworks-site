@@ -1291,7 +1291,7 @@
   const inquiryRoot = document.querySelector("[data-inquiry-root]");
   const inquiryForm = document.querySelector("[data-inquiry-form]");
   const inquirySuccess = document.querySelector("[data-inquiry-success]");
-  const INQUIRY_TO = "jack@wileyworx.com";
+  const INQUIRY_TO = "hello@wearegasworks.com";
   if (inquiryForm && inquiryRoot && inquirySuccess) {
     inquiryForm.addEventListener("submit", function (e) {
       e.preventDefault();
@@ -1339,7 +1339,7 @@
   const rosterRoot = document.querySelector("[data-roster-root]");
   const rosterForm = document.querySelector("[data-roster-form]");
   const rosterSuccess = document.querySelector("[data-roster-success]");
-  const ROSTER_TO = "jack@wileyworx.com";
+  const ROSTER_TO = "hello@wearegasworks.com";
   if (rosterForm && rosterRoot && rosterSuccess) {
     rosterForm.addEventListener("submit", function (e) {
       e.preventDefault();
